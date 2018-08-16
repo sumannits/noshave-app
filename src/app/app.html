@@ -1,0 +1,47 @@
+<ion-menu [content]="content" (ionOpen)="menuOpened()">
+    <ion-content >
+        <ion-list class="left-menu-top">
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="../assets/img/pro-pic.jpg" alt="">
+                </ion-avatar>
+                <h2>Roger Wilson</h2>
+                <p class="font-12">
+                    <ion-icon name="pin"></ion-icon> California C.A. USA
+                </p>
+            </ion-item>
+        </ion-list>
+
+        <ion-list class="left-menu-area">
+            <ion-item menuClose (click)="openPage('home')">
+                <ion-icon name="home" item-start></ion-icon>Home
+            </ion-item>
+            <ion-item menuClose (click)="openPage('document')">
+                <ion-icon name="document" item-start></ion-icon>Personal
+            </ion-item>
+            <ion-item menuClose (click)="openPage('document')">
+                <ion-icon name="people" item-start></ion-icon>Team
+            </ion-item>
+            <ion-item menuClose (click)="openPage('document')">
+                <ion-icon name="laptop" item-start></ion-icon>Organization
+            </ion-item>
+            <ion-item menuClose (click)="openPage('card')">
+                <ion-icon name="card" item-start></ion-icon>Donations
+            </ion-item>
+            <ion-item menuClose (click)="openPage('person')">
+                 <ion-icon name="person" item-start></ion-icon>Account
+            </ion-item>
+            <ion-item menuClose (click)="openPage('arrow-round-back')">
+                 <ion-icon name="arrow-round-back" item-start></ion-icon>Previous Contributors
+            </ion-item>
+            <ion-item menuClose (click)="openPage('settings')">
+                 <ion-icon name="settings" item-start></ion-icon>Settings
+            </ion-item>
+            <ion-item menuClose (click)="openPage('power')">
+                <ion-icon name="power" item-start></ion-icon>Logout
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
+

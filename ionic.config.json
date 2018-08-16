@@ -1,0 +1,8 @@
+{
+  "name": "noshave",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "app_id": ""
+}

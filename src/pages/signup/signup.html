@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="light">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="log-reg-container">
+  <h6 class="text-uppercase text-center font-medium text-primary mb-20">Please enter your information</h6>
+
+  <form [formGroup]="form" #loginForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" placeholder="Full Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="City"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="State"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Country"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button class="font-medium" ion-button  color="primary" block>Submit</button>
+  </form>
+</ion-content>
+
+    <!-- <ion-row responsive-sm>
+      <ion-col text-center class="pt-0">
+        <ion-item class="brdr-none">
+          <ion-label class="remember-me">Remember Me</ion-label>
+          <ion-checkbox checked="true"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row> -->

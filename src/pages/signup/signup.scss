@@ -1,0 +1,9 @@
+page-signup {
+    .item.item-input.item-input-has-focus .item-inner, .item.item-input.input-has-focus .item-inner{ border-bottom: 0; box-shadow: none; }
+    .item .checkbox{ margin-right: 8px !important;}
+    .checkbox .checkbox-icon{ border: 1px solid #d2d2d2 !important;}
+    .checkbox .checkbox-checked{background-color: #325fbe !important; border: 1px solid #325fbe !important;}
+    
+
+    .remember-me{ font-size: 1.4rem; color: #000000; font-weight: 400;}
+}
