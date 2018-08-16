@@ -1,44 +1,28 @@
-<ion-menu [content]="content" (ionOpen)="menuOpened()">
+<ion-menu [content]="content">
     <ion-content >
         <ion-list class="left-menu-top">
             <ion-item>
                 <ion-avatar item-start>
-                    <img src="../assets/img/pro-pic.jpg" alt="">
+                    <img src="{{ loggeduser_details?.m_profile_pic }}" alt="">
                 </ion-avatar>
-                <h2>Roger Wilson</h2>
+                <h2>{{ loggeduser_details?.m_full_name }}</h2>
                 <p class="font-12">
-                    <ion-icon name="pin"></ion-icon> California C.A. USA
+                    <ion-icon name="pin"></ion-icon>{{ '  ' + loggeduser_details?.m_city + ',' + loggeduser_details?.m_country }}
                 </p>
             </ion-item>
         </ion-list>
 
+        <ion-content *ngIf="isLoggedin == true">
+            <ion-list>
+              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <img [src]="p.image" alt=""> {{p.title}}
+              </button>
+            </ion-list>
+          </ion-content>
+
         <ion-list class="left-menu-area">
-            <ion-item menuClose (click)="openPage('home')">
-                <ion-icon name="home" item-start></ion-icon>Home
-            </ion-item>
-            <ion-item menuClose (click)="openPage('document')">
-                <ion-icon name="document" item-start></ion-icon>Personal
-            </ion-item>
-            <ion-item menuClose (click)="openPage('document')">
-                <ion-icon name="people" item-start></ion-icon>Team
-            </ion-item>
-            <ion-item menuClose (click)="openPage('document')">
-                <ion-icon name="laptop" item-start></ion-icon>Organization
-            </ion-item>
-            <ion-item menuClose (click)="openPage('card')">
-                <ion-icon name="card" item-start></ion-icon>Donations
-            </ion-item>
-            <ion-item menuClose (click)="openPage('person')">
-                 <ion-icon name="person" item-start></ion-icon>Account
-            </ion-item>
-            <ion-item menuClose (click)="openPage('arrow-round-back')">
-                 <ion-icon name="arrow-round-back" item-start></ion-icon>Previous Contributors
-            </ion-item>
-            <ion-item menuClose (click)="openPage('settings')">
-                 <ion-icon name="settings" item-start></ion-icon>Settings
-            </ion-item>
-            <ion-item menuClose (click)="openPage('power')">
-                <ion-icon name="power" item-start></ion-icon>Logout
+            <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon [name]="p.icon" item-start></ion-icon>{{p.title}}
             </ion-item>
         </ion-list>
     </ion-content>

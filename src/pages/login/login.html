@@ -11,35 +11,45 @@
   </ion-navbar>
 
 </ion-header>-->
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button icon-only color="light">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding class="log-reg-container">
-    <div class="logo">
-      <img src="./assets/img/login-logo.png" alt="Ionic logo"/>
-    </div>
-    <h4 class="text-uppercase text-center font-medium text-primary">Sign in</h4>
-
-    <form [formGroup]="form" #loginForm="ngForm">
-      <ion-list>
-        <ion-item>
-          <ion-input type="email" placeholder="User Name" [formControl]="email" autocapitalize="off"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="password" placeholder="Password" [formControl]="password" autocapitalize="off"></ion-input>
-        </ion-item>
-      </ion-list>
+  <ion-content padding class="log-reg-container">
+      <div class="logo">
+        <img src="./assets/img/login-logo.png" alt="Ionic logo"/>
+      </div>
+      <h4 class="text-uppercase text-center font-medium text-primary">LogIn</h4>
   
-      <button class="font-medium" ion-button [disabled]="!loginForm.valid" color="secondary" (click)="doLogin(form.value)" block>SIGN IN</button>
-      <p class="forgot" text-center (click)="forgotPassword()">Forgot your password?</p>
-      <button class="font-medium text-uppercase" ion-button color="primary" (click)="gotoSignupPage()" block>Create an account</button>
-    </form>  
-</ion-content> 
-
+      <form [formGroup]="signinform" #signinForm="ngForm">
+        <ion-list>
+          <ion-item>
+            <ion-input  type="email" formControlName="email" placeholder="email" autocapitalize="off"></ion-input>
+          </ion-item>
+          <ion-item class="error-item" no-lines *ngIf="( signinform.get('email').hasError('minlength') || signinform.get('email').hasError('pattern') ||signinform.get('email').hasError('required') ) && signinform.get('email').touched">
+            <div class="error" *ngIf="signinform.get('email').hasError('required') && signinform.get('email').touched">
+              Please input your email
+            </div>
+            <div class="error" *ngIf="signinform.get('email').hasError('pattern') && signinform.get('email').touched">
+              Email address invalid
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" formControlName="password" placeholder="Password" autocapitalize="off"></ion-input>
+          </ion-item>
+          <ion-item class="error-item" no-lines *ngIf="( signinform.get('password').hasError('minlength') || signinform.get('password').hasError('maxlength') ||signinform.get('password').hasError('required') ) && signinform.get('password').touched">
+              <div class="error" *ngIf="signinform.get('password').hasError('required') && signinform.get('password').touched">
+                Please input your password
+              </div>
+              <div class="error" *ngIf="signinform.get('password').hasError('minlength') && signinform.get('password').touched">
+                Minimum 6 characters
+              </div>
+              <div class="error" *ngIf="signinform.get('password').hasError('maxlength') && signinform.get('password').touched">
+                Maximum 12 characters
+              </div>
+          </ion-item>
+        </ion-list>
+    
+        <button class="font-medium" ion-button [disabled]="!signinForm.valid" (click)="signin(signinform.value)" color="secondary" block>Login</button>
+        <p class="forgot" text-center (click)="forgotPassword()">Forgot your password?</p>
+        <button class="font-medium text-uppercase" ion-button color="primary" (click)="createaccount()" block>Create an account</button>
+      </form>  
+  </ion-content> 
+  
+  

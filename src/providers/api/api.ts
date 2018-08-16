@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http, Response, URLSearchParams  } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { HttpClient } from '@angular/common/http';
 import { LoadingController } from 'ionic-angular';
 
-let apiUrl = 'https://www.basemarket.mx/webservice/';
+let apiUrl = 'http://192.168.1.68/noshave-new/platform/api/';
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -22,18 +21,16 @@ export class Api {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-    
     return new Promise((resolve, reject) => {
       //let headers = new Headers();
       //headers.append("Content-Type","application/json");
       const headerDict = {
-        'Content-Type': 'application/json',
+        'enctype': 'multipart/form-data; boundary=----WebKitFormBoundaryuL67FWkv1CA'
       }
-      const requestOptions = {                                                                    headers: new Headers(headerDict), 
+      const requestOptions = { 
+        headers: new Headers(headerDict), 
       };
-
-      this.http.post(apiUrl + type, JSON.stringify(credentials),requestOptions).subscribe(res => {
-          //console.log(res);
+      this.http.post(apiUrl + type,credentials,requestOptions).subscribe(res => {
           resolve(res.json());
           loading.dismiss();
         }, (err) => {

@@ -1,3 +1,6 @@
 page-login {
-  
+    .header::after{ background-image: none;}
+    .bar-button[icon-only] ion-icon{ color: #3b2c19 !important;} 
+    .toolbar-background{ background: none;}
+    .header .toolbar:last-child .toolbar-background{ border-color: transparent;}
 }

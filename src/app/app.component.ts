@@ -1,32 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
-import { Ionic2RatingModule } from 'ionic2-rating';
-import { AppRate } from '@ionic-native/app-rate';
-import { Broadcaster } from '../providers/eventEmitter';
-import * as firebase from 'firebase';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Api, ResponseMessage } from '../providers';
-
+import { Nav, Platform ,MenuController,Events} from 'ionic-angular';
+import { Api } from '../providers';
 
 export interface PageInterface {
   title: string;
   name: string;
   component: any;
-  icon: string;
   logsOut?: boolean;
   index?: number;
   tabName?: string;
-  //tabComponent?: any;
 }
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any;
+  rootPage :any = 'LoginPage';
   public username: string = '';
   public profile_image: string = '';
   public isloggedin: boolean = false;
@@ -36,139 +27,65 @@ export class MyApp {
   public firstname:any;
   public lastname:any;
   public chatCntlist = [];
-
+  public loggeduser_details:any;
   @ViewChild(Nav) nav: Nav;
-
-  withoutLoginPages: PageInterface[] = [
-    { title: 'Home', name: 'HomePage', component: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Login', name: 'LoginPage', component: 'LoginPage', index: 3, icon: 'log-in' },
-    { title: 'Signup', name: 'SignupPage', component: 'SignupPage', index: 5, icon: 'person-add' }
-   
-  ];
-
-  withLoginPages: PageInterface[] = [
-    { title: 'Home', name: 'HomePage', component: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Settings', name: 'SettingsPage', component: 'SettingsPage', index: 2, icon: 'settings' },
-    { title: 'Order List', name: 'OrderListPage', component: 'OrderListPage', index: 3, icon: 'reorder' },
-    { title: 'Chat', name: 'ChatlistPage', component: 'ChatlistPage', index: 9, icon: 'chatbubbles' },
-    { title: 'Logout', name: 'LogoutPage', component: 'LoginPage', index: 6, icon: 'log-out' }
-
-  ];
-
-
-
-
-  constructor(private translate: TranslateService, platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,public db: AngularFirestore,public serviceApi: Api,
-  private broadCaster:Broadcaster) {
-     
-
+  pages: Array<{title: string, component: any, icon:string}>;
+  constructor(public events: Events,public menu: MenuController, platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,public serviceApi: Api,) {
+    this.pages = [
+      { title: 'Home', component: 'HomePage', icon:'home' },
+      { title: 'Personal', component: 'HomePage', icon:'document' },
+      { title: 'Team', component: 'HomePage', icon:'people' },
+      { title: 'Organization', component: 'HomePage', icon:'laptop' },
+      { title: 'Donations', component: 'HomePage', icon:'card' },
+      { title: 'Account', component: 'AccountPage', icon:'person' },
+      { title: 'Previous Contributors', component: 'HomePage', icon:'arrow-round-back' },
+      { title: 'Settings', component: 'SettingsPage', icon:'settings' },
+      { title: 'Logout', component: '',icon:'power' }
+    ];
     platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if(localStorage.getItem('userPrfDet')){
-        this.loguserDet = JSON.parse(localStorage.getItem('userPrfDet'));
-      if(this.loguserDet.user_type==0){
-        this.rootPage ="SignupStep1Page";
+      const loguser = JSON.parse(localStorage.getItem('userData'));
+      console.log(loguser);
+      if(loguser){
+        this.rootPage = 'HomePage';
+        this.isloggedin = true;
+        //Enable Side Menu After Login
+        this.menu.enable(true);
+        this.loggeduser_details = loguser;
       }
-    }
-      else{
-        this.isloggedin=false;
-        this.rootPage ="SignupStep1Page";
-      }
-    
-    });
-    this.initTranslate(); 
-    //firebase.initializeApp(configFirebase);
-  }
-
-  initTranslate() {
-    // Set the default language for translation strings, and the current language.
-    this.translate.setDefaultLang('en');
-    const browserLang = this.translate.getBrowserLang();
-
-    if (browserLang) {
-      if (browserLang === 'zh') {
-        const browserCultureLang = this.translate.getBrowserCultureLang();
-
-        if (browserCultureLang.match(/-CN|CHS|Hans/i)) {
-          this.translate.use('zh-cmn-Hans');
-        } else if (browserCultureLang.match(/-TW|CHT|Hant/i)) {
-          this.translate.use('zh-cmn-Hant');
-        }
-      } else {
-        this.translate.use(this.translate.getBrowserLang());
-      }
-    } else {
-      this.translate.use('en'); // Set your language here
-    }
-
-    this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
-      this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
+      this.events.subscribe('user:created', (testuser) => {
+        this.rootPage = 'HomePage';
+        this.isloggedin = true;
+        //Enable Side Menu After Login
+        this.menu.enable(true);
+        this.loggeduser_details = loguser;
+        console.log(this.loggeduser_details);
+      });
     });
   }
-
-  menuOpened() {
-    let isUserLogedin = localStorage.getItem('isUserLogedin');
-    if (isUserLogedin == '1') {
-      this.isloggedin = true;
-      this.loguserDet = JSON.parse(localStorage.getItem('userPrfDet'));
-      if(this.loguserDet.user_type==1){
-        this.istype=1;
-      }else if(this.loguserDet.user_type==0){
-        this.istype=0;
-      }
-    
-      if (this.loguserDet.first_name) {
-        this.username = this.loguserDet.first_name;
-      }
-    } else {
-      //this.profile_image = 'assets/img/default.jpeg';
-      this.username = '';
-      this.isloggedin = false;
-    }
-    //console.log(this.isloggedin);
-  }
-  logintype(){
-     this.loguser =  JSON.parse(localStorage.getItem('userPrfDet'));   
-     if(this.loguser){
-       this.firstname=this.loguser.first_name;
-       this.lastname=this.loguser.last_name;
-       
-       //console.log("USERINFOOOOO",this.loguser.type);
-     if(this.loguser.user_type==1){
-       this.istype=1;
-     }else if(this.loguser.user_type==0){
-       this.istype=0;
-     }
-     }
-   
-   }
+  
   openPage(page) {
-    // if (page.name == 'LogoutPage') {
-    //   localStorage.clear();
-    //   this.isloggedin = false;
-    //   // this.nav.setRoot('LoginPage');
-    //   localStorage.removeItem("isUserLogedin");
-    //   localStorage.removeItem("userPrfDet");
-    //   this.nav.setRoot(page.component);
-    // } else {
-    //   this.nav.setRoot(page.component);
-    // }
-    this.nav.setRoot('TrackDetailsPage');
-
+    if (page.title == 'Logout') {
+      this.logout();
+    } else {
+      this.nav.setRoot(page.component);
+    }
   }
 
   isActive(page: PageInterface) {
-    let childNav = this.nav.getActiveChildNavs()[0];
     if (this.nav.getActive() && this.nav.getActive().name === page.name) {
       return 'primary';
     }
     return;
   }
 
-  
+  public logout(){
+    localStorage.clear();
+    this.isloggedin = false;
+    this.nav.setRoot('LoginPage');
+  }
 
- 
 }
 
 

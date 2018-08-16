@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Api, ResponseMessage } from '../../providers';
 import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController,ToastController,Platform } from 'ionic-angular';
-import { Stripe } from '@ionic-native/stripe';
 /**
  * Generated class for the CardPaymentPage page.
  *
@@ -41,7 +40,7 @@ export class CardPaymentPage {
   public ordateto:any;
   public concat:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private stripe:Stripe,public toastCtrl:ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController,public serviceApi: Api,private builder:FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public toastCtrl:ToastController, public loadingCtrl: LoadingController,public alertCtrl: AlertController,public serviceApi: Api,private builder:FormBuilder) {
     this.pet ='puppies';
     
     this.form = builder.group({

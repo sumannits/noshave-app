@@ -19,86 +19,86 @@
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
-    $max: breakpoint-max($name, $breakpoints);
-    @if $max {
-      @media (max-width: $max) {
-        @content;
-      }
-    } @else {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
       @content;
     }
+  } @else {
+    @content;
   }
+}
 
- 
 
-  
-  // @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  
-  // Name of the next breakpoint, or null for the last breakpoint.
-  //
-  //    >> breakpoint-next(sm)
-  //    md
-  //    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-  //    md
-  //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
-  //    md
-  @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
-    $n: index($breakpoint-names, $name);
-    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
-  }
-  
-  
-  // Maximum breakpoint width. Null for the largest (last) breakpoint.
-  // The maximum value is calculated as the minimum of the next one less 0.1.
-  //
-  //    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-  //    767px
-  @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
-    $next: breakpoint-next($name, $breakpoints);
-    @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
-  }
-  
-  
-  // Creates text alignment classes based on screen size
-  // TODO this would be nice to add to the framework
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-      // Provide text `[text-{bp}]` attributes for aligning text based on screen size
-      [text#{$infix}-center] {
-        text-align: center;
-      }
-  
-      [text#{$infix}-left] {
-        text-align: left;
-      }
-  
-      [text#{$infix}-right] {
-        text-align: right;
-      }
-  
-      [hidden#{$infix}-up] {
-        display: none;
-      }
+
+
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.1.
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+
+// Creates text alignment classes based on screen size
+// TODO this would be nice to add to the framework
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    // Provide text `[text-{bp}]` attributes for aligning text based on screen size
+    [text#{$infix}-center] {
+      text-align: center;
     }
-  
-    @include media-breakpoint-down($breakpoint, $grid-breakpoints) {
-      [hidden#{$infix}-down] {
-        display: none;
-      }
+
+    [text#{$infix}-left] {
+      text-align: left;
+    }
+
+    [text#{$infix}-right] {
+      text-align: right;
+    }
+
+    [hidden#{$infix}-up] {
+      display: none;
     }
   }
+
+  @include media-breakpoint-down($breakpoint, $grid-breakpoints) {
+    [hidden#{$infix}-down] {
+      display: none;
+    }
+  }
+}
 
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700');
 
-body, .text-input{font-size:14px; color:#000; font-family: 'Montserrat', sans-serif; font-weight: 400}
-ion-app.md, ion-app.ios{font-size:14px; color:#000; font-family: 'Montserrat', sans-serif; font-weight: 400}
+body, .text-input{font-size:14px; color:#000; font-family: 'Montserrat', sans-serif !important; font-weight: 400;}
+ion-app.md, ion-app.ios{font-size:14px; color:#000; font-family: 'Montserrat', sans-serif !important; font-weight: 400;}
 
 .button-md{text-transform:unset; box-shadow:none}
-.button-ios, .button-md{font-size:14px; font-family: 'Montserrat', sans-serif; height: 3em}
-.button-small-md, .button-small-ios{font-size:12px; font-family: 'Montserrat', sans-serif;}
+.button-ios, .button-md{font-size:14px; font-family: 'Montserrat', sans-serif !important; height: 3em}
+.button-small-md, .button-small-ios{font-size:12px; font-family: 'Montserrat', sans-serif !important;}
 .toolbar-background{background: #ede7db}
 .toolbar-title{color: #2a2012; text-transform: uppercase; text-align: center}
 
@@ -149,7 +149,7 @@ ion-app.md [padding] .scroll-content, ion-app.ios [padding] .scroll-content{}
 .inner-logo{width:110px; margin-top:4px}
 
 .common-title{text-transform: uppercase; text-align: center; width:100%; display: block; margin-bottom: 20px; margin-top: 5px;
-    position: relative; font-weight:500; color:#fff; font-size:16px; padding-bottom: 5px}
+  position: relative; font-weight:500; color:#fff; font-size:16px; padding-bottom: 5px}
 .common-title::before{content: ''; width:25px; height:2px; background: #fff; position: absolute; left:50%; transform: translateX(-50%); bottom:0}
 .common-list{background: #252525; border-radius: 4px; border: 1px solid #000}
 .common-list .item{background: transparent; border-bottom: 1px solid #353535}
@@ -179,10 +179,10 @@ ion-app.md [padding] .scroll-content, ion-app.ios [padding] .scroll-content{}
 .log-reg-container .item.item-md.item-input.item-input-has-focus .item-inner{box-shadow:none !important;}
 .log-reg-container .item.item-md.item-input.item-input-has-focus:last-child{box-shadow:none !important;}
 .log-reg-container .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .log-reg-container .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner{
-  box-shadow:none !important;
+box-shadow:none !important;
 }
 .log-reg-container .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .log-reg-container .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child{
-  box-shadow:none !important; border-bottom:0;
+box-shadow:none !important; border-bottom:0;
 }
 .log-reg-container .text-input-ios{margin-left:8px; width:calc(100% - 16px);}
 .log-reg-container .text-input{color:#aa9677}
@@ -193,28 +193,28 @@ ion-app.md [padding] .scroll-content, ion-app.ios [padding] .scroll-content{}
 .forgot{margin: 30px 0}
 
 .left-menu-top{
-  background: #6a3447;
-  margin-bottom: 0;
-    .item{
-      background: transparent;
-        ion-avatar{
-          min-width:60px;
-          min-height:60px;
-          margin-top:25px; margin-bottom:25px;
-            img{width:60px; height:60px}
-        }
-    }
-    h2, p{color:#fff !important}
+background: #6a3447;
+margin-bottom: 0;
+  .item{
+    background: transparent;
+      ion-avatar{
+        min-width:60px;
+        min-height:60px;
+        margin-top:25px; margin-bottom:25px;
+          img{width:60px; height:60px}
+      }
+  }
+  h2, p{color:#fff !important}
 }
 
 .left-menu-area{
-  margin:0; box-shadow:none;width:100%;
-    .item{border-bottom: 1px solid #dcd1c0;}
-    .item:first-child{border-top:0;}
-    .item:last-child{border-bottom:0;}
-    .item-inner{border-bottom: none !important; }
-    ion-icon{color:#3b2c19}
-    .label{margin-top:18px; margin-bottom:18px; color:#444444}
+margin:0; box-shadow:none;width:100%;
+  .item{border-bottom: 1px solid #dcd1c0;}
+  .item:first-child{border-top:0;}
+  .item:last-child{border-bottom:0;}
+  .item-inner{border-bottom: none !important; }
+  ion-icon{color:#3b2c19}
+  .label{margin-top:18px; margin-bottom:18px; color:#444444}
 }
 
 .custom-radio .label{display: inline-block; margin: 0; }
@@ -223,10 +223,27 @@ ion-app.md [padding] .scroll-content, ion-app.ios [padding] .scroll-content{}
 .custom-radio .radio-md  .radio-checked {border-color: #4cb050;}
 .custom-radio .radio-ios .radio-checked .radio-inner{border-color: #4cb050;}
 .custom-radio .item{
-  min-height:auto;
-  background:transparent;
-    button{padding-right:0}
+min-height:auto;
+background:transparent;
+  button{padding-right:0}
 }
 .custom-radio .item .item-inner{border:0 !important; margin-bottom:0; display: flex; flex-direction: row-reverse; padding-right:0}
 .custom-radio .item .item-inner .input-wrapper .label{min-height:auto}
 .custom-radio .radio-md .radio-icon{margin-right: 5px}
+
+.bar-buttons{ order: 1; }
+.toolbar-md ion-title {
+  left: 0;
+  top: 0;
+  padding: 0 90px 1px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  pointer-events: none;
+  text-overflow: normal !important; white-space: normal !important; word-wrap: break-all !important;
+}
+
+.toolbar-title-md{font-size:1.7rem; font-weight:600;}
+.toolbar-title{ text-overflow: normal; white-space: normal; word-wrap: break-all;}
