@@ -1,12 +1,12 @@
-<ion-header>
-  <ion-navbar>
+<ion-header align-title="center">
+  <ion-navbar align-title="center">
     <ion-buttons start>
       <button ion-button start menuToggle color="secondary">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>
-      <img src="../assets/img/inner-logo.png" alt="" class="inner-logo">
+    <ion-title >
+      <img src="assets/img/inner-logo.png" alt="" class="inner-logo">
     </ion-title>
     <!-- <ion-buttons end>
       <button ion-button icon-only color="secondary">
@@ -18,7 +18,7 @@
 
 
 <ion-content>
-  <div class="home-banner">
+  <div class="home-banner" [ngStyle]="{'background-image':'url('+userDetailsJson?.m_pic_0+')', 'background-position': 'center', 'background-repeat': 'no-repeat','background-size': 'cover'}">
       <div class="banner-txt">
         <p class="font-light">A Unique Way to Grow</p>
         <p class="font-medium text-uppercase mb-5">Cancer Awareness</p>
@@ -30,42 +30,19 @@
     <ion-row>
       <ion-col col-12>
         <h5 class="font-medium text-uppercase mb-10 text-darkgreen">My Donations</h5>
-        <ion-list>
-          <ion-item>
+        <ion-list *ngIf="donation?.length > 0">
+          <ion-item *ngFor="let d of donation">
             <aside>
-                <h4 class="font-medium">Donation for</h4>
-                <p>20-July-2018</p>
+                <h4 class="font-medium">Donation By : {{ d.name }}</h4>
+                <p>{{ d.date }}</p>
             </aside>
-            <span class="text-secondary font-medium">$50.00</span>
+            <span class="text-secondary font-medium">${{ d.donation_price }}</span>
           </ion-item>
-          <ion-item>
-            <aside>
-                <h4 class="font-medium">Donation for</h4>
-                <p>20-July-2018</p>
-            </aside>
-            <span class="text-secondary font-medium">$50.00</span>
-          </ion-item>
-          <ion-item>
-            <aside>
-                <h4 class="font-medium">Donation for</h4>
-                <p>20-July-2018</p>
-            </aside>
-            <span class="text-secondary font-medium">$50.00</span>
-          </ion-item>
-          <ion-item>
-            <aside>
-                <h4 class="font-medium">Donation for</h4>
-                <p>20-July-2018</p>
-            </aside>
-            <span class="text-secondary font-medium">$50.00</span>
-          </ion-item>
-          <ion-item>
-            <aside>
-                <h4 class="font-medium">Donation for</h4>
-                <p>20-July-2018</p>
-            </aside>
-            <span class="text-secondary font-medium">$50.00</span>
-          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="donation?.length == 0">
+            <ion-item>
+                <p>There Are No Donations To Display.</p>
+            </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

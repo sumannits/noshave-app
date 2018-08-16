@@ -1,7 +1,7 @@
 page-home {
     .home-banner{
         height:200px;
-        background: url('../assets/img/home-banner-bg.jpg') no-repeat top center;
+        //background: url('../assets/img/home-banner-bg.jpg') no-repeat top center;
         background-size: cover;
         position: relative;
             .banner-txt{
@@ -30,4 +30,5 @@ page-home {
     .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
         border-bottom: 0.55px solid #e6e6e6;
     }
+    
 }

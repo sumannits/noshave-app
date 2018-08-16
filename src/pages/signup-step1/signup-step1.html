@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons start>
       <button ion-button icon-only color="light">
@@ -12,7 +12,7 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content padding>
@@ -25,7 +25,7 @@
   <ion-grid class="options-wrap">
     <ion-row>
       <ion-col col-6>
-        <a href="#" class="no-decoration">
+        <a (click)="gotosignuppage1()" class="no-decoration">
           <ion-card>
             <ion-card-content>
               <img src="../assets/img/icon-new.png">
@@ -37,7 +37,7 @@
         </a>
       </ion-col>
       <ion-col col-6>
-        <a href="#" class="no-decoration">
+        <a (click)="returntologin()" class="no-decoration">
           <ion-card>
             <ion-card-content>
               <img src="../assets/img/icon-return.png">

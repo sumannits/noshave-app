@@ -1,23 +1,74 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-buttons start>
+      <button ion-button menuToggle icon-only>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Account</ion-title>
   </ion-navbar>
 </ion-header>
+  
+  
+<ion-content>
+  <ion-item class="account-ban">
+    <ion-avatar>
+      <img src="assets/img/pro-pic.jpg">
+      <ion-icon name="camera" class="camera"></ion-icon>
+    </ion-avatar>
+  </ion-item>
 
-<ion-content class="outer-content">
-  <div padding-top text-center *ngIf="username">
-    <img src="http://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
-    <h2>{{username}}</h2>
+    <ion-list>
+      <div class="text-field-area">
+        <ion-label>Full Name</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="Rozer Wilson"></ion-input>
+        </ion-item>
+      </div>
 
-    <ion-list inset>
-      <button ion-item (click)="updatePicture()">Update Picture</button>
-      <button ion-item (click)="changeUsername()">Change Username</button>
-      <button ion-item (click)="changePassword()">Change Password</button>
-      <button ion-item (click)="support()">Support</button>
-      <button ion-item (click)="logout()">Logout</button>
+      <div class="text-field-area">
+        <ion-label>Email</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="rozerwilson@gmail.com"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>Password</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="*******"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>City</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="California, C.A."></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>Country</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="USA"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>Got Screened</ion-label>
+        <ion-item>
+          <ion-input type="text" placeholder="No"></ion-input>
+        </ion-item>
+      </div>
+      <div padding>
+        <button class="font-medium" ion-button color="primary" block>Submit</button>
+      </div>
     </ion-list>
-  </div>
 </ion-content>
+  

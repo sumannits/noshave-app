@@ -22,4 +22,11 @@ export class SignupStep1Page {
     console.log('ionViewDidLoad SignupStep1Page');
   }
 
+  gotosignuppage1(){
+    this.navCtrl.push('SignupPage');
+  }
+  returntologin(){
+    this.navCtrl.setRoot('LoginPage');
+  }
+
 }
