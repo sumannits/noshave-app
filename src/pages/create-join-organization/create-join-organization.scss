@@ -1,0 +1,17 @@
+page-create-join-organization {
+    .toolbar ion-title  { padding: 0 50px 1px;} 
+    .toolbar-title{ font-size: 1.5rem;}
+    .bar-button[icon-only] ion-icon{ color: #3b2c19 !important;}    
+    .text-field-area{ width: auto;}
+    .text-field-area .label{ margin-left: 16px;}
+    .list{ margin-top: 20px;}
+    .list .item-input.item-input-has-focus:last-child, .list .item-input.input-has-focus:last-child{ border-bottom: 0; box-shadow: none; }
+    // .list > .text-field-area.item-block:first-child{ border-top: 0;}
+    .text-field-area .label{ margin-bottom: 8px; color: #000000;}
+    .text-field-area .item{ padding-right: 16px;}
+    .text-field-area .item .item-inner {border: 1px solid #e1d7c8 !important; border-radius: 4px; margin-bottom: 5px; padding-left: 8px;}
+    .text-field-area .item .item-inner .input-wrapper .input .text-input{ color: #222222;}
+    .text-field-area .item-input:last-child{ border-bottom: 0;}
+    .header .toolbar-background{ border-color: transparent;}
+    .error-message{ color: rgb(180, 43, 66); padding-left: 0;}
+}

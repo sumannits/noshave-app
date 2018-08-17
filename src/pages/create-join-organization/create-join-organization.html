@@ -1,0 +1,83 @@
+<!--
+  Generated template for the CreateJoinOrganizationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-title *ngIf="navdata?.type == 'createteam'">Create an Organization</ion-title>
+      <ion-title *ngIf="navdata?.type == 'jointeam'">Join an Organization</ion-title>
+      <ion-buttons (click)="closeModal()" end>
+        <button ion-button icon-only>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content *ngIf="navdata?.type == 'createteam'">
+    <form [formGroup]="createteam" #createTeam="ngForm">
+      <ion-list>
+        <div class="text-field-area">
+          <ion-label>Organization Name</ion-label>
+          <ion-item>
+            <ion-input formControlName="team_name" type="text" placeholder="Type Organization Name"></ion-input>
+          </ion-item>
+          <ion-item class="error-message" no-lines *ngIf="( createteam.get('team_name').hasError('pattern') || createteam.get('team_name').hasError('required') ) && createteam.get('team_name').touched">
+            <div class="error-message" *ngIf="createteam.get('team_name').hasError('required') && createteam.get('team_name').touched">
+              Please input your Organization Name
+            </div>
+          </ion-item>
+        </div>
+  
+        <div class="text-field-area">
+          <ion-label>Organization Username</ion-label>
+          <ion-item>
+            <ion-input formControlName="team_username" type="text" placeholder="Type Organization Username"></ion-input>
+          </ion-item>
+          <ion-item class="error-message" no-lines *ngIf="( createteam.get('team_username').hasError('pattern') || createteam.get('team_username').hasError('required') ) && createteam.get('team_username').touched">
+            <div class="error-message" *ngIf="createteam.get('team_username').hasError('required') && createteam.get('team_username').touched">
+              Please input your Organization Username
+            </div>
+          </ion-item>
+        </div>
+  
+        <div padding>
+          <button class="font-medium" ion-button color="primary" text-uppercase block [disabled]="!createTeam.valid" (click)="CreateTeam(createteam.value)">Create Organization</button>
+        </div>
+  
+      </ion-list>
+    </form>
+  </ion-content>
+  
+  <ion-content *ngIf="navdata?.type == 'jointeam'">
+      <ion-list>
+        <div class="text-field-area">
+          <ion-label>Search Organizations</ion-label>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="search_term" (ionChange)="onChange($event)" placeholder="Type Organizations name"></ion-input>
+          </ion-item>
+        </div>
+        <form [formGroup]="jointeam" #joinTeam="ngForm">
+          <div class="text-field-area">
+            <ion-label>Select an Organization Below</ion-label>
+            <ion-item>
+              <!-- <ion-label>Select Team</ion-label> -->
+              <ion-select formControlName="team">
+                <ion-option *ngFor="let t of teamarray" value="{{ t.t_id }}">{{ t.t_name }}</ion-option>
+              </ion-select>
+              <ion-item class="error-message" no-lines *ngIf="( jointeam.get('team').hasError('pattern') || jointeam.get('team').hasError('required') ) && jointeam.get('team').touched">
+                <div class="error-message" *ngIf="jointeam.get('team').hasError('required') && jointeam.get('team').touched">
+                  Please Select an Organization
+                </div>
+              </ion-item>
+            </ion-item>
+          </div>
+          <div padding>
+            <button class="font-medium" ion-button color="primary" text-uppercase block [disabled]="!joinTeam.valid" (click)="JoinTeam(jointeam.value)">Join Team</button>
+          </div>
+        </form>
+      </ion-list>
+  </ion-content>

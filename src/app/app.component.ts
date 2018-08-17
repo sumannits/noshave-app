@@ -34,9 +34,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: 'HomePage', icon:'home' },
       { title: 'Personal', component: 'HomePage', icon:'document' },
-      { title: 'Team', component: 'HomePage', icon:'people' },
-      { title: 'Organization', component: 'HomePage', icon:'laptop' },
-      { title: 'Donations', component: 'HomePage', icon:'card' },
+      { title: 'Team', component: 'TeamPage', icon:'people' },
+      { title: 'Organization', component: 'OrganizationPage', icon:'laptop' },
+      { title: 'Donations', component: 'DonationListPage', icon:'card' },
       { title: 'Account', component: 'AccountPage', icon:'person' },
       { title: 'Previous Contributors', component: 'HomePage', icon:'arrow-round-back' },
       { title: 'Settings', component: 'SettingsPage', icon:'settings' },
@@ -46,7 +46,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       const loguser = JSON.parse(localStorage.getItem('userData'));
-      console.log(loguser);
+      //console.log(loguser);
       if(loguser){
         this.rootPage = 'HomePage';
         this.isloggedin = true;
@@ -59,8 +59,7 @@ export class MyApp {
         this.isloggedin = true;
         //Enable Side Menu After Login
         this.menu.enable(true);
-        this.loggeduser_details = loguser;
-        console.log(this.loggeduser_details);
+        this.loggeduser_details = testuser;
       });
     });
   }

@@ -1,0 +1,71 @@
+<!--
+  Generated template for the DonationListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+          <button ion-button menuToggle icon-only>
+              <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+      <ion-title>Donations</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+         Personal Donations
+      </ion-list-header>
+      <div class="total-area" *ngFor="let d of doantionlistarray;let i = index">
+        <ion-row>
+          <ion-col col-2 class="pt-0 pr-0 pl-0">
+            <h4 class="nmbr">{{ i+1 }}</h4>
+          </ion-col>
+          <ion-col col-10 class="pr-0 pl-0">
+            <div class="con-part">
+              <div class="top-text">
+                <h4>{{ d.d_name }}<span class="price">${{ d.d_amount }}</span> </h4>
+              </div>
+              <ion-row class="dt-row">
+                <ion-col col-4 class="pl-0 pr-0 pb-0">
+                  <h5 class="date">Date :</h5>
+                </ion-col>
+                <ion-col col-8 class="pb-0">
+                  <p class="date-text">{{ d.d_time }}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4 class="pl-0 pr-0">
+                  <h5 class="date">Comment :</h5>
+                </ion-col>
+                <ion-col col-8>
+                  <p class="date-text">{{ d.d_message }}</p>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      
+      <div class="total-area" *ngIf="doantionlistarray?.length == 0">
+        <ion-row>
+          <ion-col col-2 class="pt-0 pr-0 pl-0">
+          </ion-col>
+          <ion-col col-10 class="pr-0 pl-0">
+            <div class="con-part">
+              <div class="top-text">
+                <h4>
+                  No Donation Found.
+                </h4>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-list>
+  
+  </ion-content>

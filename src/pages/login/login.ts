@@ -79,6 +79,10 @@ export class LoginPage {
     this.navCtrl.setRoot('SignupStep1Page');
   }
 
+  forgotpassword(){
+    this.navCtrl.setRoot('ForgotPasswordPage');
+  }
+
   tost_message(msg){
     let toast = this.toastCtrl.create({
      message: msg,
