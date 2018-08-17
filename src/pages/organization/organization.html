@@ -1,0 +1,55 @@
+<!--
+  Generated template for the OrganizationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-buttons start>
+          <button ion-button menuToggle icon-only>
+              <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>Organization</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <h5 text-center text-uppercase class="mt-30 mb-10 font-medium dark-brwn">Select an Option Below <br> to Get Started</h5>
+    <p class="text-center font-12 mb-20">If you want to join or create an Organization, select an option
+       below. Please note, only teams can belong to organizations.</p>
+  
+    <ion-grid class="options-wrap">
+      <ion-row>
+        <ion-col col-6>
+          <a (click)="openModal('createteam')" class="no-decoration">
+            <ion-card>
+              <ion-card-content>
+                <img src="assets/img/creat-or.png">
+              </ion-card-content>
+              <ion-card-header>
+                <span class="f-w-6">create organization</span>
+              </ion-card-header>
+            </ion-card>
+          </a>
+        </ion-col>
+        <ion-col col-6>
+          <a (click)="openModal('jointeam')" class="no-decoration">
+            <ion-card>
+              <ion-card-content>
+                <img src="assets/img/join-or.png">
+              </ion-card-content>
+              <ion-card-header>
+                <span class="f-w-6">Join <br> organization</span>
+              </ion-card-header>
+            </ion-card>
+          </a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <div text-center padding>
+    <button ion-button class="get-started">Get Started</button>
+  </div>
+</ion-content>

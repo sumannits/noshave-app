@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
+import { MenuController, IonicPage, NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
 import {MyApp} from '../../app/app.component';
 /**
@@ -24,7 +24,8 @@ export class HomePage {
     public serviceApi: Api,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
-    public myApp:MyApp
+    public myApp:MyApp,
+    public menu: MenuController,
   ){
     this.userDetailsJson = JSON.parse(localStorage.getItem('userData'));
     let getHomedata = new FormData();
@@ -42,7 +43,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    
+    this.menu.enable(true);
   }
 
   tost_message(msg){
@@ -51,5 +52,9 @@ export class HomePage {
      duration: 3000
    });
    toast.present(); 
+  }
+
+  makedonate(){
+    this.navCtrl.push('DonationPage');
   }
 }

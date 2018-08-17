@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Api, ResponseMessage } from '../../providers';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Api } from '../../providers';
+import { AbstractControl,Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 /**
  * Generated class for the ForgotPasswordPage page.
@@ -16,8 +16,9 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
   templateUrl: 'forgot-password.html',
 })
 export class ForgotPasswordPage {
-  private form: FormGroup;
-
+  public forgotform:FormGroup;
+  public email:AbstractControl;
+  public responseData:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -26,42 +27,41 @@ export class ForgotPasswordPage {
     public toastCtrl: ToastController
   ) {
 
-    this.form = this.fbuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ]))
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.forgotform = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
     });
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad ForgotPasswordPage');
+
   }
 
   doForgotPassword(frmdata:any){
-    this.serviceApi.postData(frmdata,'users/forgotpassword').then((result:any) => {
-      if(result.Ack == 1){
-        let toast = this.toastCtrl.create({
-          message: 'Please check your email to get new password.',
-          duration: 4000,
-          position: 'top'
-        });
-        toast.present();
+    let forgotpass = new FormData();
+    forgotpass.append('change','forgot');
+    forgotpass.append('email',frmdata.email);
+    forgotpass.append('service_type','password_change');
+    this.serviceApi.postData(forgotpass,'user.php').then((resultdetail) => {
+      this.responseData = resultdetail;
+      if(this.responseData.status == 'success'){
+        this.tost_message(this.responseData.msg);
         this.navCtrl.setRoot('LoginPage');
-      }else{
-        let toast = this.toastCtrl.create({
-          message: result.msg,
-          duration: 4000,
-          position: 'top'
-        });
-        toast.present();
+      } else {
+        this.tost_message(this.responseData.reason);
       }
-    }, (err) => {
-    
-    }); 
+    });
   }
   
-  public gotoLogin(){
+  public back(){
     this.navCtrl.setRoot('LoginPage');
+  }
+
+  tost_message(msg){
+    let toast = this.toastCtrl.create({
+     message: msg,
+     duration: 3000
+   });
+   toast.present(); 
   }
 }

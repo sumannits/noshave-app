@@ -17,6 +17,7 @@ import { MyApp } from './app.component';
 import { AndroidPermissions} from '@ionic-native/android-permissions';
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,6 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
     FileTransfer,
     FilePath,
     File,
+    Camera,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
