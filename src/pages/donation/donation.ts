@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Modal, IonicPage, NavController, NavParams ,ModalController,ModalOptions} from 'ionic-angular';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 /**
  * Generated class for the DonationPage page.
@@ -14,12 +15,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'donation.html',
 })
 export class DonationPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public amount:any;
+  public pay_method :any;
+  public other:boolean=false;
+  public user_id:any;
+  constructor(public modal: ModalController,public menu:MenuController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DonationPage');
+    this.user_id = this.navParams.get('user_id');
+    this.menu.enable(false);
+  }
+
+  showother(){
+    this.other = true;
+  }
+
+  openModal() {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      user_id: this.user_id,
+    };
+    const myModal: Modal = this.modal.create('AfterSkipPage', { data: myModalData },myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
   }
 
 }

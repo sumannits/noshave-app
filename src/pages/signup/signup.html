@@ -1,11 +1,7 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button icon-only color="light">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-navbar>
+      <ion-icon></ion-icon>
+  </ion-navbar>
 </ion-header>
 
 
@@ -15,40 +11,100 @@
   <form [formGroup]="form" #loginForm="ngForm">
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="Full Name"></ion-input>
+        <ion-input type="text" formControlName="full_name" placeholder="Full Name"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" no-lines *ngIf="( form.get('full_name').hasError('pattern') || form.get('full_name').hasError('required') ) && form.get('full_name').touched">
+          <div class="error" *ngIf="form.get('full_name').hasError('required') && form.get('full_name').touched">
+            Please input your Full name
+          </div>
+          <div class="error" *ngIf="form.get('full_name').hasError('pattern') && form.get('full_name').touched">
+            Just use alphabet character
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item no-lines class="error-item" *ngIf="( form.get('email').hasError('minlength') || form.get('email').hasError('pattern') ||form.get('email').hasError('required') ) && form.get('email').touched">
+          <div class="error" *ngIf="form.get('email').hasError('required') && form.get('email').touched">
+            Please input your email
+          </div>
+          <div class="error" *ngIf="form.get('email').hasError('pattern') && form.get('email').touched">
+            Email address invalid
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" no-lines *ngIf="( form.get('password').hasError('minlength') || form.get('password').hasError('maxlength') || form.get('password').hasError('required') ) && form.get('password').touched">
+          <div class="error" *ngIf="form.get('password').hasError('required') && form.get('password').touched">
+            Please input your password
+          </div>
+          <div class="error" *ngIf="form.get('password').hasError('minlength') && form.get('password').touched">
+            Minimum 6 characters
+          </div>
+          <div class="error" *ngIf="form.get('password').hasError('maxlength') && form.get('password').touched">
+            Maximum 12 characters
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+        <ion-input type="password" formControlName="conf_pass" placeholder="Confirm Password"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" no-lines *ngIf="( form.get('conf_pass').hasError('minlength') || form.get('conf_pass').hasError('maxlength') ||form.get('conf_pass').hasError('required') || form.get('conf_pass').hasError('equalTo') ) && form.get('conf_pass').touched">
+          <div class="error" *ngIf="form.get('conf_pass').hasError('required') && form.get('conf_pass').touched">
+            Please input your password
+          </div>
+          <div class="error" *ngIf="form.get('conf_pass').hasError('minlength') && form.get('conf_pass').touched">
+            Minimum 6 characters
+          </div>
+          <div class="error" *ngIf="form.get('conf_pass').hasError('maxlength') && form.get('conf_pass').touched">
+            Maximum 12 characters
+          </div>
+          <div class="error" *ngIf="form.get('conf_pass').hasError('equalTo') && form.get('conf_pass').touched">
+              Password and confirm password mismatch
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Username"></ion-input>
+        <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" no-lines *ngIf="( form.get('username').hasError('pattern') || form.get('username').hasError('required') ) && form.get('username').touched">
+          <div class="error" *ngIf="form.get('username').hasError('required') && form.get('username').touched">
+            Please input your username
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="City"></ion-input>
+        <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" no-lines *ngIf="( form.get('city').hasError('pattern') || form.get('city').hasError('required') ) && form.get('city').touched">
+          <div class="error" *ngIf="form.get('city').hasError('required') && form.get('city').touched">
+            Please input your city
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="State"></ion-input>
+        <ion-input type="text" formControlName="state" placeholder="State"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" no-lines *ngIf="( form.get('state').hasError('pattern') || form.get('state').hasError('required') ) && form.get('state').touched">
+          <div class="error" *ngIf="form.get('state').hasError('required') && form.get('state').touched">
+            Please input your state
+          </div>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Country"></ion-input>
+        <ion-input type="text" formControlName="country" placeholder="Country"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" no-lines *ngIf="( form.get('country').hasError('pattern') || form.get('country').hasError('required') ) && form.get('country').touched">
+          <div class="error" *ngIf="form.get('country').hasError('required') && form.get('country').touched">
+            Please input your country
+          </div>
       </ion-item>
     </ion-list>
 
-    <button class="font-medium" ion-button  color="primary" block>Submit</button>
+    <button class="font-medium" ion-button  color="primary" block [disabled]="!loginForm.valid" (click)="doSignup(form.value)">Submit</button>
   </form>
 </ion-content>
-
-    <!-- <ion-row responsive-sm>
-      <ion-col text-center class="pt-0">
-        <ion-item class="brdr-none">
-          <ion-label class="remember-me">Remember Me</ion-label>
-          <ion-checkbox checked="true"></ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row> -->
+<!-- <ion-row responsive-sm>
+  <ion-col text-center class="pt-0">
+    <ion-item class="brdr-none">
+      <ion-label class="remember-me">Remember Me</ion-label>
+      <ion-checkbox checked="true"></ion-checkbox>
+    </ion-item>
+  </ion-col>
+</ion-row> -->
