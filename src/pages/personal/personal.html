@@ -13,6 +13,61 @@
 </ion-header>
 
 
-<ion-content padding>
-    <button (click)="openModal()">Open Edit</button>
+<ion-content>
+    <ion-card class="personal">
+      <div class="relative">
+        <img src="assets/img/home-banner-bg.jpg"/>
+        <button class="changephoto">Change Page Photo</button>
+      </div>
+      <ion-card-content>
+        <ion-item>
+          <b>
+            <ion-icon ios="ios-link" md="md-link"></ion-icon> Page Link :
+          </b>
+          <p>
+            <a>http://111.93.169.90/team2/noshave-new/member/sumannits</a>
+          </p>
+        </ion-item>
+        <ion-item>
+          <b>
+            <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon> Location :
+          </b>
+          <p>
+            Kolkata, West Bengal
+          </p>
+        </ion-item>
+        <ion-item>
+          <b>
+            <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon> Page Title :
+          </b>
+          <p>
+            Let it Grow and Join the Fight Against Cancer!
+          </p>
+        </ion-item>
+        <ion-item>
+          <b>
+             <ion-icon ios="ios-cash" md="md-cash"></ion-icon> Fundraising Goal :
+          </b>
+          <p>
+            $250
+          </p>
+        </ion-item>
+        <ion-item>
+          <b>
+            <ion-icon ios="ios-copy" md="md-copy"></ion-icon> Page Description
+          </b>
+          <p>
+            Each day, 22,000 people die from cancer worldwide (WHO). There's a good chance that someone you know and love will be affected by this disease. Nearly half of cancer diagnoses and deaths are preventable. No-Shave November's mission is to not only raise funds for cancer research and treatment but to educate the population about preventative measures. For over six years, participants around the globe have put down their razors and foregone their hair appointments to join the fight against cancer. The No-Shave November campaign has successfully raised over $3.5 million dollars to combat this disease. Every dollar raised brings us one step closer in our efforts to fund cancer research and education, help prevent the disease, and aid those fighting the battle. Each whisker grown allows us to embrace our hair, which many cancer patients lose during treatment. Will you join me? Start by using the links to the right.
+          </p>
+        </ion-item>
+        <ion-item>
+          <button ion-button icon-start><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit</button>
+          <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+          <button ion-button outline icon-start (click)="openModal()">  <ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+        </ion-item>
+      </ion-card-content>
+
+     
+
+  </ion-card>
 </ion-content>
