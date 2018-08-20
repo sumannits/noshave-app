@@ -23,6 +23,6 @@ export class SignupStep1Page {
     this.navCtrl.push('SignupPage');
   }
   returntologin(){
-    this.navCtrl.setRoot('LoginPage');
+    this.navCtrl.setRoot('LoginPage',{'page':'returning'});
   }
 }
