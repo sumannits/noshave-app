@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController,Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController } from 'ionic-angular';
 import { AbstractControl,FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 /**
@@ -39,9 +39,9 @@ export class ProfileReviewPage {
         city: new FormControl('', [Validators.required]),
         state: new FormControl('', [Validators.required]),
         country: new FormControl('', [Validators.required]),
-        got_screened: new FormControl(''),
+        username: new FormControl('', [Validators.required]),
       });
-  }
+    }
 
   ionViewDidLoad() {
     this.user_id = this.navParams.get('user_id');
@@ -61,6 +61,28 @@ export class ProfileReviewPage {
         this.editfrom.controls['city'].setValue(this.responseDataDetail.user_details.m_city);
         this.editfrom.controls['state'].setValue(this.responseDataDetail.user_details.m_state);
         this.editfrom.controls['country'].setValue(this.responseDataDetail.user_details.m_country);
+        this.editfrom.controls['username'].setValue(this.responseDataDetail.user_details.m_username);
+      } else {
+        this.tost_message(this.responseDataDetail.reason);
+      }
+    });
+  }
+
+  EditFrom(value:any){
+    let upuserDetail = new FormData();
+    upuserDetail.append('m_id',this.user_id);
+    upuserDetail.append('full_name',value.full_name);
+    upuserDetail.append('email_address',value.email);
+    upuserDetail.append('city',value.city);
+    upuserDetail.append('state',value.state);
+    upuserDetail.append('country',value.country);
+    upuserDetail.append('username',value.username);
+    upuserDetail.append('t_id','0');
+    this.authService.postData(upuserDetail,'registration_old.php').then((result) => {
+      this.responseDataDetail = result;
+      if(this.responseDataDetail.status == 'success'){
+        this.navCtrl.push('DonationPage');
+        this.tost_message(this.responseDataDetail.msg);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

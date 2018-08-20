@@ -19,6 +19,7 @@ export class LoginPage {
   public password:AbstractControl;
   public responseData:any;
   public responseDataDetail : any;
+  public navdata:any;
   constructor(public toastCtrl:ToastController,
     public events: Events,
     public loadingCtrl: LoadingController,
@@ -38,6 +39,8 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    this.navdata = this.navParams.get('page');
+    console.log(this.navdata);
     this.menu.enable(false);
   }
 
@@ -60,7 +63,14 @@ export class LoginPage {
               //creating user:created Event Handeler
               this.createUser(this.responseDataDetail.user_details);
               localStorage.setItem('userData', JSON.stringify(this.responseDataDetail.user_details));
-              this.navCtrl.setRoot('HomePage');
+              console.log('Nav Data Test1',this.navdata);
+              if(this.navdata !=undefined && this.navdata =='returning'){
+                console.log('Nav Data Test2',this.navdata);
+                this.navCtrl.push('ProfileReviewPage',{'user_id':this.responseDataDetail.user_details.m_id});
+              } else {
+                console.log('Nav Data Test3',this.navdata);
+                this.navCtrl.setRoot('HomePage');
+              }
             } else {
               this.tost_message(this.responseDataDetail.reason);
             }

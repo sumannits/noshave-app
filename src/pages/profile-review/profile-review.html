@@ -42,7 +42,17 @@
             </div>
           </ion-item>
         </div>
-
+        <div class="text-field-area">
+            <ion-label>Username</ion-label>
+            <ion-item>
+              <ion-input type="text" formControlName="username" placeholder="Please Enter your username"></ion-input>
+            </ion-item>
+            <ion-item class="error-item" no-lines *ngIf="( editfrom.get('username').hasError('pattern') || editfrom.get('username').hasError('required') ) && editfrom.get('username').touched">
+              <div class="error" *ngIf="editfrom.get('username').hasError('required') && editfrom.get('username').touched">
+                Please input your username
+              </div>
+            </ion-item>
+        </div>
         <div class="text-field-area">
           <ion-label>City</ion-label>
           <ion-item>
