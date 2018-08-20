@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Api, ResponseMessage } from '../../providers';
+import { Api } from '../../providers';
 import { AbstractControl , Validators, FormBuilder, FormGroup, FormControl ,ValidatorFn} from '@angular/forms';
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -33,7 +33,6 @@ export class SettingsPage {
     public formBuilder: FormBuilder,
     public navParams: NavParams,
     public serviceApi: Api,
-    private fbuilder: FormBuilder,
     public toastCtrl: ToastController
   ) {
     this.forgotform = new FormGroup({

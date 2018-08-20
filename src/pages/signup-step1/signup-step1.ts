@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,MenuController} from 'ionic-angular';
 
 /**
  * Generated class for the SignupStep1Page page.
@@ -14,19 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'signup-step1.html',
 })
 export class SignupStep1Page {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public menu:MenuController, public navCtrl: NavController, public navParams: NavParams) {
   }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupStep1Page');
+    this.menu.enable(false);
   }
-
   gotosignuppage1(){
     this.navCtrl.push('SignupPage');
   }
   returntologin(){
     this.navCtrl.setRoot('LoginPage');
   }
-
 }

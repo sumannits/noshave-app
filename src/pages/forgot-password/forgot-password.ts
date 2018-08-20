@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Api } from '../../providers';
-import { AbstractControl,Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AbstractControl,Validators, FormGroup, FormControl } from '@angular/forms';
 
 /**
  * Generated class for the ForgotPasswordPage page.
@@ -23,7 +23,6 @@ export class ForgotPasswordPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public serviceApi: Api,
-    private fbuilder: FormBuilder,
     public toastCtrl: ToastController
   ) {
 
