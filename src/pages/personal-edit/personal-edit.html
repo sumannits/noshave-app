@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Edit Personal</ion-title>
+    <ion-title>Share Personal Page</ion-title>
     <ion-buttons (click)="closeModal()" end>
       <button ion-button icon-only>
         <ion-icon name="close"></ion-icon>
@@ -17,5 +17,14 @@
 
 
 <ion-content padding>
-
+    <button ion-button full icon-start class="tweet"><ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon> Twitter</button>
+    <button ion-button full icon-start class="facebook"><ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Facebook</button>
+    <button ion-button full icon-start class="email"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email</button>
+    <form>
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="copy" value="http://111.93.169.90/team2/noshave-new/member/sumannits"></ion-input>
+          </ion-item>
+        </ion-list>
+    </form>  
 </ion-content>
