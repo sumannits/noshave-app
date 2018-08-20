@@ -33,7 +33,7 @@ export class MyApp {
   constructor(public events: Events,public menu: MenuController, platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,public serviceApi: Api,) {
     this.pages = [
       { title: 'Home', component: 'HomePage', icon:'home' },
-      { title: 'Personal', component: 'HomePage', icon:'document' },
+      { title: 'Personal', component: 'PersonalPage', icon:'document' },
       { title: 'Team', component: 'TeamPage', icon:'people' },
       { title: 'Organization', component: 'OrganizationPage', icon:'laptop' },
       { title: 'Donations', component: 'DonationListPage', icon:'card' },
