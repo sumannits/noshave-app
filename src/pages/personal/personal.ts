@@ -22,9 +22,9 @@ export class PersonalPage {
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
     };
-    const myModalData = {
-      type: type,
-    };
+    // const myModalData = {
+    //   type: type,
+    // };
     const myModal: Modal = this.modal.create('PersonalEditPage', myModalOptions);
     myModal.present();
     myModal.onDidDismiss((data) => {
