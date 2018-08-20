@@ -23,13 +23,14 @@ export class OrganizationPage {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
-    teamdetailsById.append('service_type','team_page');
+    teamdetailsById.append('service_type','organization_page');
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.teamdetailsByIdresult = resultstedetail;
       if(this.teamdetailsByIdresult.status == 'success'){
-        this.is_team_member =  this.teamdetailsByIdresult.is_team_member;
-        this.is_team_owner =  this.teamdetailsByIdresult.is_team_owner;
-        this.team_details =  this.teamdetailsByIdresult.team_details;
+        //console.log(this.teamdetailsByIdresult);
+        this.is_team_member =  this.teamdetailsByIdresult.is_org_member;
+        this.is_team_owner =  this.teamdetailsByIdresult.is_org_owner;
+        this.team_details =  this.teamdetailsByIdresult.org_details;
       } else {
         this.tost_message(this.teamdetailsByIdresult.reason);
       }

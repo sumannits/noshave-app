@@ -15,7 +15,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding *ngIf="is_team_member == false && is_team_owner == true">
+<ion-content padding *ngIf="is_team_member == true && is_team_owner == false">
     <ion-card-content class="card-content card-content-ios">
         <ion-card-title class="card-title card-title-ios">
           <h5 text-uppercase class="font-medium dark-brwn">Page Link :</h5> 
@@ -64,7 +64,7 @@
     </div>
   </ion-content>
 
-  <ion-content padding *ngIf="is_team_member == true && is_team_owner == false">
+  <ion-content padding *ngIf="is_team_member == false && is_team_owner == true">
       <ion-card-content class="card-content card-content-ios">
           <ion-card-title class="card-title card-title-ios">
             <h5 text-uppercase class="font-medium dark-brwn">Page Link :</h5> 

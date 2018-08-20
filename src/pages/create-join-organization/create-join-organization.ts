@@ -38,11 +38,12 @@ export class CreateJoinOrganizationPage {
 
     let teamlist = new FormData();
     teamlist.append('search_term','');
-    teamlist.append('type','search_team');
-    this.authService.postData(teamlist,'search_teams.php').then((results) => {
+    teamlist.append('type','search_org');
+    this.authService.postData(teamlist,'search_orgs.php').then((results) => {
       this.teamresult = results;
+      //console.log(this.teamresult);
       if(this.teamresult.status == 'success'){
-        this.teamarray = this.teamresult.team_list;
+        this.teamarray = this.teamresult.org_list;
         //console.log('teamarray',this.teamarray);
       } else {
         this.tost_message(this.teamresult.reason);
@@ -67,11 +68,12 @@ export class CreateJoinOrganizationPage {
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let jointeamfrom = new FormData();
       jointeamfrom.append('user_id',loguser.m_id);
-      jointeamfrom.append('t_id',value.team);
-      this.authService.postData(jointeamfrom,'join_team.php').then((result) => {
+      jointeamfrom.append('o_id',value.team);
+      this.authService.postData(jointeamfrom,'join_org.php').then((result) => {
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
-          this.tost_message('Join to team Successfull.');
+          this.tost_message('Join to Organization Successfull.');
+          this.navCtrl.setRoot('OrganizationPage');
         } else {
           this.tost_message(this.responsejoin.reason);
         }
@@ -86,12 +88,13 @@ export class CreateJoinOrganizationPage {
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let createteamfrom = new FormData();
       createteamfrom.append('user_id',loguser.m_id);
-      createteamfrom.append('t_name',value.team_name);
-      createteamfrom.append('t_username',value.team_username);
-      this.authService.postData(createteamfrom,'create_team.php').then((resultdetail) => {
+      createteamfrom.append('o_name',value.team_name);
+      createteamfrom.append('o_username',value.team_username);
+      this.authService.postData(createteamfrom,'create_org.php').then((resultdetail) => {
         this.response = resultdetail;
         if(this.response.status == 'success'){
-          this.tost_message('Team Created Successfully.');
+          this.tost_message('Organization Created Successfully.');
+          this.navCtrl.setRoot('OrganizationPage');
         } else {
           this.tost_message(this.response.reason);
         }
@@ -103,11 +106,11 @@ export class CreateJoinOrganizationPage {
   onChange(event){
     let teamlistnew = new FormData();
     teamlistnew.append('search_term',this.search_term);
-    teamlistnew.append('type','search_team');
-    this.authService.postData(teamlistnew,'search_teams.php').then((results) => {
+    teamlistnew.append('type','search_org');
+    this.authService.postData(teamlistnew,'search_orgs.php').then((results) => {
       this.teamresultnew = results;
       if(this.teamresultnew.status == 'success'){
-        this.teamarray = this.teamresultnew.team_list;
+        this.teamarray = this.teamresultnew.org_list;
       } else {
         this.tost_message(this.teamresultnew.reason);
       }

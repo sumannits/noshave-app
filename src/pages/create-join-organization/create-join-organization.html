@@ -66,7 +66,7 @@
             <ion-item>
               <!-- <ion-label>Select Team</ion-label> -->
               <ion-select formControlName="team">
-                <ion-option *ngFor="let t of teamarray" value="{{ t.t_id }}">{{ t.t_name }}</ion-option>
+                <ion-option *ngFor="let t of teamarray" value="{{ t.o_id }}">{{ t.o_name }}</ion-option>
               </ion-select>
               <ion-item class="error-message" no-lines *ngIf="( jointeam.get('team').hasError('pattern') || jointeam.get('team').hasError('required') ) && jointeam.get('team').touched">
                 <div class="error-message" *ngIf="jointeam.get('team').hasError('required') && jointeam.get('team').touched">

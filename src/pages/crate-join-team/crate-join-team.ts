@@ -70,6 +70,7 @@ export class CrateJoinTeamPage {
       this.authService.postData(jointeamfrom,'join_team.php').then((result) => {
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
+          this.navCtrl.setRoot('TeamPage');
           this.tost_message('Join to team Successfull.');
         } else {
           this.tost_message(this.responsejoin.reason);
@@ -90,6 +91,7 @@ export class CrateJoinTeamPage {
       this.authService.postData(createteamfrom,'create_team.php').then((resultdetail) => {
         this.response = resultdetail;
         if(this.response.status == 'success'){
+          this.navCtrl.setRoot('TeamPage');
           this.tost_message('Team Created Successfully.');
         } else {
           this.tost_message(this.response.reason);
