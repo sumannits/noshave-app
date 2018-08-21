@@ -22,18 +22,18 @@
           <ion-item>
             <ion-input  type="email" formControlName="email" placeholder="email" autocapitalize="off"></ion-input>
           </ion-item>
-          <ion-item class="error-item" no-lines *ngIf="( signinform.get('email').hasError('minlength') || signinform.get('email').hasError('pattern') ||signinform.get('email').hasError('required') ) && signinform.get('email').touched">
+          <div class="error-item" no-lines *ngIf="( signinform.get('email').hasError('minlength') || signinform.get('email').hasError('pattern') ||signinform.get('email').hasError('required') ) && signinform.get('email').touched">
             <div class="error" *ngIf="signinform.get('email').hasError('required') && signinform.get('email').touched">
               Please input your email
             </div>
             <div class="error" *ngIf="signinform.get('email').hasError('pattern') && signinform.get('email').touched">
               Email address invalid
             </div>
-          </ion-item>
+          </div>
           <ion-item>
             <ion-input type="password" formControlName="password" placeholder="Password" autocapitalize="off"></ion-input>
           </ion-item>
-          <ion-item class="error-item" no-lines *ngIf="( signinform.get('password').hasError('minlength') || signinform.get('password').hasError('maxlength') ||signinform.get('password').hasError('required') ) && signinform.get('password').touched">
+          <div class="error-item" no-lines *ngIf="( signinform.get('password').hasError('minlength') || signinform.get('password').hasError('maxlength') ||signinform.get('password').hasError('required') ) && signinform.get('password').touched">
               <div class="error" *ngIf="signinform.get('password').hasError('required') && signinform.get('password').touched">
                 Please input your password
               </div>
@@ -43,7 +43,7 @@
               <div class="error" *ngIf="signinform.get('password').hasError('maxlength') && signinform.get('password').touched">
                 Maximum 12 characters
               </div>
-          </ion-item>
+          </div>
         </ion-list>
     
         <button class="font-medium" ion-button [disabled]="!signinForm.valid" (click)="signin(signinform.value)" color="secondary" block>Login</button>

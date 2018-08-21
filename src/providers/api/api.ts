@@ -3,7 +3,8 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 
-let apiUrl = 'http://192.168.1.68/noshave-new/platform/api/';
+//let apiUrl = 'http://192.168.1.68/noshave-new/platform/api/';
+let apiUrl ='http://192.168.1.86:8100/api/';
 /*
   Generated class for the AuthServiceProvider provider.
 

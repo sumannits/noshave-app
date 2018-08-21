@@ -35,6 +35,10 @@ export class PersonalPage {
     });
   }
 
+  gotToview(){
+    this.navCtrl.push('PersonalViewPage');
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PersonalPage');
   }
