@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController ,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ViewController ,ToastController,App } from 'ionic-angular';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 
@@ -26,7 +26,7 @@ export class CreateJoinOrganizationPage {
   public teamarray:any;
   public teamresultnew:any;
   public teamdetailsByIdresult:any; 
-  constructor(public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
+  constructor(public app : App,public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
     this.createteam = new FormGroup({
       team_name: new FormControl('', [Validators.required]),
       team_username: new FormControl('', [Validators.required])
@@ -72,8 +72,10 @@ export class CreateJoinOrganizationPage {
       this.authService.postData(jointeamfrom,'join_org.php').then((result) => {
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
+          this.view.dismiss('push');
           this.tost_message('Join to Organization Successfull.');
-          this.navCtrl.setRoot('OrganizationPage');
+          //this.navCtrl.setRoot('OrganizationPage');
+          this.app.getRootNav().setRoot('OrganizationPage');
         } else {
           this.tost_message(this.responsejoin.reason);
         }
@@ -93,8 +95,10 @@ export class CreateJoinOrganizationPage {
       this.authService.postData(createteamfrom,'create_org.php').then((resultdetail) => {
         this.response = resultdetail;
         if(this.response.status == 'success'){
+          this.view.dismiss('push');
+          this.app.getRootNav().setRoot('OrganizationPage');
           this.tost_message('Organization Created Successfully.');
-          this.navCtrl.setRoot('OrganizationPage');
+          //this.navCtrl.setRoot('OrganizationPage');
         } else {
           this.tost_message(this.response.reason);
         }

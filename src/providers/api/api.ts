@@ -4,7 +4,10 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 
 //let apiUrl = 'http://192.168.1.68/noshave-new/platform/api/';
+//let apiUrl = 'http://111.93.169.90/team2/noshave-new/platform/api/';
+//let apiUrl =' http://localhost:8100/api/'
 let apiUrl ='http://192.168.1.86:8100/api/';
+
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -26,7 +29,8 @@ export class Api {
       //let headers = new Headers();
       //headers.append("Content-Type","application/json");
       const headerDict = {
-        'enctype': 'multipart/form-data; boundary=----WebKitFormBoundaryuL67FWkv1CA'
+        'enctype': 'multipart/form-data; boundary=----WebKitFormBoundaryuL67FWkv1CA',
+        'Access-Control-Allow-Origin':'*'
       }
       const requestOptions = { 
         headers: new Headers(headerDict), 

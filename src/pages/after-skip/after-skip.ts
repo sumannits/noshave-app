@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ViewController, App} from 'ionic-angular';
 
 /**
  * Generated class for the AfterSkipPage page.
@@ -17,7 +17,7 @@ export class AfterSkipPage {
   public buttontrue : boolean = false;
   public agree:any;
   public navdata : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public view: ViewController, public app:App) {
   }
 
   ionViewDidLoad() {
@@ -39,8 +39,10 @@ export class AfterSkipPage {
 
   gotoreview(){
     localStorage.clear();
-    //this.view.dismiss();
+    this.view.dismiss();
     //this.navCtrl.push('ProfileReviewPage',{'user_id': this.navdata.user_id});
-    this.navCtrl.setRoot('LoginPage',{'user_id': this.navdata.user_id});
+    //this.navCtrl.setRoot('LoginPage',{'user_id': this.navdata.user_id});
+    this.app.getRootNav().setRoot('LoginPage');
   }
+
 }
