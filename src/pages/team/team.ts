@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController ,AlertController,MenuController} from 'ionic-angular';
 import { Api } from '../../providers';
 /**
  * Generated class for the TeamPage page.
@@ -18,7 +18,8 @@ export class TeamPage {
   public is_team_member : boolean;
   public is_team_owner : boolean;
   public team_details : any;
-  constructor(public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+  public leaveTeamresult:any;
+  constructor(public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController,public alertCtrl:AlertController,public menuCtrl : MenuController) {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -36,6 +37,8 @@ export class TeamPage {
   }
 
   ionViewDidLoad() {
+    console.log('Enable');
+    this.menuCtrl.enable(true);
   }
 
   openModal(type) {
@@ -48,9 +51,11 @@ export class TeamPage {
     const myModal: Modal = this.modal.create('CrateJoinTeamPage', { data: myModalData }, myModalOptions);
     myModal.present();
     myModal.onDidDismiss((data) => {
+      console.log('Data',data);
       console.log("I have dismissed.");
     });
     myModal.onWillDismiss((data) => {
+      console.log('Data',data);
       console.log("I'm about to dismiss");
     });
   }
@@ -65,6 +70,39 @@ export class TeamPage {
      duration: 3000
    });
    toast.present(); 
+  }
+
+  leaveTeam() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Leave Team.',
+      message: 'Are you sure to leave this team?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            let leaveTeam = new FormData();
+            leaveTeam.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
+            this.authService.postData(leaveTeam,'leave_team.php').then((results) => {
+              this.leaveTeamresult = results;
+              if(this.leaveTeamresult.status == 'success'){
+                this.tost_message(this.leaveTeamresult.msg);
+                this.navCtrl.setRoot('TeamPage');
+              } else {
+                this.tost_message(this.leaveTeamresult.reason);
+              }
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

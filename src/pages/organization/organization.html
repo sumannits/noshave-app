@@ -58,7 +58,7 @@
         <div [innerHTML]="team_details?.o_page_description" class="font-12"></div>
     </ion-card-content>
     <div text-center padding>
-        <button ion-button class="get-started">Leave Organization</button>
+        <button ion-button class="get-started" (click)="leaveOrganization()">Leave Organization</button>
         <button ion-button class="get-started">Share</button>
         <button ion-button class="get-started">View</button>
     </div>
