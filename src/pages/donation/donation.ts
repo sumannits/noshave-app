@@ -40,12 +40,19 @@ export class DonationPage {
     };
     const myModal: Modal = this.modal.create('AfterSkipPage', { data: myModalData },myModalOptions);
     myModal.present();
-    // myModal.onDidDismiss((data) => {
-    //   console.log("I have dismissed.");
-    // });
-    // myModal.onWillDismiss((data) => {
-    //   console.log("I'm about to dismiss");
-    // });
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
+  }
+
+  gotoreview(){
+    localStorage.clear();
+    //this.view.dismiss();
+    //this.navCtrl.push('ProfileReviewPage',{'user_id': this.navdata.user_id});
+    this.navCtrl.setRoot('LoginPage',{'user_id': this.user_id});
   }
 
 }

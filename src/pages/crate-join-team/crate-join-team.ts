@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController ,ToastController } from 'ionic-angular';
+import { App,IonicPage, NavController, NavParams ,ViewController ,ToastController } from 'ionic-angular';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 /**
@@ -25,7 +25,7 @@ export class CrateJoinTeamPage {
   public teamarray:any;
   public teamresultnew:any;
   public teamdetailsByIdresult:any; 
-  constructor(public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
+  constructor(public app:App, public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
     this.createteam = new FormGroup({
       team_name: new FormControl('', [Validators.required]),
       team_username: new FormControl('', [Validators.required])
@@ -70,7 +70,9 @@ export class CrateJoinTeamPage {
       this.authService.postData(jointeamfrom,'join_team.php').then((result) => {
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
-          this.navCtrl.setRoot('TeamPage');
+          this.view.dismiss({page:'TeamPage'});
+          //this.navCtrl.setRoot('TeamPage');
+          this.app.getRootNav().setRoot('TeamPage');
           this.tost_message('Join to team Successfull.');
         } else {
           this.tost_message(this.responsejoin.reason);
@@ -91,7 +93,9 @@ export class CrateJoinTeamPage {
       this.authService.postData(createteamfrom,'create_team.php').then((resultdetail) => {
         this.response = resultdetail;
         if(this.response.status == 'success'){
-          this.navCtrl.setRoot('TeamPage');
+          this.view.dismiss({page:'TeamPage'});
+          this.app.getRootNav().setRoot('TeamPage');
+          //this.navCtrl.setRoot('TeamPage');
           this.tost_message('Team Created Successfully.');
         } else {
           this.tost_message(this.response.reason);

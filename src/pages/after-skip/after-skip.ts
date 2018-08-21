@@ -39,7 +39,7 @@ export class AfterSkipPage {
 
   gotoreview(){
     localStorage.clear();
-    //this.view.dismiss();
+    this.view.dismiss();
     //this.navCtrl.push('ProfileReviewPage',{'user_id': this.navdata.user_id});
     this.navCtrl.setRoot('LoginPage',{'user_id': this.navdata.user_id});
   }

@@ -58,7 +58,7 @@
         <div [innerHTML]="team_details?.t_page_description" class="font-12"></div>
     </ion-card-content>
     <div text-center padding>
-        <button ion-button class="get-started">Leave Team</button>
+        <button ion-button class="get-started" (click)="leaveTeam()">Leave Team</button>
         <button ion-button class="get-started">Share</button>
         <button ion-button class="get-started">View</button>
     </div>
