@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController } from 'ionic-angular';
+import { Modal,ModalController,ModalOptions,IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController } from 'ionic-angular';
 import { AbstractControl,FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 /**
@@ -25,7 +25,7 @@ export class ProfileReviewPage {
   public got_screened:AbstractControl;
   public responseDataDetail:any;
   public user_id :any;
-  constructor(public toastCtrl:ToastController,
+  constructor(public modal: ModalController,public toastCtrl:ToastController,
     public authService:Api,
     public loadingCtrl: LoadingController,
     public builder:FormBuilder,
@@ -81,7 +81,8 @@ export class ProfileReviewPage {
     this.authService.postData(upuserDetail,'registration_old.php').then((result) => {
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
-        this.navCtrl.push('DonationPage',{user_id:this.user_id});
+        //this.navCtrl.push('DonationPage',{user_id:this.user_id});
+        this.openModal();
         this.tost_message(this.responseDataDetail.msg);
       } else {
         this.tost_message(this.responseDataDetail.reason);
@@ -95,6 +96,23 @@ export class ProfileReviewPage {
      duration: 3000
    });
    toast.present(); 
+  }
+
+  openModal() {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      user_id: this.user_id,
+    };
+    const myModal: Modal = this.modal.create('AfterSkipPage', { data: myModalData },myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
   }
 
 }

@@ -29,7 +29,7 @@
         <ion-item>
           <ion-input type="password" formControlName="password" placeholder="Password" autocapitalize="off"></ion-input>
         </ion-item>
-        <ion-item class="error-message" no-lines *ngIf="( forgotform.get('password').hasError('minlength') || forgotform.get('password').hasError('maxlength') ||forgotform.get('password').hasError('required') ) && forgotform.get('password').touched">
+        <div class="error-item" no-lines *ngIf="( forgotform.get('password').hasError('minlength') || forgotform.get('password').hasError('maxlength') ||forgotform.get('password').hasError('required') ) && forgotform.get('password').touched">
             <div class="error" *ngIf="forgotform.get('password').hasError('required') && forgotform.get('password').touched">
               Please input your password
             </div>
@@ -39,11 +39,11 @@
             <div class="error" *ngIf="forgotform.get('password').hasError('maxlength') && forgotform.get('password').touched">
               Maximum 12 characters
             </div>
-        </ion-item>
+        </div>
         <ion-item>
             <ion-input type="password" formControlName="newpass" placeholder="Type New Password" autocapitalize="off"></ion-input>
           </ion-item>
-          <ion-item class="error-message" no-lines *ngIf="( forgotform.get('newpass').hasError('minlength') || forgotform.get('newpass').hasError('maxlength') ||forgotform.get('newpass').hasError('required') ) && forgotform.get('newpass').touched">
+          <div class="error-item" no-lines *ngIf="( forgotform.get('newpass').hasError('minlength') || forgotform.get('newpass').hasError('maxlength') ||forgotform.get('newpass').hasError('required') ) && forgotform.get('newpass').touched">
               <div class="error" *ngIf="forgotform.get('newpass').hasError('required') && forgotform.get('newpass').touched">
                 Please input your New password
               </div>
@@ -53,11 +53,11 @@
               <div class="error" *ngIf="forgotform.get('newpass').hasError('maxlength') && forgotform.get('newpass').touched">
                 Maximum 12 characters
               </div>
-          </ion-item>
+          </div>
           <ion-item>
               <ion-input type="password" formControlName="conf_pass" placeholder="Type Confirm Password" autocapitalize="off"></ion-input>
           </ion-item>
-          <ion-item class="error-message" no-lines *ngIf="( forgotform.get('conf_pass').hasError('minlength') || forgotform.get('conf_pass').hasError('maxlength') ||forgotform.get('conf_pass').hasError('required') || forgotform.get('conf_pass').hasError('equalTo') ) && forgotform.get('conf_pass').touched">
+          <div class="error-item" no-lines *ngIf="( forgotform.get('conf_pass').hasError('minlength') || forgotform.get('conf_pass').hasError('maxlength') ||forgotform.get('conf_pass').hasError('required') || forgotform.get('conf_pass').hasError('equalTo') ) && forgotform.get('conf_pass').touched">
               <div class="error" *ngIf="forgotform.get('conf_pass').hasError('required') && forgotform.get('conf_pass').touched">
                 Please input your password
               </div>
@@ -70,7 +70,7 @@
               <div class="error" *ngIf="forgotform.get('conf_pass').hasError('equalTo') && forgotform.get('conf_pass').touched">
                   Password and confirm password mismatch
               </div>
-          </ion-item>
+            </div>
       </ion-list>
       <button class="font-medium text-uppercase" color="primary" [disabled]="!forgotForm.valid" (click)="changepass(forgotform.value)" ion-button block>Change password</button>
     </form>

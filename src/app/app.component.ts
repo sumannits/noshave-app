@@ -17,7 +17,7 @@ export interface PageInterface {
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage :any = 'LoginPage';
+  rootPage :any = 'AfterSplashPage';
   public username: string = '';
   public profile_image: string = '';
   public isloggedin: boolean = false;
@@ -32,13 +32,14 @@ export class MyApp {
   pages: Array<{title: string, component: any, icon:string}>;
   constructor(public events: Events,public menu: MenuController, platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,public serviceApi: Api,) {
     this.pages = [
-      { title: 'Home', component: 'HomePage', icon:'home' },
+      { title: 'Home', component: 'DashboardPage', icon:'home' },
       { title: 'Personal', component: 'PersonalPage', icon:'document' },
       { title: 'Team', component: 'TeamPage', icon:'people' },
       { title: 'Organization', component: 'OrganizationPage', icon:'laptop' },
       { title: 'Donations', component: 'DonationListPage', icon:'card' },
+      { title: 'Leaderboard', component: 'LeaderboardPage', icon:'aperture' },
       { title: 'Account', component: 'AccountPage', icon:'person' },
-      { title: 'Previous Contributors', component: 'HomePage', icon:'arrow-round-back' },
+      { title: 'Previous Contributors', component: 'PreviousContributionPage', icon:'arrow-round-back' },
       { title: 'Settings', component: 'SettingsPage', icon:'settings' },
       { title: 'Logout', component: '',icon:'power' }
     ];
@@ -48,14 +49,14 @@ export class MyApp {
       const loguser = JSON.parse(localStorage.getItem('userData'));
       //console.log(loguser);
       if(loguser){
-        this.rootPage = 'HomePage';
+        this.rootPage = 'DashboardPage';
         this.isloggedin = true;
         //Enable Side Menu After Login
         this.menu.enable(true);
         this.loggeduser_details = loguser;
       }
       this.events.subscribe('user:created', (testuser) => {
-        this.rootPage = 'HomePage';
+        this.rootPage = 'DashboardPage';
         this.isloggedin = true;
         //Enable Side Menu After Login
         this.menu.enable(true);
@@ -82,7 +83,7 @@ export class MyApp {
   public logout(){
     localStorage.clear();
     this.isloggedin = false;
-    this.nav.setRoot('LoginPage');
+    this.nav.setRoot('AfterSplashPage');
   }
 
 }

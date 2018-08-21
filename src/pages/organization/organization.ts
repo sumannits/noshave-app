@@ -28,7 +28,7 @@ export class OrganizationPage {
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.teamdetailsByIdresult = resultstedetail;
       if(this.teamdetailsByIdresult.status == 'success'){
-        //console.log(this.teamdetailsByIdresult);
+        console.log(this.teamdetailsByIdresult);
         this.is_team_member =  this.teamdetailsByIdresult.is_org_member;
         this.is_team_owner =  this.teamdetailsByIdresult.is_org_owner;
         this.team_details =  this.teamdetailsByIdresult.org_details;

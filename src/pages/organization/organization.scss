@@ -8,4 +8,22 @@ page-organization {
     .mt-30{ margin-top: 30px !important;}
     .get-started{ padding-left: 3rem; padding-right: 3rem; font-size: 1.6rem;}
     .f-w-6{font-weight: 600;}
+    .relative{position: relative;margin-bottom: 10px;}
+    .personal .item-block{
+        padding: 0;
+        b{display: block;font-size:12px;color:#6a3447 !important;margin-bottom: 5px;text-transform: uppercase;
+            i{display: inline-block}
+        }
+        p{display: block;font-size: 13px;color: #505050 !important;white-space: normal;}
+        ion-label{margin: 5px 0;border-bottom:1px dashed #ddd;padding-bottom: 8px}
+    }
+
+    .changephoto{
+        position: absolute;bottom: -15px;background: #392d19;color: #fff;padding: 9px;border-radius: 3px;font-size: 12px;box-shadow: 1px 1px 3px -1px #000;left: 50%;transform: translateX(-50%);
+    }
+    .personal-image-style{
+        height: 176px;
+        width: auto;
+        margin: 0 auto;
+    }
 }
