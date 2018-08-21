@@ -81,7 +81,7 @@ export class ProfileReviewPage {
     this.authService.postData(upuserDetail,'registration_old.php').then((result) => {
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
-        this.navCtrl.push('DonationPage');
+        this.navCtrl.push('DonationPage',{user_id:this.user_id});
         this.tost_message(this.responseDataDetail.msg);
       } else {
         this.tost_message(this.responseDataDetail.reason);

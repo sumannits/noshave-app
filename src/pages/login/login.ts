@@ -61,14 +61,12 @@ export class LoginPage {
             this.responseDataDetail = resultdetail;
             if(this.responseDataDetail.status == 'success'){
               //creating user:created Event Handeler
-              this.createUser(this.responseDataDetail.user_details);
-              localStorage.setItem('userData', JSON.stringify(this.responseDataDetail.user_details));
-              console.log('Nav Data Test1',this.navdata);
-              if(this.navdata !=undefined && this.navdata =='returning'){
+              if(this.navdata && this.navdata =='returning'){
                 console.log('Nav Data Test2',this.navdata);
                 this.navCtrl.push('ProfileReviewPage',{'user_id':this.responseDataDetail.user_details.m_id});
-              } else {
-                console.log('Nav Data Test3',this.navdata);
+              } else if(this.navdata === undefined) {
+                this.createUser(this.responseDataDetail.user_details);
+              localStorage.setItem('userData', JSON.stringify(this.responseDataDetail.user_details));
                 this.navCtrl.setRoot('HomePage');
               }
             } else {
