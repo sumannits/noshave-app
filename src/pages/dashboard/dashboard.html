@@ -1,0 +1,80 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header align-title="center">
+  <ion-navbar align-title="center">
+    <ion-buttons start>
+      <button ion-button start menuToggle color="secondary">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title >
+      <img src="assets/img/inner-logo.png" alt="" class="inner-logo">
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button class="donate-button">
+          Donate
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-6 class="pt-0 pl-0">
+      <ion-card class="donation">
+        <ion-card-header class="pb-0" text-center>
+           {{ dashboardcontent?.donations }}
+        </ion-card-header>
+        <ion-card-content class="pl-0 pr-0">
+          <p text-center>Donations</p>
+          <h2 text-center text-uppercase>View Donations</h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-6 class="pt-0 pr-0">
+    <ion-card class="raised">
+      <ion-card-header class="pb-0" text-center>
+         ${{ dashboardcontent?.raised }}
+      </ion-card-header>
+      <ion-card-content class="pl-0 pr-0">        
+        <p text-center>Raised</p>
+        <h2 text-center text-uppercase>Share Your Page</h2>
+      </ion-card-content>
+    </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col class="pr-0 pb-0 pl-0">
+      <ion-card class="of-price">
+        <ion-card-header class="pb-0" text-center>
+            {{ dashboardcontent?.goal_percentage }}
+        </ion-card-header>
+        <ion-card-content class="pl-0 pr-0">
+          <p text-center>of ${{ dashboardcontent?.goal_amt }}</p>
+          <h2 text-center text-uppercase>View Your Page</h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item class="pl-0">
+        <h2 text-center text-uppercase>No-Shave November 2017</h2>
+        <p text-center>Thank you for joining No-Shave November and helping the fight against cancer! With you and your fundraising efforts, it brings
+          us one step closer to finding a cure for the disease.</p>
+        <p text-center>This year's campaign will support programs at Prevent Cancer Foundation, Fight Colorectal Cancer, and St. Jude Children's
+          Research Hospital. Each of the foundations listed are making great strides in fighting, researching, and preventing cancer.
+          Put down the razor, skip the hair appointment, and let's make the 2017 No-Shave November campaign the best year yet!</p>
+        <p text-center>Hairy November,</p>
+        <p text-center>The No-Shave November Team</p>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

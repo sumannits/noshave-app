@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, AlertController,ModalController,LoadingController,MenuController } from 'ionic-angular';
+import { Modal,ModalOptions,IonicPage, NavController, ToastController, AlertController,ModalController,LoadingController,MenuController } from 'ionic-angular';
 import { Api } from '../../providers';
 import { FormControl, ValidatorFn,Validators, FormGroup, AbstractControl } from '@angular/forms';
 
@@ -40,7 +40,8 @@ export class SignupPage {
     public modalCtrl: ModalController,
     public loadingCtrl:LoadingController,
     public serviceApi: Api,
-    public menu:MenuController
+    public menu:MenuController,
+    public modal: ModalController,
   ) {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.form = new FormGroup({
@@ -70,8 +71,9 @@ export class SignupPage {
       this.responseData = resultdetail;
       console.log('After Sign Up',this.responseData);
       if(this.responseData.status == 'success'){
+        this.openModal(this.responseData.user_id);
         this.tost_message(this.responseData.msg);
-        this.navCtrl.push('DonationPage',{'user_id': this.responseData.user_id});
+        //this.navCtrl.push('DonationPage',{'user_id': this.responseData.user_id});
       } else {
         this.tost_message(this.responseData.reason);
       }
@@ -88,5 +90,22 @@ export class SignupPage {
      duration: 3000
     });
     toast.present(); 
+  }
+
+  openModal(id) {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      user_id: id,
+    };
+    const myModal: Modal = this.modal.create('AfterSkipPage', { data: myModalData },myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
   }
 }

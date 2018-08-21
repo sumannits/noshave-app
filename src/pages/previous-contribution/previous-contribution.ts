@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the PersonalViewPage page.
+ * Generated class for the PreviousContributionPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-personal-view',
-  templateUrl: 'personal-view.html',
+  selector: 'page-previous-contribution',
+  templateUrl: 'previous-contribution.html',
 })
-export class PersonalViewPage {
+export class PreviousContributionPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PersonalViewPage');
+    console.log('ionViewDidLoad PreviousContributionPage');
   }
 
 }

@@ -62,12 +62,12 @@ export class LoginPage {
             if(this.responseDataDetail.status == 'success'){
               //creating user:created Event Handeler
               if(this.navdata && this.navdata =='returning'){
-                console.log('Nav Data Test2',this.navdata);
+                //console.log('Nav Data Test2',this.navdata);
                 this.navCtrl.push('ProfileReviewPage',{'user_id':this.responseDataDetail.user_details.m_id});
               } else if(this.navdata === undefined) {
                 this.createUser(this.responseDataDetail.user_details);
-              localStorage.setItem('userData', JSON.stringify(this.responseDataDetail.user_details));
-                this.navCtrl.setRoot('HomePage');
+                localStorage.setItem('userData', JSON.stringify(this.responseDataDetail.user_details));
+                this.navCtrl.setRoot('DashboardPage');
               }
             } else {
               this.tost_message(this.responseDataDetail.reason);

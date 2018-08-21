@@ -12,4 +12,25 @@ page-team {
 .description{ color: #676767; font-weight: 400 !important;}
 .card-title-md{ padding:0px 0;}
 .font-12{ font-size: 14px !important; font-weight: 500;}
+.relative{position: relative;margin-bottom: 10px;}
+.personal .item-block{
+    padding: 0;
+    b{display: block;font-size:12px;color:#6a3447 !important;margin-bottom: 5px;text-transform: uppercase;
+        i{display: inline-block}
+    }
+    p{display: block;font-size: 13px;color: #505050 !important;white-space: normal;}
+    ion-label{margin: 5px 0;border-bottom:1px dashed #ddd;padding-bottom: 8px}
+}
+
+.changephoto{
+    position: absolute;bottom: -15px;background: #392d19;color: #fff;padding: 9px;border-radius: 3px;font-size: 12px;box-shadow: 1px 1px 3px -1px #000;left: 50%;transform: translateX(-50%);
+}
+.personal-image-style{
+    height: 176px;
+    width: auto;
+    margin: 0 auto;
+}
+ion-label{
+    white-space: normal;
+}
 }

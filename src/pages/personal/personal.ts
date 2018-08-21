@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
+import { Api } from '../../providers';
+import { environment as ENV } from '../../environments/environment' ;
 /**
  * Generated class for the PersonalPage page.
  *
@@ -13,8 +15,22 @@ import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOpti
   templateUrl: 'personal.html',
 })
 export class PersonalPage {
-
-  constructor(public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+  public responseDataDetail : any;
+  public user_details:any;
+  public url : string = ENV.baseUrl;
+  constructor(public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+    let getuserDetail = new FormData();
+    getuserDetail.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
+    getuserDetail.append('service_type','user_details');
+    this.authService.postData(getuserDetail,'login.php').then((resultdetail) => {
+      this.responseDataDetail = resultdetail;
+      if(this.responseDataDetail.status == 'success'){
+        this.user_details = this.responseDataDetail.user_details
+        //console.log(this.user_details);
+      } else {
+        this.tost_message(this.responseDataDetail.reason);
+      }
+    });
   }
 
 
@@ -40,7 +56,15 @@ export class PersonalPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PersonalPage');
+   
+  }
+
+  tost_message(msg){
+    let toast = this.toastCtrl.create({
+     message: msg,
+     duration: 3000
+   });
+   toast.present(); 
   }
 
 }

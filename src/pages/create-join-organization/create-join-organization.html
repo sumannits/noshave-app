@@ -25,11 +25,11 @@
           <ion-item>
             <ion-input formControlName="team_name" type="text" placeholder="Type Organization Name"></ion-input>
           </ion-item>
-          <ion-item class="error-message" no-lines *ngIf="( createteam.get('team_name').hasError('pattern') || createteam.get('team_name').hasError('required') ) && createteam.get('team_name').touched">
-            <div class="error-message" *ngIf="createteam.get('team_name').hasError('required') && createteam.get('team_name').touched">
+          <div class="error-item" no-lines *ngIf="( createteam.get('team_name').hasError('pattern') || createteam.get('team_name').hasError('required') ) && createteam.get('team_name').touched">
+            <div class="error" *ngIf="createteam.get('team_name').hasError('required') && createteam.get('team_name').touched">
               Please input your Organization Name
             </div>
-          </ion-item>
+          </div>
         </div>
   
         <div class="text-field-area">
@@ -37,11 +37,11 @@
           <ion-item>
             <ion-input formControlName="team_username" type="text" placeholder="Type Organization Username"></ion-input>
           </ion-item>
-          <ion-item class="error-message" no-lines *ngIf="( createteam.get('team_username').hasError('pattern') || createteam.get('team_username').hasError('required') ) && createteam.get('team_username').touched">
-            <div class="error-message" *ngIf="createteam.get('team_username').hasError('required') && createteam.get('team_username').touched">
+          <div class="error-item" no-lines *ngIf="( createteam.get('team_username').hasError('pattern') || createteam.get('team_username').hasError('required') ) && createteam.get('team_username').touched">
+            <div class="error" *ngIf="createteam.get('team_username').hasError('required') && createteam.get('team_username').touched">
               Please input your Organization Username
             </div>
-          </ion-item>
+          </div>
         </div>
   
         <div padding>
@@ -68,11 +68,11 @@
               <ion-select formControlName="team">
                 <ion-option *ngFor="let t of teamarray" value="{{ t.o_id }}">{{ t.o_name }}</ion-option>
               </ion-select>
-              <ion-item class="error-message" no-lines *ngIf="( jointeam.get('team').hasError('pattern') || jointeam.get('team').hasError('required') ) && jointeam.get('team').touched">
-                <div class="error-message" *ngIf="jointeam.get('team').hasError('required') && jointeam.get('team').touched">
+              <div class="error-item" no-lines *ngIf="( jointeam.get('team').hasError('pattern') || jointeam.get('team').hasError('required') ) && jointeam.get('team').touched">
+                <div class="error" *ngIf="jointeam.get('team').hasError('required') && jointeam.get('team').touched">
                   Please Select an Organization
                 </div>
-              </ion-item>
+              </div>
             </ion-item>
           </div>
           <div padding>

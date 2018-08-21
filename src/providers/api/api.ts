@@ -5,8 +5,8 @@ import { LoadingController } from 'ionic-angular';
 
 //let apiUrl = 'http://192.168.1.68/noshave-new/platform/api/';
 //let apiUrl = 'http://111.93.169.90/team2/noshave-new/platform/api/';
-//let apiUrl =' http://localhost:8100/api/'
-let apiUrl ='http://192.168.1.86:8100/api/';
+let apiUrl =' http://localhost:8100/api/'
+//let apiUrl ='http://192.168.1.86:8100/api/';
 
 /*
   Generated class for the AuthServiceProvider provider.

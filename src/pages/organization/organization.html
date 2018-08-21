@@ -16,103 +16,115 @@
   </ion-header>
   
   <ion-content padding *ngIf="is_team_member == true && is_team_owner == false">
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Link :</h5> 
-        </ion-card-title>
-        <div class="font-12"><a>{{ team_details?.o_page_link }}</a></div>
-    </ion-card-content>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Title :</h5> 
-        </ion-card-title>
-        <div [innerHTML]="team_details?.o_page_title" class="font-12"></div>
-    </ion-card-content>
-    <ion-grid class="options-wrap">
-      <ion-row>
-        <!-- <h5 text-uppercase class="font-medium dark-brwn" style="padding-left: 10px;">Page Photos :</h5> -->
-        <ion-col col-12>
-          <a class="no-decoration">
-            <ion-card>
-              <ion-card-content>
-                <img style="width:100%;height:109%" src="{{ team_details?.o_pic_0 }}">
-              </ion-card-content>
-              <ion-card-header>
-                <span class="f-w-6">Page Photos</span>
-              </ion-card-header>
-            </ion-card>
-          </a>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Fundraising Goal :</h5> 
-        </ion-card-title>
-        <div class="font-12">${{ team_details?.o_page_goal }}</div>
-    </ion-card-content>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Description :</h5> 
-        </ion-card-title>
-        <div [innerHTML]="team_details?.o_page_description" class="font-12"></div>
-    </ion-card-content>
-    <div text-center padding>
-        <button ion-button class="get-started" (click)="leaveOrganization()">Leave Organization</button>
-        <button ion-button class="get-started">Share</button>
-        <button ion-button class="get-started">View</button>
-    </div>
+    <ion-card class="personal">
+        <div class="relative">
+          <img class="personal-image-style" src="{{ team_details?.o_pic_0 }}"/>
+          <button class="changephoto">Change Page Photo</button>
+        </div>
+        <ion-card-content>
+          <ion-item>
+            <b>
+              <ion-icon ios="ios-link" md="md-link"></ion-icon> Page Link :
+            </b>
+            <p>
+              <a>{{ team_details?.o_page_link }}</a>
+            </p>
+          </ion-item>
+          <!-- <ion-item>
+            <b>
+              <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon> Location :
+            </b>
+            <p>
+                {{ this.user_details?.m_city }},{{ this.user_details?.m_country }}
+            </p>
+          </ion-item> -->
+          <ion-item>
+            <b>
+              <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon> Page Title :
+            </b>
+            <p>
+                {{ team_details?.o_page_title }}
+            </p>
+          </ion-item>
+          <ion-item>
+            <b>
+                <ion-icon ios="ios-cash" md="md-cash"></ion-icon> Fundraising Goal :
+            </b>
+            <p>
+              ${{ team_details?.o_page_goal }}
+            </p>
+          </ion-item>
+          <ion-item>
+            <b>
+              <ion-icon ios="ios-copy" md="md-copy"></ion-icon> Page Description
+            </b>
+            <p>
+                {{ team_details?.o_page_description }}
+            </p>
+          </ion-item>
+          <ion-item>
+            <button ion-button icon-start (click)="leaveOrganization()"><ion-icon ios="ios-leaf" md="md-leaf"></ion-icon> Leave </button>
+            <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+            <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+          </ion-item>
+        </ion-card-content>
+    </ion-card>
   </ion-content>
 
   <ion-content padding *ngIf="is_team_member == false && is_team_owner == true">
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Link :</h5> 
-        </ion-card-title>
-        <div class="font-12"><a>{{ team_details?.o_page_link }}</a></div>
-    </ion-card-content>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Title :</h5> 
-        </ion-card-title>
-        <div [innerHTML]="team_details?.o_page_title" class="font-12"></div>
-    </ion-card-content>
-    <ion-grid class="options-wrap">
-      <ion-row>
-        <!-- <h5 text-uppercase class="font-medium dark-brwn" style="padding-left: 10px;">Page Photos :</h5> -->
-        <ion-col col-12>
-          <a class="no-decoration">
-            <ion-card>
-              <ion-card-content>
-                <img style="width:100%;height:109%" src="{{ team_details?.o_pic_0 }}">
-              </ion-card-content>
-              <ion-card-header>
-                <span class="f-w-6">Page Photos</span>
-              </ion-card-header>
-            </ion-card>
-          </a>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Fundraising Goal :</h5> 
-        </ion-card-title>
-        <div class="font-12">${{ team_details?.o_page_goal }}</div>
-    </ion-card-content>
-    <ion-card-content class="card-content card-content-ios">
-        <ion-card-title class="card-title card-title-ios">
-          <h5 text-uppercase class="font-medium dark-brwn">Page Description :</h5> 
-        </ion-card-title>
-        <div [innerHTML]="team_details?.o_page_description" class="font-12"></div>
-    </ion-card-content>
-    <div text-center padding>
-      <button ion-button class="get-started" (click)="editTeam(team_details.o_id)">Edit</button>
-      <!-- <button ion-button class="get-started">Email Organization</button>
-      <button ion-button class="get-started">Invite</button> -->
-      <button ion-button class="get-started">Share</button>
-      <button ion-button class="get-started">View</button>
-    </div>
+      <ion-card class="personal">
+          <div class="relative">
+            <img class="personal-image-style" src="{{ team_details?.o_pic_0 }}"/>
+            <button class="changephoto">Change Page Photo</button>
+          </div>
+          <ion-card-content>
+            <ion-item>
+              <b>
+                <ion-icon ios="ios-link" md="md-link"></ion-icon> Page Link :
+              </b>
+              <p>
+                <a>{{ team_details?.o_page_link }}</a>
+              </p>
+            </ion-item>
+            <!-- <ion-item>
+              <b>
+                <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon> Location :
+              </b>
+              <p>
+                  {{ this.user_details?.m_city }},{{ this.user_details?.m_country }}
+              </p>
+            </ion-item> -->
+            <ion-item>
+              <b>
+                <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon> Page Title :
+              </b>
+              <p>
+                  {{ team_details?.o_page_title }}
+              </p>
+            </ion-item>
+            <ion-item>
+              <b>
+                  <ion-icon ios="ios-cash" md="md-cash"></ion-icon> Fundraising Goal :
+              </b>
+              <p>
+                ${{ team_details?.o_page_goal }}
+              </p>
+            </ion-item>
+            <ion-item>
+              <b>
+                <ion-icon ios="ios-copy" md="md-copy"></ion-icon> Page Description
+              </b>
+              <p>
+                  {{ team_details?.o_page_description }}
+              </p>
+            </ion-item>
+            <ion-item>
+              <button ion-button icon-start (click)="editTeam(team_details.o_id)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit </button>
+              <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+              <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+            </ion-item>
+          </ion-card-content>
+      </ion-card>
   </ion-content>
 
   <ion-content padding *ngIf="is_team_member == false && is_team_owner == false">
