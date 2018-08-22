@@ -28,7 +28,7 @@ export class OrganizationPage {
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.teamdetailsByIdresult = resultstedetail;
       if(this.teamdetailsByIdresult.status == 'success'){
-        console.log(this.teamdetailsByIdresult);
+        //console.log(this.teamdetailsByIdresult);
         this.is_team_member =  this.teamdetailsByIdresult.is_org_member;
         this.is_team_owner =  this.teamdetailsByIdresult.is_org_owner;
         this.team_details =  this.teamdetailsByIdresult.org_details;
@@ -91,6 +91,23 @@ export class OrganizationPage {
       ]
     });
     alert.present();
+  }
+
+  editOrga(team_id){
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      team_id: team_id,
+    };
+    const myModal: Modal = this.modal.create('EditOrgaPage',{ data: myModalData }, myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      //console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      //console.log("I'm about to dismiss");
+    });
   }
 
   tost_message(msg){

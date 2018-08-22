@@ -23,7 +23,6 @@ export class PersonalViewPage {
   }
 
   openDonation(){
-    console.log('gfgfgf');
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
     };

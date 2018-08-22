@@ -1,4 +1,11 @@
 page-donation-list {
+    .toolbar{ padding: 0;}
+    .toolbar .segment{ background-color: #392c19;}
+    .top-seg-bar{ min-height: 46px;}
+    .segment .segment-button{ color: #ffffff; text-transform: inherit; border: 0; padding: 0 6px; line-height: 4rem; height: 4.2rem; max-width: 122px;}
+    .seg-a-bar{background: #ede7db;}
+    .seg-a-bar .col .item{ background: none; text-align: center;}
+    .seg-a-bar .col .item-block{ min-height: 3.7rem;}
     .bar-button[icon-only] ion-icon{ color: #3b2c19 !important;}  
     .list-header{ font-weight: 600; color: #392d19; font-size: 1.5rem; text-transform: inherit; border-bottom: 1px solid #ebebeb; margin-bottom:13px;}
     .con-part{ width: auto;}

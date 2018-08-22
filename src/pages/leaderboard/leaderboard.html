@@ -17,13 +17,13 @@
       <div>
         <ion-segment [(ngModel)]="switch">
           <ion-segment-button value="member">
-             Member Leaderboard
+             Member
           </ion-segment-button>
           <ion-segment-button value="team">
-             Team Leaderboard
+             Team
           </ion-segment-button>
           <ion-segment-button value="organization">
-             Organization Leaderboard
+             Organization
           </ion-segment-button>
         </ion-segment>
       </div>
@@ -84,7 +84,7 @@
               </ion-item>
             </ion-col>
             <ion-col col-4 class="price-area">
-              <div class="price">${{ t.team_price }}</div>
+              <div class="price">{{ t.team_price }}</div>
             </ion-col>
           </ion-row>          
         </div>
@@ -111,7 +111,7 @@
                 </ion-item>
               </ion-col>
               <ion-col col-4 class="price-area">
-                <div class="price">${{ o.org_price }}</div>
+                <div class="price">{{ o.org_price }}</div>
               </ion-col>
             </ion-row>          
           </div>

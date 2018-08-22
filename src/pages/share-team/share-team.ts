@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
 
 /**
  * Generated class for the ShareTeamPage page.
@@ -14,12 +14,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'share-team.html',
 })
 export class ShareTeamPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public navdata : any;
+  constructor(public view: ViewController,public navCtrl: NavController, public navParams: NavParams) {
+    this.navdata = this.navParams.get('data');
+    console.log(this.navdata);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ShareTeamPage');
+    
+  }
+
+  closeModal() {
+    this.view.dismiss();
   }
 
 }
