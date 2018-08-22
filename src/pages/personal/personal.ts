@@ -41,6 +41,23 @@ export class PersonalPage {
     // const myModalData = {
     //   type: type,
     // };
+    const myModal: Modal = this.modal.create('PersonalSharePage', myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
+  }
+
+  personaledit(){
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    // const myModalData = {
+    //   type: type,
+    // };
     const myModal: Modal = this.modal.create('PersonalEditPage', myModalOptions);
     myModal.present();
     myModal.onDidDismiss((data) => {

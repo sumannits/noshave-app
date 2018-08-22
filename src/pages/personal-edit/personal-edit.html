@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Share Personal Page</ion-title>
+    <ion-title>Edit Personal Page</ion-title>
     <ion-buttons (click)="closeModal()" end>
       <button ion-button icon-only>
         <ion-icon name="close"></ion-icon>
@@ -16,16 +16,111 @@
 </ion-header>
 
 
-<ion-content padding class="personal-share">
-    <button ion-button full icon-start class="tweet"><ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon> Twitter</button>
-    <button ion-button full icon-start class="facebook"><ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Facebook</button>
-    <button ion-button full icon-start class="email"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email</button>
-    <form>
-        <ion-list>         
-          <ion-item> 
-            <ion-label fixed>Page Link</ion-label>          
-            <ion-input type="text" placeholder="copy" value="http://111.93.169.90/team2/noshave-new/member/sumannits"></ion-input>
+<ion-content>
+  <form [formGroup]="editfrom" #editForm="ngForm">
+    <ion-list>
+      <div class="text-field-area">
+        <ion-label>User Name</ion-label>
+        <ion-item>
+          <ion-input formControlName="username" placeholder="User Name"></ion-input>
+        </ion-item>
+        <div class="error-item" no-lines *ngIf="( editfrom.get('username').hasError('pattern') || editfrom.get('username').hasError('required') ) && editfrom.get('username').touched">
+          <div class="error" *ngIf="editfrom.get('username').hasError('required') && editfrom.get('username').touched">
+            Please input your username
+          </div>
+        </div>
+      </div>
+
+      <ion-row radio-group formControlName="location_visibility">
+        <ion-col>
+          <ion-item>
+            Location Visibility
           </ion-item>
-        </ion-list>
-    </form>  
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Show Location</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Hide Location</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row radio-group formControlName="location_format">
+        <ion-col>
+          <ion-item>
+            Location Format
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>City, State</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>City, Country</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>City</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Country</ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <div class="text-field-area">
+        <ion-label>Page Title</ion-label>
+        <ion-item>
+          <ion-input formControlName="page_title" placeholder="Page Title"></ion-input>
+        </ion-item>
+        <div class="error-item" no-lines *ngIf="( editfrom.get('page_title').hasError('pattern') || editfrom.get('page_title').hasError('required') ) && editfrom.get('page_title').touched">
+          <div class="error" *ngIf="editfrom.get('page_title').hasError('required') && editfrom.get('page_title').touched">
+            Please input your page title
+          </div>
+        </div>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>Fundraising Goal</ion-label>
+        <ion-item>
+          <ion-input formControlName="fundraising_goal" placeholder="Fundraising Goal"></ion-input>
+        </ion-item>
+        <div class="error-item" no-lines *ngIf="( editfrom.get('fundraising_goal').hasError('pattern') || editfrom.get('fundraising_goal').hasError('required') ) && editfrom.get('fundraising_goal').touched">
+          <div class="error" *ngIf="editfrom.get('fundraising_goal').hasError('required') && editfrom.get('fundraising_goal').touched">
+            Please input your fundraising goal
+          </div>
+        </div>
+      </div>
+
+      <div class="text-field-area">
+        <ion-label>Page Description</ion-label>
+        <ion-item>
+          <ion-textarea formControlName="description" placeholder="Page Description"></ion-textarea>
+        </ion-item>
+        <div class="error-item" no-lines *ngIf="( editfrom.get('description').hasError('pattern') || editfrom.get('description').hasError('required') ) && editfrom.get('description').touched">
+          <div class="error" *ngIf="editfrom.get('description').hasError('required') && editfrom.get('description').touched">
+            Please input your page description
+          </div>
+        </div>
+      </div>
+      <div padding>
+        <button class="font-medium" ion-button color="primary" block [disabled]="!editForm.valid" (click)="EditFrom(editfrom.value)">Submit</button>
+      </div>
+    </ion-list>
+  </form>  
 </ion-content>

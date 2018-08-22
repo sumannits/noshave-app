@@ -4,10 +4,5 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://111.93.169.90/team2/noshave-new/platform/api"
-    }
-  ]
+  "app_id": ""
 }
