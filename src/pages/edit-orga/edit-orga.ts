@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController ,ViewController ,App} from 'ionic-angular';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
+
 /**
- * Generated class for the EditTeamPage page.
+ * Generated class for the EditOrgaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,10 +12,10 @@ import { Api } from '../../providers';
 
 @IonicPage()
 @Component({
-  selector: 'page-edit-team',
-  templateUrl: 'edit-team.html',
+  selector: 'page-edit-orga',
+  templateUrl: 'edit-orga.html',
 })
-export class EditTeamPage {
+export class EditOrgaPage {
   public navdata : any;
   public response :any;
   public editfrom:FormGroup;
@@ -48,15 +49,16 @@ export class EditTeamPage {
   getproTeamById(id){
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
-    teamdetailsById.append('service_type','team_page');
+    teamdetailsById.append('service_type','organization_page');
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.responseDataDetail = resultstedetail;
       if(this.responseDataDetail.status == 'success'){
-        this.editfrom.controls['teamname'].setValue(this.responseDataDetail.team_details.t_name);
-        this.editfrom.controls['team_username'].setValue(this.responseDataDetail.team_details.t_username);
-        this.editfrom.controls['team_title'].setValue(this.responseDataDetail.team_details.t_page_title);
-        this.editfrom.controls['fundraising_goal'].setValue(this.responseDataDetail.team_details.t_page_goal);
-        this.editfrom.controls['description'].setValue(this.responseDataDetail.team_details.t_page_description);
+        //console.log(this.responseDataDetail);
+        this.editfrom.controls['teamname'].setValue(this.responseDataDetail.org_details.o_name);
+        this.editfrom.controls['team_username'].setValue(this.responseDataDetail.org_details.o_username);
+        this.editfrom.controls['team_title'].setValue(this.responseDataDetail.org_details.o_page_title);
+        this.editfrom.controls['fundraising_goal'].setValue(this.responseDataDetail.org_details.o_page_goal);
+        this.editfrom.controls['description'].setValue(this.responseDataDetail.org_details.o_page_description);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
@@ -67,17 +69,17 @@ export class EditTeamPage {
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
-    upuserDetail.append('t_name',value.teamname);
-    upuserDetail.append('t_username',value.team_username);
-    upuserDetail.append('t_page_title',value.team_title);
-    upuserDetail.append('t_page_goal',value.fundraising_goal);
-    upuserDetail.append('t_page_description',value.description);
-    this.authService.postData(upuserDetail,'update_team_page.php').then((result) => {
+    upuserDetail.append('o_name',value.teamname);
+    upuserDetail.append('o_username',value.team_username);
+    upuserDetail.append('o_page_title',value.team_title);
+    upuserDetail.append('o_page_goal',value.fundraising_goal);
+    upuserDetail.append('o_page_description',value.description);
+    this.authService.postData(upuserDetail,'update_org_page.php').then((result) => {
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
         this.view.dismiss();
-        this.app.getRootNav().setRoot('TeamPage');
-        this.tost_message(this.responseDataDetail.msg);
+        this.app.getRootNav().setRoot('OrganizationPage');
+        this.tost_message('Organization Details Updated Sucessfully.');
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

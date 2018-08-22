@@ -16,6 +16,9 @@ import { Api } from '../../providers';
 export class DonationListPage {
   public doantionlist:any;
   public doantionlistarray:any;
+  public teamlistarray:any;
+  public org_donation:any;
+  public switch : string = 'member';
   constructor(public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams) {
     //Get Team By User Id
     let doantion = new FormData();
@@ -24,7 +27,10 @@ export class DonationListPage {
     this.authService.postData(doantion,'user.php').then((result) => {
       this.doantionlist = result;
       if(this.doantionlist.status == 'success'){
+          //console.log(this.doantionlist);
           this.doantionlistarray = this.doantionlist.personal_donation;
+          this.teamlistarray = this.doantionlist.team_donation;
+          this.org_donation = this.doantionlist.org_donation;
       } else {
         this.tost_message(this.doantionlist.reason);
       }

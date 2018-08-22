@@ -64,8 +64,8 @@
         </ion-item>
         <ion-item>
           <button ion-button icon-start (click)="leaveTeam()"><ion-icon ios="ios-leaf" md="md-leaf"></ion-icon> Leave </button>
-          <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-          <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+          <button ion-button outline icon-start (click)="goToTeamView(team_details.t_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+          <button ion-button outline icon-start (click)="shareTeam('share',team_details.t_id)"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
         </ion-item>
       </ion-card-content>
     </ion-card>
@@ -120,10 +120,10 @@
             </ion-item>
             <ion-item>
               <button ion-button icon-start (click)="editTeam(team_details.t_id)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit </button>
-              <button ion-button outline icon-start><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email Team </button>
-              <button ion-button outline icon-start><ion-icon ios="ios-send" md="md-send"></ion-icon> Invite </button>
-              <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-              <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+              <button ion-button outline icon-start (click)="emailTeam(team_details.t_id)"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email Team </button>
+              <button ion-button outline icon-start (click)="shareTeam('invite',team_details.t_id)"><ion-icon ios="ios-send" md="md-send"></ion-icon> Invite </button>
+              <button ion-button outline icon-start (click)="goToTeamView(team_details.t_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+              <button ion-button outline icon-start (click)="shareTeam('share',team_details.t_id)"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
             </ion-item>
           </ion-card-content>
       </ion-card>

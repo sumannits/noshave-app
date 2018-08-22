@@ -1,3 +1,15 @@
 page-share-team {
+    ion-title{padding: 0 !important}
+    .item{background:none; padding-left:0; margin-bottom: 12px; border:0 !important}
+    .item.item-md.item-input.item-input-has-focus .item-inner{box-shadow:none !important;}
+    .item .item-inner{border:1px solid #e1d7c8!important; border-radius: 4px; padding-right:0}
+    .item .text-input{color:#b3b3b4; margin: 13px 8px;}
 
+    .tweet{background: #17a2b8}
+    .facebook{background: #1264c9}
+    .email{background: #6a3447}
+
+    .personal-share button{height: 44px;margin-bottom: 15px;border-radius:3px}
+    .personal-share button ion-icon{padding-right:.5em}
+    .item-input ion-label{font-size:14px;padding-right: 0;padding-left: 10px}
 }

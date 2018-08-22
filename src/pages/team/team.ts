@@ -61,7 +61,59 @@ export class TeamPage {
   }
 
   editTeam(team_id){
-    console.log('editTeam',team_id);
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      team_id: team_id,
+    };
+    const myModal: Modal = this.modal.create('EditTeamPage',{ data: myModalData }, myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      //console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      //console.log("I'm about to dismiss");
+    });
+  }
+
+  emailTeam(team_id){
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      team_id: team_id,
+    };
+    const myModal: Modal = this.modal.create('EmailTeamPage',{ data: myModalData }, myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      //console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      //console.log("I'm about to dismiss");
+    });
+  }
+
+  shareTeam(page,team_id){
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    const myModalData = {
+      page : page,
+      team_id: team_id,
+    };
+    const myModal: Modal = this.modal.create('ShareTeamPage',{ data: myModalData }, myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      //console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      //console.log("I'm about to dismiss");
+    });
+  }
+
+  goToTeamView(id){
+    this.navCtrl.push('ViewTeamPage',{'team_id':id});
   }
 
   tost_message(msg){

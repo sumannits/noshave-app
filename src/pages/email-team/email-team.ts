@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController ,ViewController ,App} from 'ionic-angular';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Api } from '../../providers';
 
 /**
  * Generated class for the EmailTeamPage page.
@@ -14,12 +16,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'email-team.html',
 })
 export class EmailTeamPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public navdata : any;
+  public response :any;
+  public editfrom:FormGroup;
+  public responseDataDetail:any;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public view: ViewController,
+    public toastCtrl:ToastController,
+    public authService:Api,
+    public loadingCtrl: LoadingController,
+    public builder:FormBuilder,
+    public actionSheetCtrl: ActionSheetController,public app:App) {
+      this.editfrom = new FormGroup({
+        subject: new FormControl('', [Validators.required]),
+        body: new FormControl('',[Validators.required])
+      });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EmailTeamPage');
+    this.navdata = this.navParams.get('data');
+  }
+
+  closeModal() {
+    this.view.dismiss();
+  }
+
+  SendMail(value:any){
+    
   }
 
 }

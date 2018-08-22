@@ -5,14 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>share-team</ion-title>
+    <ion-title *ngIf="navdata.page == 'share'">Share Team Page</ion-title>
+    <ion-title *ngIf="navdata.page == 'invite'">Invite People to Join Your Team</ion-title>
+    <ion-buttons (click)="closeModal()" end>
+      <button ion-button icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding class="personal-share">
+    <button ion-button full icon-start class="tweet"><ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon> Twitter</button>
+    <button ion-button full icon-start class="facebook"><ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon> Facebook</button>
+    <button ion-button full icon-start class="email"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email</button>
+    <form>
+        <ion-list>         
+          <ion-item> 
+            <ion-label fixed>Page Link</ion-label>          
+            <ion-input type="text" placeholder="copy" value="http://111.93.169.90/team2/noshave-new/member/sumannits"></ion-input>
+          </ion-item>
+        </ion-list>
+    </form>  
 </ion-content>
