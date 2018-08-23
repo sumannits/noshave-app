@@ -1,0 +1,9 @@
+<!-- Generated template for the DonateButtonComponent component -->
+<ion-buttons end *ngIf="viewDonate == false" (click)="gotosite()">
+  <button ion-button class="donate-button">
+      Donate
+  </button>
+</ion-buttons>
+
+<button class="custom-view-donatebutton" ion-button icon-start *ngIf="viewDonate == true" (click)="gotosite()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Make a Donation</button>
+

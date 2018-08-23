@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions} from 'ionic-angular';
 
 /**
- * Generated class for the ViewTeamPage page.
+ * Generated class for the ViewOrgaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,17 +10,17 @@ import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptio
 
 @IonicPage()
 @Component({
-  selector: 'page-view-team',
-  templateUrl: 'view-team.html',
+  selector: 'page-view-orga',
+  templateUrl: 'view-orga.html',
 })
-export class ViewTeamPage {
-  public team_id:any;
+export class ViewOrgaPage {
+  public orga_id : any;
   constructor(public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
+    this.orga_id = this.navParams.get('team_id');
   }
 
   ionViewDidLoad() {
-    this.team_id = this.navParams.get('team_id');
-    console.log('ionViewDidLoad ViewTeamPage');
+    console.log('ionViewDidLoad PersonalViewPage');
   }
 
   openDonation(){

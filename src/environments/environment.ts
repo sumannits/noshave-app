@@ -1,4 +1,4 @@
 export var environment = {
     //THIS IS FOR DEFAULT VALUES
-    baseUrl :'http://192.168.1.68/team2/noshave-new/'
+    baseUrl :'http://111.93.169.90/team2/noshave-new/'
 }

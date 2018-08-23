@@ -41,4 +41,12 @@ export class DashboardPage {
    toast.present(); 
   }
 
+  gotoviewDonation(){
+    this.navCtrl.setRoot('DonationListPage');
+  }
+
+  gotoviewMyPage(){
+    this.navCtrl.setRoot('PersonalPage');
+  }
+
 }

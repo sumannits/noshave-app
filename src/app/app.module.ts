@@ -19,6 +19,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { ThemeableBrowser  } from '@ionic-native/themeable-browser';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -39,7 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,6 +59,9 @@ export function createTranslateLoader(http: HttpClient) {
     Camera,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ThemeableBrowser,
+  ],
+  exports:[
   ]
 })
 export class AppModule { }

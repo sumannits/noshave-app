@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { LeaderboardPage } from './leaderboard';
+import { ViewOrgaPage } from './view-orga';
 import { ComponentsModule } from '../../components/components.module';
 @NgModule({
   declarations: [
-    LeaderboardPage,
+    ViewOrgaPage,
   ],
   imports: [
-    IonicPageModule.forChild(LeaderboardPage),
+    IonicPageModule.forChild(ViewOrgaPage),
     ComponentsModule
   ],
 })
-export class LeaderboardPageModule {}
+export class ViewOrgaPageModule {}

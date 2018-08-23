@@ -1,0 +1,45 @@
+page-view-orga {
+    // .personal-header{background: #ddd}
+    // .personal-header button{padding: 5px 11px;font-size: 12px;margin: 2px 0;font-weight: 500;border-radius: 20px;color: #fff;}
+    // .personal-header .label{white-space: normal;}
+
+    .green{background: #218838}
+    .sky{background: #17a2b8}
+    .relative{position: relative;margin-bottom: 10px;}
+    .personal .item-block{
+        padding: 0;
+        b{display: block;font-size:12px;color:#6a3447;margin-bottom: 5px;text-transform: uppercase;
+            i{display: inline-block}
+            span{color:#074f5f !important}
+        }
+        p{display: block;font-size: 13px;color: #505050 !important;white-space: normal;}
+        ion-label{margin: 5px 0;border-bottom:1px dashed #ddd;padding-bottom: 8px}
+    }
+    .photoProfile{
+        position: absolute;
+        bottom: -40px;
+        background: #fff;
+        color: #fff;
+        padding: 9px;
+        border-radius: 3px;
+        font-size: 12px;
+        -webkit-box-shadow: 1px 1px 3px -1px #000;
+        box-shadow: 1px 1px 3px -1px #000;
+        left: 20px;
+        width: 70px;
+    }
+    .nowrap ion-label{white-space: normal;}
+    .nowrap{background: none;}
+    .nowrap .name{background: none;padding-left: 93px;margin-top: -20px;}
+    .progressbar{width:100%;height:10px;background: #ddd;border-radius:15px;overflow: hidden;}
+    .progressbar span{background: #007bff;display: block;height: 10px;}
+    .table-view{border:1px solid #ddd;font-size: 12px;}
+    .table-header{background: #392d19;color: #fff;font-size: 12px;}
+    .table-view .row{border-bottom:1px dashed #ddd}
+    .table-view .row:last-child{border:0}
+    .table-view .user img{width:30px;height:30px;border-radius:100%;display: inline;vertical-align: middle;}
+    .table-view b{font-size: 20px}
+
+    .donation-tab{display: flex;justify-content: space-between}
+    .donation-tab button{background: #007bff;color: #fff;width: 33%;font-size: 11px;padding: 5px;line-height: 14px}
+}

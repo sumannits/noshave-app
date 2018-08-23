@@ -5,15 +5,16 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-      <ion-buttons start>
-          <button ion-button menuToggle icon-only>
-              <ion-icon name="menu"></ion-icon>
-          </button>
-      </ion-buttons>
-      <ion-title>Organization</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+        <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Organization</ion-title>
+    <donate-button donateType="normal" id="1"></donate-button>
+  </ion-navbar>
+</ion-header>
   
   <ion-content padding *ngIf="is_team_member == true && is_team_owner == false">
     <ion-card class="personal">
@@ -64,8 +65,8 @@
           </ion-item>
           <ion-item>
             <button ion-button icon-start (click)="leaveOrganization()"><ion-icon ios="ios-leaf" md="md-leaf"></ion-icon> Leave </button>
-            <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-            <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+            <button ion-button outline icon-start (click)="gotToview(team_details.o_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+            <button ion-button outline icon-start (click)="shareModal()"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
           </ion-item>
         </ion-card-content>
     </ion-card>
@@ -120,8 +121,8 @@
             </ion-item>
             <ion-item>
               <button ion-button icon-start (click)="editOrga(team_details.o_id)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit </button>
-              <button ion-button outline icon-start><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-              <button ion-button outline icon-start><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+              <button ion-button outline icon-start (click)="gotToview(team_details.o_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
+              <button ion-button outline icon-start (click)="shareModal()"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
             </ion-item>
           </ion-card-content>
       </ion-card>
