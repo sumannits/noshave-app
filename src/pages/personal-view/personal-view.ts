@@ -14,8 +14,10 @@ import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptio
   templateUrl: 'personal-view.html',
 })
 export class PersonalViewPage {
-
+  public loguser : any;
   constructor(public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
+    this.loguser = JSON.parse(localStorage.getItem('userData'));
+    //console.log(this.loguser);
   }
 
   ionViewDidLoad() {

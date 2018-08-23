@@ -37,7 +37,7 @@ export class TeamPage {
   }
 
   ionViewDidLoad() {
-    console.log('Enable');
+    //console.log('Enable');
     this.menuCtrl.enable(true);
   }
 
@@ -51,11 +51,11 @@ export class TeamPage {
     const myModal: Modal = this.modal.create('CrateJoinTeamPage', { data: myModalData }, myModalOptions);
     myModal.present();
     myModal.onDidDismiss((data) => {
-      console.log('Data',data);
+      //console.log('Data',data);
       console.log("I have dismissed.");
     });
     myModal.onWillDismiss((data) => {
-      console.log('Data',data);
+      //console.log('Data',data);
       console.log("I'm about to dismiss");
     });
   }

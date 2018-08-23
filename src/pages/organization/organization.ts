@@ -93,6 +93,23 @@ export class OrganizationPage {
     alert.present();
   }
 
+  shareModal() {
+    const myModalOptions: ModalOptions = {
+      enableBackdropDismiss: false
+    };
+    // const myModalData = {
+    //   type: type,
+    // };
+    const myModal: Modal = this.modal.create('ShareOrgaPage', myModalOptions);
+    myModal.present();
+    myModal.onDidDismiss((data) => {
+      console.log("I have dismissed.");
+    });
+    myModal.onWillDismiss((data) => {
+      console.log("I'm about to dismiss");
+    });
+  }
+
   editOrga(team_id){
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
@@ -116,6 +133,10 @@ export class OrganizationPage {
      duration: 3000
    });
    toast.present(); 
+  }
+
+  gotToview(id){
+    this.navCtrl.push('ViewOrgaPage',{'team_id':id});
   }
 
 }

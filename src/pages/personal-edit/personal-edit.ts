@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController ,ViewController } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams ,LoadingController ,ToastController ,ActionSheetController ,ViewController } from 'ionic-angular';
 import { AbstractControl,FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 
@@ -26,7 +26,8 @@ export class PersonalEditPage {
   public location_format:AbstractControl;
   public location_visibility:AbstractControl;
   public responseDataDetail:any;
-  constructor(public navCtrl: NavController,
+  constructor(public app:App,
+    public navCtrl: NavController,
     public navParams: NavParams,
     public view: ViewController,
     public toastCtrl:ToastController,
@@ -61,7 +62,6 @@ export class PersonalEditPage {
     this.authService.postData(getuserDetail,'login.php').then((resultdetail) => {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
-        console.log(this.responseDataDetail.user_details);
         this.editfrom.controls['username'].setValue(this.responseDataDetail.user_details.m_username);
         this.editfrom.controls['description'].setValue(this.responseDataDetail.user_details.m_page_description);
         this.editfrom.controls['fundraising_goal'].setValue(this.responseDataDetail.user_details.m_page_goal);
@@ -91,19 +91,20 @@ export class PersonalEditPage {
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
-    upuserDetail.append('m_full_name',value.full_name);
-    upuserDetail.append('m_email',value.email);
-    upuserDetail.append('m_city',value.city);
-    upuserDetail.append('m_state',value.state);
-    upuserDetail.append('m_country',value.country);
-    upuserDetail.append('m_got_screen',value.got_screened);
-    upuserDetail.append('service_type','update_account');
-    this.authService.postData(upuserDetail,'user.php').then((result) => {
-      this.responseDataDetail = result;
-      if(this.responseDataDetail.status == 'success'){
-        this.tost_message(this.responseDataDetail.msg);
+    upuserDetail.append('m_username_new',value.username);
+    upuserDetail.append('m_location_visibility',value.location_visibility);
+    upuserDetail.append('m_location_format',value.location_format);
+    upuserDetail.append('m_page_title',value.page_title);
+    upuserDetail.append('m_page_goal',value.fundraising_goal);
+    upuserDetail.append('m_page_description',value.description);
+    this.authService.postData(upuserDetail,'update_personal_page.php').then((result) => {
+      this.response = result;
+      if(this.response.status == 'success'){
+        this.view.dismiss();
+        this.app.getRootNav().setRoot('PersonalPage');
+        this.tost_message('Personal Page Updated Sucessfully.');
       } else {
-        this.tost_message(this.responseDataDetail.reason);
+        this.tost_message(this.response.reason);
       }
     });
   }
