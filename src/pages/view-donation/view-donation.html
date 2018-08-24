@@ -19,7 +19,7 @@
 
 
 <ion-content padding>
-  <ion-grid class="table-view">
+  <!-- <ion-grid class="table-view">
     <ion-row class="table-header">
       <ion-col col-4>Team</ion-col>
       <ion-col col-4 class="text-center">Raised</ion-col>
@@ -44,7 +44,7 @@
   <ion-grid class="table-view">
     <ion-row class="table-header">
       <ion-col col-8>Member</ion-col>
-      <ion-col col-4>Raised</ion-col>      
+      <ion-col col-4>Raised</ion-col>
     </ion-row>
     <ion-row>
        <ion-col col-8 class="user">
@@ -67,22 +67,24 @@
        </ion-col>
        <ion-col col-4><b>$0</b></ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
-  <ion-grid class="table-view">
+  <ion-grid class="table-view" *ngIf="personal_donation_list?.length > 0">
     <ion-row class="table-header">
-      <ion-col col-4>Member</ion-col>
-      <ion-col col-3>Raised</ion-col> 
-      <ion-col col-5>Comments</ion-col>    
+      <ion-col col-4>Name</ion-col>
+      <ion-col col-3>Donation</ion-col>
+      <ion-col col-5>Comment</ion-col>
     </ion-row>
-    <ion-row>
-       <ion-col col-4 class="user">         
-          <span>Suman Samanta</span>
+    <ion-row *ngFor="let m of personal_donation_list">
+       <ion-col col-4 class="user">
+          <span>{{ m.d_name }}</span>
        </ion-col>
-       <ion-col col-3><b>$0</b></ion-col>
-       <ion-col col-5><span>Glad to be a part of it. Growing my beard now...</span></ion-col>
+       <ion-col col-3><b>${{ m.d_amount }}</b></ion-col>
+       <ion-col col-5 style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><span>{{m.d_message}}</span></ion-col>
     </ion-row>
-   
   </ion-grid>
+  <div *ngIf="personal_donation_list?.length == 0">
+    Sorry ! No donation Found.
+  </div>
 </ion-content>
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the PersonalSharePage page.
  *
@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angula
 })
 export class PersonalSharePage {
 
-  constructor(public view: ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private socialSharing: SocialSharing,public view: ViewController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +24,11 @@ export class PersonalSharePage {
 
   closeModal() {
     this.view.dismiss();
+  }
+
+  shareViaface(message,url){
+    var msg  = 'Test';
+    this.socialSharing.shareViaFacebook(msg, null, 'http://111.93.169.90/team2/noshave-new/dashboard');
   }
 
 }
