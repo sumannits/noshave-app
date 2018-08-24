@@ -16,60 +16,61 @@
 <ion-content>
    <ion-card class="personal">
       <div class="relative">
-        <img src="https://storage.googleapis.com/nsn-img/2016/b5b24c36c48cb78b0225ed0f0421e338"/>
-        <img src="http://111.93.169.90/team2/noshave-new/assets/images/sidebar-logo.png" class="photoProfile"/>
-        
+        <img style="height:165px" src="{{user_details?.m_pic_0}}"/>
+        <img src="{{user_details?.m_profile_pic}}" class="photoProfile"/>
+
       </div>
       <ion-card-content class="nowrap">
         <ion-item class="name">
-          <h3>Suman Samanta</h3>  
-          <p>Kolkata, West Bengal</p>
+          <h3>{{ user_details?.m_full_name }}</h3>
+          <p>{{ user_details?.m_city }} , {{ user_details?.m_country }}</p>
         </ion-item >
         <ion-item >
           <donate-button donateType="member" id='{{loguser.m_id}}' viewdonate='1'></donate-button>
           <!-- <button ion-button icon-start><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Make a Donation</button> -->
-          <button ion-button icon-start class="sky"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> Create Team</button>
-          <button ion-button icon-start class="green"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share this Page</button>
+          <!-- <button ion-button icon-start class="sky"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> Create Team</button> -->
+          <button ion-button icon-start class="green" (click)="openModal()"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share this Page</button>
         </ion-item>
         <ion-item>
           <b>
-            Fundraising <span>Goal $20 of $250 </span>
+            Fundraising <span>Goal ${{user_details?.total_raised}} of ${{user_details?.m_page_goal}} </span>
           </b>
           <div class="progressbar">
-            <span style="width:20%"></span>
+            <span [style.width]="user_details?.total_raised_width+'%'"></span>
           </div>
-        </ion-item>       
+        </ion-item>
         <ion-item>
           <b>
-            Let it Grow and Join the Fight Against Cancer! 
+            {{user_details?.m_page_title}}
           </b>
           <p>
-            Each day, 22,000 people die from cancer worldwide (WHO). There's a good chance that someone you know and love will be affected by this disease. Nearly half of cancer diagnoses and deaths are preventable. No-Shave November's mission is to not only raise funds for cancer research and treatment but to educate the population about preventative measures. For over six years, participants around the globe have put down their razors and foregone their hair appointments to join the fight against cancer. The No-Shave November campaign has successfully raised over $3.5 million dollars to combat this disease. Every dollar raised brings us one step closer in our efforts to fund cancer research and education, help prevent the disease, and aid those fighting the battle. Each whisker grown allows us to embrace our hair, which many cancer patients lose during treatment. Will you join me? Start by using the links to the right.
+            {{user_details?.m_page_description}}
           </p>
         </ion-item>
-        
+
       </ion-card-content>
   </ion-card>
-  <ion-card>
-    <div class="donation-tab">        
-      <button (click)="openDonation()">Members</button>
-      <button>Teams</button>
-      <button>Organization Donations</button>
+  <ion-card style="text-align: center;">
+    <div class="donation-tab">
+      <button (click)="openDonation()">Donation List</button>
+
+      <button *ngIf="user_details?.m_team_id !=''" (click)="gotoTeam(user_details?.m_team_id)">Teams</button>
+      <!-- <button>Organization</button> -->
     </div>
     <ion-grid class="table-view">
-      <ion-row class="table-header">
-        <ion-col col-4>Member</ion-col>
-        <ion-col col-3>Raised</ion-col> 
-        <ion-col col-5>Comments</ion-col>    
+      <!-- <ion-row class="table-header">
+        <ion-col col-4>Donation List</ion-col>
+        <ion-col col-3>Team</ion-col>
+        <ion-col col-5>Comments</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4 class="user">         
+        <ion-col col-4 class="user">
             <span>Suman Samanta</span>
         </ion-col>
         <ion-col col-3><b>$0</b></ion-col>
         <ion-col col-5><span>Glad to be a part of it. Growing my beard now...</span></ion-col>
-      </ion-row>    
+      </ion-row> -->
     </ion-grid>
   </ion-card>
-    
+
 </ion-content>

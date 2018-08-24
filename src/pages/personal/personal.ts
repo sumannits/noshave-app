@@ -18,6 +18,7 @@ export class PersonalPage {
   public responseDataDetail : any;
   public user_details:any;
   public url : string = ENV.baseUrl;
+  public fbv:any;
   constructor(public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -31,6 +32,7 @@ export class PersonalPage {
         this.tost_message(this.responseDataDetail.reason);
       }
     });
+    this.fbv = JSON.parse(localStorage.getItem('userData')).m_id;
   }
 
 
@@ -69,11 +71,11 @@ export class PersonalPage {
   }
 
   gotToview(){
-    this.navCtrl.push('PersonalViewPage');
+    this.navCtrl.push('PersonalViewPage',{'id':this.fbv});
   }
 
   ionViewDidLoad() {
-   
+
   }
 
   tost_message(msg){
@@ -81,7 +83,7 @@ export class PersonalPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

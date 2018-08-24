@@ -33,13 +33,13 @@ page-personal-view {
     .nowrap .name{background: none;padding-left: 93px;margin-top: -20px;}
     .progressbar{width:100%;height:10px;background: #ddd;border-radius:15px;overflow: hidden;}
     .progressbar span{background: #007bff;display: block;height: 10px;}
-    .table-view{border:1px solid #ddd;font-size: 12px;}
+    // .table-view{border:1px solid #ddd;font-size: 12px;}
     .table-header{background: #392d19;color: #fff;font-size: 12px;}
     .table-view .row{border-bottom:1px dashed #ddd}
     .table-view .row:last-child{border:0}
     .table-view .user img{width:30px;height:30px;border-radius:100%;display: inline;vertical-align: middle;}
     .table-view b{font-size: 20px}
 
-    .donation-tab{display: flex;justify-content: space-between}
-    .donation-tab button{background: #007bff;color: #fff;width: 33%;font-size: 11px;padding: 5px;line-height: 14px}
+    .donation-tab{display: initial;justify-content: space-between}
+    .donation-tab button{background: #074f5f;color: #fff;width: 33%;font-size: 11px;padding: 11px;line-height: 14px}
 }

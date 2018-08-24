@@ -23,6 +23,7 @@ import { ThemeableBrowser  } from '@ionic-native/themeable-browser';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ThemeableBrowser,
+    SocialSharing
   ],
   exports:[
   ]
