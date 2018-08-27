@@ -1,0 +1,9 @@
+page-orga-donationview {
+  .table-view{border:1px solid #ddd;font-size: 12px;}
+  .table-header{background: #392d19;color: #fff;font-size: 12px;}
+
+  .table-view .row{border-bottom:1px dashed #ddd}
+  .table-view .row:last-child{border:0}
+  .table-view .user img{width:30px;height:30px;border-radius:100%;display: inline;vertical-align: middle;}
+  .table-view b{font-size: 20px}
+}

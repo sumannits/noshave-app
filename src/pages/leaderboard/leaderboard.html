@@ -48,22 +48,22 @@
           </ion-col>
         </ion-row>
         <div class="mem-lead-con" *ngFor="let m of member_arr">
-          <ion-row>
+          <ion-row (click)="goTo(1,m.m_id)">
             <ion-col col-8 class="pl-0">
               <ion-item>
                 <ion-avatar item-start>
                   <img src="{{ m.m_profile_pic }}">
                 </ion-avatar>
-                <h2 class="fullname">{{ m.m_full_name }}</h2>               
+                <h2 class="fullname">{{ m.m_full_name }}</h2>
               </ion-item>
             </ion-col>
             <ion-col col-4 class="price-area">
               <div class="price">${{ m.m_total_raised }}</div>
             </ion-col>
-          </ion-row>          
+          </ion-row>
         </div>
       </ion-list>
-    
+
       <ion-list *ngSwitchCase="'team'" ngSelected="selected">
         <ion-row class="seg-a-bar">
             <ion-col col-8 class="pt-0 pb-0">
@@ -78,16 +78,16 @@
             </ion-col>
         </ion-row>
         <div class="mem-lead-con" *ngFor="let t of team_arr">
-          <ion-row>
+          <ion-row (click)="goTo(2,t.team_uname)">
             <ion-col col-8 class="pl-0">
               <ion-item>
-                <h2 class="fullname">{{ t.team_name }}</h2>               
+                <h2 class="fullname">{{ t.team_name }}</h2>
               </ion-item>
             </ion-col>
             <ion-col col-4 class="price-area">
               <div class="price">{{ t.team_price }}</div>
             </ion-col>
-          </ion-row>          
+          </ion-row>
         </div>
       </ion-list>
 
@@ -103,18 +103,18 @@
                 <h3>Raised</h3>
               </ion-item>
             </ion-col>
-        </ion-row>  
+        </ion-row>
         <div class="mem-lead-con" *ngFor="let o of org_arr">
-            <ion-row>
+            <ion-row (click)="goTo(3,o.org_uname)">
               <ion-col col-8 class="pl-0">
                 <ion-item>
-                  <h2 class="fullname">{{ o.org_name }}</h2>               
+                  <h2 class="fullname">{{ o.org_name }}</h2>
                 </ion-item>
               </ion-col>
               <ion-col col-4 class="price-area">
                 <div class="price">{{ o.org_price }}</div>
               </ion-col>
-            </ion-row>          
+            </ion-row>
           </div>
       </ion-list>
     </div>

@@ -51,12 +51,12 @@ export class PersonalViewPage {
     const myModal: Modal = this.modal.create('ViewDonationPage',{'data':myModalData}, myModalOptions);
     myModal.present();
     myModal.onDidDismiss((data) => {
-      console.log('Data',data);
-      console.log("I have dismissed.");
+      // console.log('Data',data);
+      // console.log("I have dismissed.");
     });
     myModal.onWillDismiss((data) => {
-      console.log('Data',data);
-      console.log("I'm about to dismiss");
+      // console.log('Data',data);
+      // console.log("I'm about to dismiss");
     });
   }
 
