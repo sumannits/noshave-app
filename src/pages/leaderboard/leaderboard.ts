@@ -45,7 +45,19 @@ export class LeaderboardPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
+  }
+
+  goTo(type,id){
+    if(type==1){
+      this.navCtrl.push('PersonalViewPage',{'id':id});
+    }
+    if(type==2){
+      this.navCtrl.push('ViewTeamPage',{'team_id':id});
+    }
+    if(type==3){
+      this.navCtrl.push('ViewOrgaPage',{'team_id':id});
+    }
   }
 
 }
