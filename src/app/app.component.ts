@@ -3,7 +3,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Nav, Platform ,MenuController,Events} from 'ionic-angular';
 import { Api } from '../providers';
-
 export interface PageInterface {
   title: string;
   name: string;
@@ -64,7 +63,7 @@ export class MyApp {
       });
     });
   }
-  
+
   openPage(page) {
     if (page.title == 'Logout') {
       this.logout();

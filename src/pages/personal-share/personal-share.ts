@@ -31,4 +31,12 @@ export class PersonalSharePage {
     this.socialSharing.shareViaFacebook(msg, null, 'http://111.93.169.90/team2/noshave-new/dashboard');
   }
 
+  test(){
+    this.socialSharing.share('msg', null, 'http://111.93.169.90/team2/noshave-new/assets/images/logo.png', null).then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
+  }
+
 }

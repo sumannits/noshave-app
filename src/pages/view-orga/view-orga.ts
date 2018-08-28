@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions ,ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { environment as ENV } from '../../environments/environment';
 /**
  * Generated class for the ViewOrgaPage page.
  *
@@ -18,7 +19,8 @@ export class ViewOrgaPage {
   public orga_id : any;
   public responseDataDetail:any;
   public bind_arr_orga:any;
-  constructor(public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  public url : string = ENV.baseUrl;
+  constructor(private socialSharing: SocialSharing,public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.orga_id = this.navParams.get('team_id');
     let getteamDetail = new FormData();
     getteamDetail.append('org_id',this.orga_id);
@@ -27,7 +29,7 @@ export class ViewOrgaPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.bind_arr_orga = this.responseDataDetail.bind_arr_orga;
-        //console.log('org_details',this.bind_arr_orga);
+        console.log('org_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
@@ -101,6 +103,15 @@ export class ViewOrgaPage {
      duration: 3000
    });
    toast.present();
+  }
+
+  share(msg,subject,url){
+    //console.log(msg +  subject + url);
+    this.socialSharing.share(msg, subject, null , url).then(() => {
+      // Success!
+    }).catch(() => {
+      this.tost_message('Unable To Share.');
+    });
   }
 
 }
