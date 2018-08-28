@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
 import { Api } from '../../providers';
-import { environment as ENV } from '../../environments/environment' ;
+import { environment as ENV } from '../../environments/environment';
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the PersonalPage page.
  *
@@ -19,7 +20,7 @@ export class PersonalPage {
   public user_details:any;
   public url : string = ENV.baseUrl;
   public fbv:any;
-  constructor(public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+  constructor(private socialSharing: SocialSharing,public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
     getuserDetail.append('service_type','user_details');
@@ -84,6 +85,15 @@ export class PersonalPage {
      duration: 3000
    });
    toast.present();
+  }
+
+  share(msg,subject,url){
+    //console.log(msg +  subject + url);
+    this.socialSharing.share(msg, subject, null , url).then(() => {
+      // Success!
+    }).catch(() => {
+      this.tost_message('Unable To Share.');
+    });
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController ,AlertController,MenuController} from 'ionic-angular';
 import { Api } from '../../providers';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { environment as ENV } from '../../environments/environment';
 /**
  * Generated class for the TeamPage page.
  *
@@ -19,7 +21,8 @@ export class TeamPage {
   public is_team_owner : boolean;
   public team_details : any;
   public leaveTeamresult:any;
-  constructor(public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController,public alertCtrl:AlertController,public menuCtrl : MenuController) {
+  public url : string = ENV.baseUrl;
+  constructor(private socialSharing: SocialSharing,public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController,public alertCtrl:AlertController,public menuCtrl : MenuController) {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -121,7 +124,7 @@ export class TeamPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   leaveTeam() {
@@ -155,6 +158,15 @@ export class TeamPage {
       ]
     });
     alert.present();
+  }
+
+  share(msg,subject,url){
+    //console.log(msg +  subject + url);
+    this.socialSharing.share(msg, subject, null , url).then(() => {
+      // Success!
+    }).catch(() => {
+      this.tost_message('Unable To Share.');
+    });
   }
 
 }

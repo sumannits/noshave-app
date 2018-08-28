@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController,IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
 import { Api } from '../../providers';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the OrganizationPage page.
  *
@@ -20,7 +20,7 @@ export class OrganizationPage {
   public is_team_owner : boolean;
   public team_details : any;
   public leaveOrgaresult:any;
-  constructor(public alertCtrl:AlertController, public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+  constructor(private socialSharing: SocialSharing,public alertCtrl:AlertController, public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -132,11 +132,20 @@ export class OrganizationPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   gotToview(id){
     this.navCtrl.push('ViewOrgaPage',{'team_id':id});
+  }
+
+  share(msg,subject,url){
+    //console.log(msg +  subject + url);
+    this.socialSharing.share(msg, subject, null , url).then(() => {
+      // Success!
+    }).catch(() => {
+      this.tost_message('Unable To Share.');
+    });
   }
 
 }

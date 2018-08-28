@@ -26,7 +26,7 @@ export class LeaderboardPage {
     this.authService.postData(getleader,'user.php').then((resultdetail) => {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
-          console.log('this.responseDataDetail',this.responseDataDetail);
+          //console.log('this.responseDataDetail',this.responseDataDetail);
           this.member_arr = this.responseDataDetail.member_arr;
           this.team_arr = this.responseDataDetail.team_arr;
           this.org_arr = this.responseDataDetail.org_arr;
@@ -37,7 +37,7 @@ export class LeaderboardPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LeaderboardPage');
+    //console.log('ionViewDidLoad LeaderboardPage');
   }
 
   tost_message(msg){

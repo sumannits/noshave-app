@@ -16,11 +16,11 @@
         <img src="./assets/img/login-logo.png" alt="Ionic logo"/>
       </div>
       <h4 class="text-uppercase text-center font-medium text-primary">LogIn</h4>
-  
+
       <form [formGroup]="signinform" #signinForm="ngForm">
         <ion-list>
           <ion-item>
-            <ion-input  type="email" formControlName="email" placeholder="Email" autocapitalize="off"></ion-input>
+            <ion-input  type="email" formControlName="email" placeholder="Email or Username" autocapitalize="off"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( signinform.get('email').hasError('minlength') || signinform.get('email').hasError('pattern') ||signinform.get('email').hasError('required') ) && signinform.get('email').touched">
             <div class="error" *ngIf="signinform.get('email').hasError('required') && signinform.get('email').touched">
@@ -45,11 +45,10 @@
               </div>
           </div>
         </ion-list>
-    
+
         <button class="font-medium" ion-button [disabled]="!signinForm.valid" (click)="signin(signinform.value)" color="secondary" block>Login</button>
         <p class="forgot" text-center (click)="forgotpassword()">Forgot your password?</p>
         <button class="font-medium text-uppercase" ion-button color="primary" (click)="createaccount()" block>Create an account</button>
-      </form>  
-  </ion-content> 
-  
-  
+      </form>
+  </ion-content>
+

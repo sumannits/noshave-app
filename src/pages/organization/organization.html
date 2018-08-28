@@ -70,7 +70,7 @@
           <ion-item>
             <button ion-button icon-start (click)="leaveOrganization()"><ion-icon ios="ios-leaf" md="md-leaf"></ion-icon> Leave </button>
             <button ion-button outline icon-start (click)="gotToview(team_details.o_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-            <button ion-button outline icon-start (click)="shareModal()"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+            <button ion-button outline icon-start (click)="share('Organization Donate Page','Noshave',team_details?.o_page_link)"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
           </ion-item>
         </ion-card-content>
     </ion-card>
@@ -130,7 +130,7 @@
             <ion-item>
               <button ion-button icon-start (click)="editOrga(team_details.o_id)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit </button>
               <button ion-button outline icon-start (click)="gotToview(team_details.o_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-              <button ion-button outline icon-start (click)="shareModal()"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+              <button ion-button outline icon-start (click)="share('Organization Donate Page','Noshave November',team_details?.o_page_link)"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
             </ion-item>
           </ion-card-content>
       </ion-card>
