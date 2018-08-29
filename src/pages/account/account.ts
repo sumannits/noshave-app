@@ -36,7 +36,7 @@ export class AccountPage {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public transfer: FileTransfer,
-    public file: File, 
+    public file: File,
     public filePath: FilePath,
     public camera: Camera) {
       let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
@@ -61,10 +61,15 @@ export class AccountPage {
   }
 
   getprofileById(id){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',id);
     getuserDetail.append('service_type','user_details');
     this.authService.postData(getuserDetail,'login.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.editfrom.controls['full_name'].setValue(this.responseDataDetail.user_details.m_full_name);
@@ -85,6 +90,10 @@ export class AccountPage {
   }
 
   EditFrom(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
@@ -96,6 +105,7 @@ export class AccountPage {
     upuserDetail.append('m_got_screen',value.got_screened);
     upuserDetail.append('service_type','update_account');
     this.authService.postData(upuserDetail,'user.php').then((result) => {
+      loading.dismiss();
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
         this.tost_message(this.responseDataDetail.msg);
@@ -210,7 +220,7 @@ export class AccountPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

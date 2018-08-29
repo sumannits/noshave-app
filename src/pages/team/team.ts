@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController ,AlertController,MenuController} from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController ,AlertController,MenuController} from 'ionic-angular';
 import { Api } from '../../providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { environment as ENV } from '../../environments/environment';
@@ -22,7 +22,7 @@ export class TeamPage {
   public team_details : any;
   public leaveTeamresult:any;
   public url : string = ENV.baseUrl;
-  constructor(private socialSharing: SocialSharing,public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController,public alertCtrl:AlertController,public menuCtrl : MenuController) {
+  constructor(public loadingCtrl: LoadingController,private socialSharing: SocialSharing,public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController,public alertCtrl:AlertController,public menuCtrl : MenuController) {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -142,9 +142,14 @@ export class TeamPage {
         {
           text: 'Yes',
           handler: () => {
+            let loading = this.loadingCtrl.create({
+              content: 'Please Wait...'
+            });
+            loading.present();
             let leaveTeam = new FormData();
             leaveTeam.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
             this.authService.postData(leaveTeam,'leave_team.php').then((results) => {
+              loading.dismiss();
               this.leaveTeamresult = results;
               if(this.leaveTeamresult.status == 'success'){
                 this.tost_message(this.leaveTeamresult.msg);

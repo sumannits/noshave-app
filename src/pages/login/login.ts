@@ -12,7 +12,7 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
- 
+
   // Our translated text strings
   public signinform:FormGroup;
   public email:AbstractControl;
@@ -28,11 +28,11 @@ export class LoginPage {
     public navParams: NavParams,
     public menu: MenuController,
     public userService: Api,) {
-  
-    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+    //let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.signinform = new FormGroup({
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+      email: new FormControl('', [Validators.required]),
     });
     this.email = this.signinform.controls['email'];
     this.password = this.signinform.controls['password'];
@@ -40,11 +40,15 @@ export class LoginPage {
 
   ionViewDidLoad() {
     this.navdata = this.navParams.get('page');
-    console.log(this.navdata);
+    //console.log(this.navdata);
     this.menu.enable(false);
   }
 
   signin(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     if (this.signinform.valid) {
       let formData = new FormData();
       formData.append('email_or_username',value.email);
@@ -59,6 +63,7 @@ export class LoginPage {
           getuserDetail.append('service_type','user_details');
           this.userService.postData(getuserDetail,'login.php').then((resultdetail) => {
             this.responseDataDetail = resultdetail;
+            loading.dismiss();
             if(this.responseDataDetail.status == 'success'){
               //creating user:created Event Handeler
               if(this.navdata && this.navdata =='returning'){
@@ -96,7 +101,7 @@ export class LoginPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   createUser(user) {

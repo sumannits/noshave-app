@@ -47,11 +47,16 @@ export class EditOrgaPage {
   }
 
   getproTeamById(id){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
     teamdetailsById.append('service_type','organization_page');
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.responseDataDetail = resultstedetail;
+      loading.dismiss();
       if(this.responseDataDetail.status == 'success'){
         //console.log(this.responseDataDetail);
         this.editfrom.controls['teamname'].setValue(this.responseDataDetail.org_details.o_name);
@@ -66,6 +71,10 @@ export class EditOrgaPage {
   }
 
   EditFrom(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
@@ -75,6 +84,7 @@ export class EditOrgaPage {
     upuserDetail.append('o_page_goal',value.fundraising_goal);
     upuserDetail.append('o_page_description',value.description);
     this.authService.postData(upuserDetail,'update_org_page.php').then((result) => {
+      loading.dismiss();
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
         this.view.dismiss();
@@ -91,7 +101,7 @@ export class EditOrgaPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

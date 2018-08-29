@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController,IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
+import { LoadingController,AlertController,IonicPage, NavController, NavParams , Modal, ModalController, ModalOptions,ToastController } from 'ionic-angular';
 import { Api } from '../../providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 /**
@@ -20,7 +20,7 @@ export class OrganizationPage {
   public is_team_owner : boolean;
   public team_details : any;
   public leaveOrgaresult:any;
-  constructor(private socialSharing: SocialSharing,public alertCtrl:AlertController, public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
+  constructor(public loadingCtrl:LoadingController,private socialSharing: SocialSharing,public alertCtrl:AlertController, public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams,public modal: ModalController) {
     //Get Team By User Id
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -75,10 +75,15 @@ export class OrganizationPage {
         {
           text: 'Yes',
           handler: () => {
+            let loading = this.loadingCtrl.create({
+              content: 'Please Wait...'
+            });
+            loading.present();
             let leaveTeam = new FormData();
             leaveTeam.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
             this.authService.postData(leaveTeam,'leave_org.php').then((results) => {
               this.leaveOrgaresult = results;
+              loading.dismiss();
               if(this.leaveOrgaresult.status == 'success'){
                 this.tost_message('You have successfully leaved this organization.');
                 this.navCtrl.setRoot('OrganizationPage');

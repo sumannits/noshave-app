@@ -46,11 +46,16 @@ export class EditTeamPage {
   }
 
   getproTeamById(id){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let teamdetailsById = new FormData();
     teamdetailsById.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
     teamdetailsById.append('service_type','team_page');
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.responseDataDetail = resultstedetail;
+      loading.present();
       if(this.responseDataDetail.status == 'success'){
         this.editfrom.controls['teamname'].setValue(this.responseDataDetail.team_details.t_name);
         this.editfrom.controls['team_username'].setValue(this.responseDataDetail.team_details.t_username);
@@ -64,6 +69,10 @@ export class EditTeamPage {
   }
 
   EditFrom(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
@@ -73,6 +82,7 @@ export class EditTeamPage {
     upuserDetail.append('t_page_goal',value.fundraising_goal);
     upuserDetail.append('t_page_description',value.description);
     this.authService.postData(upuserDetail,'update_team_page.php').then((result) => {
+      loading.dismiss();
       this.responseDataDetail = result;
       if(this.responseDataDetail.status == 'success'){
         this.view.dismiss();
@@ -89,7 +99,7 @@ export class EditTeamPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

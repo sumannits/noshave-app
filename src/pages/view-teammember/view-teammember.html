@@ -55,10 +55,13 @@
         <ion-col col-4><b>${{ mem.total_raised_member }}</b></ion-col>
       </ion-row>
     </ng-container>
+    <ion-row *ngIf="bind_arr_member?.length == 0" style="padding: 7px 0px 5px;">
+        Sorry ! No member Found.
+    </ion-row>
   </ion-grid>
-  <div *ngIf="bind_arr_member?.length == 0">
+  <!-- <div *ngIf="bind_arr_member?.length == 0">
       Sorry ! No member Found.
-  </div>
+  </div> -->
   <!-- <ion-grid class="table-view" *ngIf="personal_donation_list?.length > 0">
     <ion-row class="table-header">
       <ion-col col-4>Member</ion-col>

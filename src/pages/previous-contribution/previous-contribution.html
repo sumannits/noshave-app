@@ -5,18 +5,144 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-buttons start>
-        <button ion-button start menuToggle color="secondary">
-          <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-    <ion-title>Previous Contribution</ion-title>
-    <donate-button donateType="normal" id="1"></donate-button>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <ion-buttons start>
+          <button ion-button start menuToggle color="secondary">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>Previous Contribution</ion-title>
+      <donate-button donateType="normal" id="1"></donate-button>
+    </ion-navbar>
+    <ion-toolbar class="toolbar top-seg-bar" no-border-top="" style="">
+      <div>
+        <ion-segment [(ngModel)]="switch">
+          <ion-segment-button value="member">
+             Personal
+          </ion-segment-button>
+          <ion-segment-button value="team">
+             Team
+          </ion-segment-button>
+          <ion-segment-button value="organization">
+             Organization
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+  </ion-toolbar>
+  </ion-header>
 
+  <ion-content>
+    <div [ngSwitch]="switch" style="
+    margin-top: 16px;">
+        <ion-list *ngSwitchCase="'member'" ngSelected="selected">
+          <div class="total-area" *ngFor="let d of doantionlistarray;let i = index">
+            <ion-row>
+            <!-- <ion-row (click)="gotoView('1',d.d_id)"> -->
+              <ion-col col-2 class="pt-0 pr-0 pl-0">
+                <h4 class="nmbr">{{ i+1 }}</h4>
+              </ion-col>
+              <ion-col col-10 class="pr-0 pl-0">
+                <div class="con-part">
+                  <div class="top-text">
+                    <h4>{{ d.d_name }}<span class="price">${{ d.d_amount }}</span> </h4>
+                  </div>
+                  <ion-row class="dt-row">
+                    <ion-col col-4 class="pl-0 pr-0 pb-0">
+                      <h5 class="date">Date :</h5>
+                    </ion-col>
+                    <ion-col col-8 class="pb-0">
+                      <p class="date-text">{{ d.d_time }}</p>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col col-4 class="pl-0 pr-0">
+                      <h5 class="date">Comment :</h5>
+                    </ion-col>
+                    <ion-col col-8>
+                      <p class="date-text">{{ d.d_message }}</p>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div class="total-area" *ngIf="doantionlistarray?.length == 0">
+              Sorry! No Personal Donation Found.
+          </div>
+        </ion-list>
 
-<ion-content padding>
-  <p>Coming Soon ......</p>
-</ion-content>
+        <ion-list *ngSwitchCase="'team'" ngSelected="selected">
+            <div class="total-area" *ngFor="let t of teamlistarray;let i = index">
+              <ion-row>
+              <!-- <ion-row (click)="gotoView('2',t.d_id)"> -->
+                  <ion-col col-2 class="pt-0 pr-0 pl-0">
+                    <h4 class="nmbr">{{ i+1 }}</h4>
+                  </ion-col>
+                  <ion-col col-10 class="pr-0 pl-0">
+                    <div class="con-part">
+                      <div class="top-text">
+                        <h4>{{ t.d_name }}<span class="price">${{ t.d_amount }}</span> </h4>
+                      </div>
+                      <ion-row class="dt-row">
+                        <ion-col col-4 class="pl-0 pr-0 pb-0">
+                          <h5 class="date">Date :</h5>
+                        </ion-col>
+                        <ion-col col-8 class="pb-0">
+                          <p class="date-text">{{ t.d_time }}</p>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col col-4 class="pl-0 pr-0">
+                          <h5 class="date">Comment :</h5>
+                        </ion-col>
+                        <ion-col col-8>
+                          <p class="date-text">{{ t.d_message }}</p>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <div class="total-area" *ngIf="teamlistarray?.length == 0">
+                  Sorry! No Team Donation Found.
+              </div>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'organization'" ngSelected="selected">
+          <div class="total-area" *ngFor="let o of org_donation;let i = index">
+              <!-- <ion-row (click)="gotoView('3',o.d_id)"> -->
+              <ion-row>
+                <ion-col col-2 class="pt-0 pr-0 pl-0">
+                  <h4 class="nmbr">{{ i+1 }}</h4>
+                </ion-col>
+                <ion-col col-10 class="pr-0 pl-0">
+                  <div class="con-part">
+                    <div class="top-text">
+                      <h4>{{ o.d_name }}<span class="price">${{ o.d_amount }}</span> </h4>
+                    </div>
+                    <ion-row class="dt-row">
+                      <ion-col col-4 class="pl-0 pr-0 pb-0">
+                        <h5 class="date">Date :</h5>
+                      </ion-col>
+                      <ion-col col-8 class="pb-0">
+                        <p class="date-text">{{ o.d_time }}</p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-4 class="pl-0 pr-0">
+                        <h5 class="date">Comment :</h5>
+                      </ion-col>
+                      <ion-col col-8>
+                        <p class="date-text">{{ o.d_message }}</p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-col>
+              </ion-row>
+          </div>
+          <div class="total-area" *ngIf="org_donation?.length == 0">
+              Sorry! No Organization Donation Found.
+          </div>
+        </ion-list>
+      </div>
+  </ion-content>

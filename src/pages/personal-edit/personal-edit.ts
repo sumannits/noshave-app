@@ -56,10 +56,15 @@ export class PersonalEditPage {
   }
 
   getprofileById(id){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',id);
     getuserDetail.append('service_type','user_details');
     this.authService.postData(getuserDetail,'login.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.editfrom.controls['username'].setValue(this.responseDataDetail.user_details.m_username);
@@ -88,6 +93,10 @@ export class PersonalEditPage {
   }
 
   EditFrom(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     const loguser1 = JSON.parse(localStorage.getItem('userData'));
     let upuserDetail = new FormData();
     upuserDetail.append('user_id',loguser1.m_id);
@@ -98,6 +107,7 @@ export class PersonalEditPage {
     upuserDetail.append('m_page_goal',value.fundraising_goal);
     upuserDetail.append('m_page_description',value.description);
     this.authService.postData(upuserDetail,'update_personal_page.php').then((result) => {
+      loading.dismiss();
       this.response = result;
       if(this.response.status == 'success'){
         this.view.dismiss();
@@ -114,7 +124,7 @@ export class PersonalEditPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

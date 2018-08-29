@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController,ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ViewController,ToastController,LoadingController} from 'ionic-angular';
 import { Api } from '../../providers';
 /**
  * Generated class for the ViewDonationPage page.
@@ -17,12 +17,17 @@ export class ViewDonationPage {
   public data :any;
   public responseDataDetail:any;
   public personal_donation_list : any;
-  constructor(public toastCtrl : ToastController,public authService:Api,public view:ViewController ,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loadingCtrl:LoadingController,public toastCtrl : ToastController,public authService:Api,public view:ViewController ,public navCtrl: NavController, public navParams: NavParams) {
     this.data = this.navParams.get('data');
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',this.data.id);
     getuserDetail.append('service_type','personal_pagedetail');
     this.authService.postData(getuserDetail,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.personal_donation_list = this.responseDataDetail.personal_donation_list;
