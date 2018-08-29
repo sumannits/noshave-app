@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions ,ToastController} from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions ,ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { environment as ENV } from '../../environments/environment';
@@ -20,15 +20,20 @@ export class ViewTeamPage {
   public responseDataDetail:any;
   public team_details:any;
   public url : string = ENV.baseUrl;
-  constructor(private socialSharing: SocialSharing,public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loadingCtrl :LoadingController,private socialSharing: SocialSharing,public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     this.team_id = this.navParams.get('team_id');
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getteamDetail = new FormData();
     getteamDetail.append('team_id',this.team_id);
     getteamDetail.append('service_type','team_pagedetail');
     this.authService.postData(getteamDetail,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.team_details = this.responseDataDetail.bind_arr_team;

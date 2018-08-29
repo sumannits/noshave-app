@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ToastController,LoadingController} from 'ionic-angular';
 import { Api } from '../../providers';
 /**
  * Generated class for the LeaderboardPage page.
@@ -19,11 +19,16 @@ export class LeaderboardPage {
   public member_arr:any;
   public team_arr:any;
   public org_arr:any;
-  constructor(public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loadingCtrl:LoadingController,public toastCtrl:ToastController,public authService:Api,public navCtrl: NavController, public navParams: NavParams) {
     this.switch = 'member';
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getleader = new FormData();
     getleader.append('service_type','leaderboard_page');
     this.authService.postData(getleader,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
           //console.log('this.responseDataDetail',this.responseDataDetail);

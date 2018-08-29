@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController ,LoadingController} from 'ionic-angular';
 import { Api } from '../../providers';
 import { AbstractControl,Validators, FormGroup, FormControl } from '@angular/forms';
-
 /**
  * Generated class for the ForgotPasswordPage page.
  *
@@ -20,7 +19,8 @@ export class ForgotPasswordPage {
   public email:AbstractControl;
   public responseData:any;
   constructor(
-    public navCtrl: NavController, 
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController,
     public navParams: NavParams,
     public serviceApi: Api,
     public toastCtrl: ToastController
@@ -37,11 +37,16 @@ export class ForgotPasswordPage {
   }
 
   doForgotPassword(frmdata:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let forgotpass = new FormData();
     forgotpass.append('change','forgot');
     forgotpass.append('email',frmdata.email);
     forgotpass.append('service_type','password_change');
     this.serviceApi.postData(forgotpass,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseData = resultdetail;
       if(this.responseData.status == 'success'){
         this.tost_message(this.responseData.msg);
@@ -51,7 +56,7 @@ export class ForgotPasswordPage {
       }
     });
   }
-  
+
   public back(){
     this.navCtrl.setRoot('LoginPage');
   }
@@ -61,6 +66,6 @@ export class ForgotPasswordPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 }

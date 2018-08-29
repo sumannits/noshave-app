@@ -28,7 +28,7 @@ export class OrgaMembersviewPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.total_member = this.responseDataDetail.total_member;
-        console.log('team_details',this.responseDataDetail);
+        //console.log('team_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

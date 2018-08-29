@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions,ToastController} from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions,ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { environment as ENV } from '../../environments/environment';
@@ -21,15 +21,20 @@ export class PersonalViewPage {
   public user_details:any;
   public user_id : any;
   public url : string = ENV.baseUrl;
-  constructor(private socialSharing: SocialSharing,public authService:Api,public modal:ModalController, public navCtrl: NavController,
+  constructor(private socialSharing: SocialSharing,public loadingCtrl:LoadingController,public authService:Api,public modal:ModalController, public navCtrl: NavController,
     public navParams: NavParams,public toastCtrl:ToastController) {
     this.user_id = this.navParams.get('id');
     //console.log(this.user_id);
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     this.loguser = JSON.parse(localStorage.getItem('userData'));
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',this.user_id);
     getuserDetail.append('service_type','personal_pagedetail');
     this.authService.postData(getuserDetail,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.user_details = this.responseDataDetail.personal_pagedetail

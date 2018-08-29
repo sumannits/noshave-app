@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController ,ToastController,App } from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams ,ViewController ,ToastController,App } from 'ionic-angular';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 
@@ -25,8 +25,8 @@ export class CreateJoinOrganizationPage {
   public teamresult : any;
   public teamarray:any;
   public teamresultnew:any;
-  public teamdetailsByIdresult:any; 
-  constructor(public app : App,public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
+  public teamdetailsByIdresult:any;
+  constructor(public loadingCtrl : LoadingController,public app : App,public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
     this.createteam = new FormGroup({
       team_name: new FormControl('', [Validators.required]),
       team_username: new FormControl('', [Validators.required])
@@ -64,12 +64,17 @@ export class CreateJoinOrganizationPage {
   }
 
   JoinTeam(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     if(this.jointeam.valid){
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let jointeamfrom = new FormData();
       jointeamfrom.append('user_id',loguser.m_id);
       jointeamfrom.append('o_id',value.team);
       this.authService.postData(jointeamfrom,'join_org.php').then((result) => {
+        loading.dismiss();
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
           this.view.dismiss('push');
@@ -86,6 +91,10 @@ export class CreateJoinOrganizationPage {
   }
 
   CreateTeam(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     if(this.createteam.valid){
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let createteamfrom = new FormData();
@@ -93,6 +102,7 @@ export class CreateJoinOrganizationPage {
       createteamfrom.append('o_name',value.team_name);
       createteamfrom.append('o_username',value.team_username);
       this.authService.postData(createteamfrom,'create_org.php').then((resultdetail) => {
+        loading.dismiss();
         this.response = resultdetail;
         if(this.response.status == 'success'){
           this.view.dismiss('push');
@@ -126,7 +136,7 @@ export class CreateJoinOrganizationPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

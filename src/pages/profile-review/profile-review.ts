@@ -45,16 +45,21 @@ export class ProfileReviewPage {
 
   ionViewDidLoad() {
     this.user_id = this.navParams.get('user_id');
-    console.log(this.user_id);
+    //console.log(this.user_id);
     this.getprofileById(this.user_id);
   }
 
   getprofileById(id){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getuserDetail = new FormData();
     getuserDetail.append('user_id',id);
     getuserDetail.append('service_type','user_details');
     this.authService.postData(getuserDetail,'login.php').then((resultdetail) => {
       this.responseDataDetail = resultdetail;
+      loading.dismiss();
       if(this.responseDataDetail.status == 'success'){
         this.editfrom.controls['full_name'].setValue(this.responseDataDetail.user_details.m_full_name);
         this.editfrom.controls['email'].setValue(this.responseDataDetail.user_details.m_email);
@@ -69,6 +74,10 @@ export class ProfileReviewPage {
   }
 
   EditFrom(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let upuserDetail = new FormData();
     upuserDetail.append('m_id',this.user_id);
     upuserDetail.append('full_name',value.full_name);
@@ -80,6 +89,7 @@ export class ProfileReviewPage {
     upuserDetail.append('t_id','0');
     this.authService.postData(upuserDetail,'registration_old.php').then((result) => {
       this.responseDataDetail = result;
+      loading.dismiss();
       if(this.responseDataDetail.status == 'success'){
         //this.navCtrl.push('DonationPage',{user_id:this.user_id});
         this.openModal();
@@ -95,7 +105,7 @@ export class ProfileReviewPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   openModal() {

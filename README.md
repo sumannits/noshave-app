@@ -1,6 +1,6 @@
 #Ionic NoShave Novemver 🎮
 
-<img src="http://111.93.169.90/team2/noshave-new/assets/images/logo.png " width="400" />
+<img src="http://111.93.169.90/team2/noshave-new/assets/images/logo.png" width="400" />
 
 The Ionic Super Starter is a batteries-included starter project for Ionic apps
 complete with pre-built pages, providers, and best practices for Ionic

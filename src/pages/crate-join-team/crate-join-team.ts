@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App,IonicPage, NavController, NavParams ,ViewController ,ToastController } from 'ionic-angular';
+import { App,IonicPage, NavController, NavParams ,ViewController ,ToastController,LoadingController } from 'ionic-angular';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Api } from '../../providers';
 /**
@@ -24,8 +24,8 @@ export class CrateJoinTeamPage {
   public teamresult : any;
   public teamarray:any;
   public teamresultnew:any;
-  public teamdetailsByIdresult:any; 
-  constructor(public app:App, public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
+  public teamdetailsByIdresult:any;
+  constructor(public loadingCtrl:LoadingController,public app:App, public authService:Api,public toastCtrl:ToastController,public navCtrl: NavController, public navParams: NavParams,public view: ViewController) {
     this.createteam = new FormGroup({
       team_name: new FormControl('', [Validators.required]),
       team_username: new FormControl('', [Validators.required])
@@ -62,12 +62,17 @@ export class CrateJoinTeamPage {
   }
 
   JoinTeam(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     if(this.jointeam.valid){
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let jointeamfrom = new FormData();
       jointeamfrom.append('user_id',loguser.m_id);
       jointeamfrom.append('t_id',value.team);
       this.authService.postData(jointeamfrom,'join_team.php').then((result) => {
+        loading.dismiss();
         this.responsejoin = result;
         if(this.responsejoin.status == 'success'){
           this.view.dismiss({page:'TeamPage'});
@@ -84,6 +89,10 @@ export class CrateJoinTeamPage {
   }
 
   CreateTeam(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     if(this.createteam.valid){
       const loguser = JSON.parse(localStorage.getItem('userData'));
       let createteamfrom = new FormData();
@@ -91,6 +100,7 @@ export class CrateJoinTeamPage {
       createteamfrom.append('t_name',value.team_name);
       createteamfrom.append('t_username',value.team_username);
       this.authService.postData(createteamfrom,'create_team.php').then((resultdetail) => {
+        loading.dismiss();
         this.response = resultdetail;
         if(this.response.status == 'success'){
           this.view.dismiss({page:'TeamPage'});
@@ -124,7 +134,7 @@ export class CrateJoinTeamPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
 }

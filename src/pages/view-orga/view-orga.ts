@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions ,ToastController} from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams ,Modal, ModalController, ModalOptions ,ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { environment as ENV } from '../../environments/environment';
@@ -20,16 +20,21 @@ export class ViewOrgaPage {
   public responseDataDetail:any;
   public bind_arr_orga:any;
   public url : string = ENV.baseUrl;
-  constructor(private socialSharing: SocialSharing,public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loadingCtrl: LoadingController,private socialSharing: SocialSharing,public toastCtrl : ToastController,public authService:Api,public modal:ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.orga_id = this.navParams.get('team_id');
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let getteamDetail = new FormData();
     getteamDetail.append('org_id',this.orga_id);
     getteamDetail.append('service_type','orga_pagedetail');
     this.authService.postData(getteamDetail,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.bind_arr_orga = this.responseDataDetail.bind_arr_orga;
-        console.log('org_details',this.responseDataDetail);
+        //console.log('org_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

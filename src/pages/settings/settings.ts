@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,LoadingController } from 'ionic-angular';
 import { Api } from '../../providers';
 import { AbstractControl , Validators, FormBuilder, FormGroup, FormControl ,ValidatorFn} from '@angular/forms';
 /**
@@ -29,7 +29,7 @@ export class SettingsPage {
   public newpass:AbstractControl;
   public conf_pass:AbstractControl;
   public responseData:any;
-  constructor(public navCtrl: NavController,
+  constructor(public loadingCtrl:LoadingController,public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
     public serviceApi: Api,
@@ -49,6 +49,10 @@ export class SettingsPage {
   }
 
   changepass(value:any){
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     const loguser = JSON.parse(localStorage.getItem('userData'));
     let changepass = new FormData();
     changepass.append('change','change');
@@ -57,6 +61,7 @@ export class SettingsPage {
     changepass.append('old_password',value.password);
     changepass.append('new_password',value.newpass);
     this.serviceApi.postData(changepass,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseData = resultdetail;
       if(this.responseData.status == 'success'){
         this.tost_message(this.responseData.msg);
@@ -71,6 +76,6 @@ export class SettingsPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 }

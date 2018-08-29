@@ -30,13 +30,14 @@
       </div>
   </ion-toolbar>
   </ion-header>
-  
+
   <ion-content>
       <div [ngSwitch]="switch" style="
       margin-top: 16px;">
           <ion-list *ngSwitchCase="'member'" ngSelected="selected">
             <div class="total-area" *ngFor="let d of doantionlistarray;let i = index">
               <ion-row>
+              <!-- <ion-row (click)="gotoView('1',d.d_id)"> -->
                 <ion-col col-2 class="pt-0 pr-0 pl-0">
                   <h4 class="nmbr">{{ i+1 }}</h4>
                 </ion-col>
@@ -69,10 +70,11 @@
                 Sorry! No Personal Donation Found.
             </div>
           </ion-list>
-        
+
           <ion-list *ngSwitchCase="'team'" ngSelected="selected">
               <div class="total-area" *ngFor="let t of teamlistarray;let i = index">
-                  <ion-row>
+                <ion-row>
+                <!-- <ion-row (click)="gotoView('2',t.d_id)"> -->
                     <ion-col col-2 class="pt-0 pr-0 pl-0">
                       <h4 class="nmbr">{{ i+1 }}</h4>
                     </ion-col>
@@ -105,9 +107,10 @@
                     Sorry! No Team Donation Found.
                 </div>
           </ion-list>
-    
+
           <ion-list *ngSwitchCase="'organization'" ngSelected="selected">
             <div class="total-area" *ngFor="let o of org_donation;let i = index">
+                <!-- <ion-row (click)="gotoView('3',o.d_id)"> -->
                 <ion-row>
                   <ion-col col-2 class="pt-0 pr-0 pl-0">
                     <h4 class="nmbr">{{ i+1 }}</h4>
@@ -180,7 +183,7 @@
           </ion-col>
         </ion-row>
       </div>
-      
+
       <div class="total-area" *ngIf="doantionlistarray?.length == 0">
         <ion-row>
           <div class="con-part">
@@ -189,5 +192,5 @@
         </ion-row>
       </div>
     </ion-list> -->
-  
+
   </ion-content>

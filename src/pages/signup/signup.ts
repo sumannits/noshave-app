@@ -57,6 +57,10 @@ export class SignupPage {
   }
 
   doSignup(val : any) {
+    let loading = this.loadingCtrl.create({
+      content: 'Please Wait...'
+    });
+    loading.present();
     let signup = new FormData();
     signup.append('service_type','signup');
     signup.append('password',val.password);
@@ -68,8 +72,9 @@ export class SignupPage {
     signup.append('state',val.state);
     signup.append('country',val.country);
     this.serviceApi.postData(signup,'user.php').then((resultdetail) => {
+      loading.dismiss();
       this.responseData = resultdetail;
-      console.log('After Sign Up',this.responseData);
+      //console.log('After Sign Up',this.responseData);
       if(this.responseData.status == 'success'){
         this.openModal(this.responseData.user_id);
         this.tost_message(this.responseData.msg);
@@ -89,7 +94,7 @@ export class SignupPage {
      message: msg,
      duration: 3000
     });
-    toast.present(); 
+    toast.present();
   }
 
   openModal(id) {

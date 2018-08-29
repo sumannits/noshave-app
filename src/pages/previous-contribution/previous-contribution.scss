@@ -2,4 +2,30 @@ page-previous-contribution {
     .toolbar-title{
         font-size: 1.4rem;
     }
+    .toolbar{ padding: 0;}
+    .toolbar .segment{ background-color: #392c19;}
+    .top-seg-bar{ min-height: 46px;}
+    .segment .segment-button{ color: #ffffff; text-transform: inherit; border: 0; padding: 0 6px; line-height: 4rem; height: 4.2rem; max-width: 122px;}
+    .seg-a-bar{background: #ede7db;}
+    .seg-a-bar .col .item{ background: none; text-align: center;}
+    .seg-a-bar .col .item-block{ min-height: 3.7rem;}
+    .bar-button[icon-only] ion-icon{ color: #3b2c19 !important;}
+    .list-header{ font-weight: 600; color: #392d19; font-size: 1.5rem; text-transform: inherit; border-bottom: 1px solid #ebebeb; margin-bottom:13px;}
+    .con-part{ width: auto;}
+    .top-text{ width: auto;}
+    .top-text h4{ margin-bottom: 0; margin-top: 0; display: flex; color: #074f5f; justify-content: space-between; align-items: center; font-size: 1.55rem;}
+    .nmbr{ border: 1px solid #0f5564; border-radius: 50%; font-size:1.4rem; text-align: center; width: 32px; height: 32px; line-height: 3rem; margin-top: 0; margin-bottom: 0;}
+    .total-area{ padding: 0 16px 16px; margin-bottom: 16px; border-bottom: 1px solid #ebebeb;}
+    .price{ color: #6a3447; font-weight: 600;}
+
+    .date{margin-top: 0; margin-bottom:0; font-size: 1.3rem; font-weight: 500;}
+    .date-text{margin-top: 0; margin-bottom: 0; font-weight: 400; color: #666666; font-size: 1.3rem;  overflow: hidden; text-overflow: ellipsis; display: -webkit-box; line-height: 16px;     /* fallback */ max-height: 32px;      /* fallback */ -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical;}
+
+    .dt-row{ margin-top: 0.5rem;}
+
+
+    .pt-0{padding-top: 0;}
+    .pr-0{padding-right: 0;}
+    .pb-0{ padding-bottom: 0;}
+    .pl-0{padding-left: 0;}
 }
