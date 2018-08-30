@@ -39,7 +39,8 @@ export class MyApp {
       { title: 'Leaderboard', component: 'LeaderboardPage', icon:'aperture' },
       { title: 'Account', component: 'AccountPage', icon:'person' },
       { title: 'Previous Contributors', component: 'PreviousContributionPage', icon:'arrow-round-back' },
-      { title: 'Settings', component: 'SettingsPage', icon:'settings' },
+      //{ title: 'Settings', component: 'SettingsPage', icon:'settings' },
+      //{ title: 'Help', component: 'ContactUsPage', icon:'help' },
       { title: 'Logout', component: '',icon:'power' }
     ];
     platform.ready().then(() => {

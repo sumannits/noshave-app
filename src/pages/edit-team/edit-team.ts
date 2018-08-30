@@ -55,7 +55,7 @@ export class EditTeamPage {
     teamdetailsById.append('service_type','team_page');
     this.authService.postData(teamdetailsById,'user.php').then((resultstedetail) => {
       this.responseDataDetail = resultstedetail;
-      loading.present();
+      loading.dismiss();
       if(this.responseDataDetail.status == 'success'){
         this.editfrom.controls['teamname'].setValue(this.responseDataDetail.team_details.t_name);
         this.editfrom.controls['team_username'].setValue(this.responseDataDetail.team_details.t_username);

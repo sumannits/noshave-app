@@ -20,6 +20,7 @@
 
 
 <ion-content padding>
+  <h6 class="text-uppercase text-center font-medium text-primary mb-20" style="color: #074f5f;font-size: 17px;font-weight: bold !important;">Welcome, {{ user_data?.m_full_name }}</h6>
   <ion-row>
     <ion-col col-6 class="pt-0 pl-0">
       <ion-card class="donation" (click)="gotoviewDonation()">
@@ -37,7 +38,7 @@
       <ion-card-header class="pb-0" text-center>
          ${{ dashboardcontent?.raised }}
       </ion-card-header>
-      <ion-card-content class="pl-0 pr-0">        
+      <ion-card-content class="pl-0 pr-0">
         <p text-center>Raised</p>
         <h2 text-center text-uppercase>Share Your Page</h2>
       </ion-card-content>

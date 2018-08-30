@@ -54,7 +54,7 @@
     <div class="donation-tab">
       <button (click)="openDonation()">Team Member</button>
       <button (click)="openTeamDonation()">Team Donations</button>
-      <button (click)="goToorga()">Organization</button>
+      <button (click)="goToorga(this.responseDataDetail.orga_result[0]?.o_username)">Organization</button>
     </div>
     <!-- <ion-grid class="table-view">
       <ion-row class="table-header">

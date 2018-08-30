@@ -54,7 +54,7 @@
     <div class="donation-tab">
       <button (click)="openDonation()">Donation List</button>
 
-      <button *ngIf="user_details?.m_team_id !=''" (click)="gotoTeam(user_details?.m_team_id)">Teams</button>
+      <button *ngIf="user_details?.m_team_id !=''" (click)="gotoTeam(this.responseDataDetail.team_arr[0]?.t_username)">Teams</button>
       <!-- <button>Organization</button> -->
     </div>
     <ion-grid class="table-view">

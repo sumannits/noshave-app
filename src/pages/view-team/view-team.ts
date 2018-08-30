@@ -37,7 +37,7 @@ export class ViewTeamPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.team_details = this.responseDataDetail.bind_arr_team;
-        //console.log('team_details',this.team_details);
+        console.log('team_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
@@ -90,8 +90,8 @@ export class ViewTeamPage {
    toast.present();
   }
 
-  goToorga(){
-    this.navCtrl.setRoot('OrganizationPage');
+  goToorga(id){
+    this.navCtrl.push('ViewOrgaPage',{'team_id':id});
   }
 
   share(msg,subject,url){
