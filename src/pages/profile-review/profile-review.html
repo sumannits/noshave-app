@@ -13,13 +13,13 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-  <h6 class="text-uppercase text-center font-medium text-primary mb-20">Please review and update your information</h6>
+  <h6 class="text-uppercase text-center font-medium text-primary mb-20" style="color: #074f5f;">Please review and update your information</h6>
   <form [formGroup]="editfrom" #editForm="ngForm">
       <ion-list>
         <div class="text-field-area">
           <ion-label>Full Name</ion-label>
           <ion-item>
-            <ion-input formControlName="full_name" placeholder="Full Name"></ion-input>
+            <ion-input formControlName="full_name" placeholder="Full Name*"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( editfrom.get('full_name').hasError('pattern') || editfrom.get('full_name').hasError('required') ) && editfrom.get('full_name').touched">
             <div class="error" *ngIf="editfrom.get('full_name').hasError('required') && editfrom.get('full_name').touched">
@@ -34,7 +34,7 @@
         <div class="text-field-area">
           <ion-label>Email</ion-label>
           <ion-item>
-            <ion-input type="email" formControlName="email" placeholder="Enter your email"></ion-input>
+            <ion-input type="email" formControlName="email" placeholder="Email address*"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( editfrom.get('email').hasError('minlength') || editfrom.get('email').hasError('pattern') ||editfrom.get('email').hasError('required') ) && editfrom.get('email').touched">
             <div class="error" *ngIf="editfrom.get('email').hasError('required') && editfrom.get('email').touched">
@@ -48,7 +48,7 @@
         <div class="text-field-area">
             <ion-label>Username</ion-label>
             <ion-item>
-              <ion-input type="text" formControlName="username" placeholder="Please Enter your username"></ion-input>
+              <ion-input type="text" formControlName="username" placeholder="Username*"></ion-input>
             </ion-item>
             <div class="error-item" no-lines *ngIf="( editfrom.get('username').hasError('pattern') || editfrom.get('username').hasError('required') ) && editfrom.get('username').touched">
               <div class="error" *ngIf="editfrom.get('username').hasError('required') && editfrom.get('username').touched">
@@ -59,7 +59,7 @@
         <div class="text-field-area">
           <ion-label>City</ion-label>
           <ion-item>
-            <ion-input type="text" formControlName="city" placeholder="Please Enter your city"></ion-input>
+            <ion-input type="text" formControlName="city" placeholder="City*"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( editfrom.get('city').hasError('pattern') || editfrom.get('city').hasError('required') ) && editfrom.get('city').touched">
             <div class="error" *ngIf="editfrom.get('city').hasError('required') && editfrom.get('city').touched">
@@ -71,7 +71,7 @@
         <div class="text-field-area">
           <ion-label>State</ion-label>
           <ion-item>
-            <ion-input type="text" formControlName="state" placeholder="Please Enter your state"></ion-input>
+            <ion-input type="text" formControlName="state" placeholder="State / Region*"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( editfrom.get('state').hasError('pattern') || editfrom.get('state').hasError('required') ) && editfrom.get('state').touched">
             <div class="error" *ngIf="editfrom.get('state').hasError('required') && editfrom.get('state').touched">
@@ -83,7 +83,7 @@
         <div class="text-field-area">
           <ion-label>Country</ion-label>
           <ion-item>
-            <ion-input type="text" formControlName="country" placeholder="Please Enter your state"></ion-input>
+            <ion-input type="text" formControlName="country" placeholder="Country*"></ion-input>
           </ion-item>
           <div class="error-item" no-lines *ngIf="( editfrom.get('country').hasError('pattern') || editfrom.get('country').hasError('required') ) && editfrom.get('country').touched">
             <div class="error" *ngIf="editfrom.get('country').hasError('required') && editfrom.get('country').touched">
@@ -95,5 +95,5 @@
           <button class="font-medium" ion-button color="primary" block [disabled]="!editForm.valid" (click)="EditFrom(editfrom.value)">Submit</button>
         </div>
       </ion-list>
-    </form>  
+    </form>
 </ion-content>

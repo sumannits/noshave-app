@@ -16,7 +16,7 @@ let apiUrl = 'http://111.93.169.90/team2/noshave-new/platform/api/';
 */
 @Injectable()
 export class Api {
-  
+
   constructor(public http: Http,public loadingCtrl: LoadingController) {
     //console.log('Hello AuthServiceProvider Provider');
   }
@@ -25,6 +25,7 @@ export class Api {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
+    //loading.present();
     return new Promise((resolve, reject) => {
       //let headers = new Headers();
       //headers.append("Content-Type","application/json");
@@ -32,14 +33,13 @@ export class Api {
         'enctype': 'multipart/form-data; boundary=----WebKitFormBoundaryuL67FWkv1CA',
         'Access-Control-Allow-Origin':'*'
       }
-      const requestOptions = { 
-        headers: new Headers(headerDict), 
+      const requestOptions = {
+        headers: new Headers(headerDict),
       };
       this.http.post(apiUrl + type,credentials,requestOptions).subscribe(res => {
           resolve(res.json());
           loading.dismiss();
         }, (err) => {
-          //console.log(err);
           reject(err);
           loading.dismiss();
         });
@@ -57,7 +57,7 @@ export class Api {
       const headerDict = {
         'Content-Type': 'application/json',
       }
-      const requestOptions = {                                                                    headers: new Headers(headerDict), 
+      const requestOptions = {                                                                    headers: new Headers(headerDict),
       };
 
       this.http.get(apiUrl + type,requestOptions).subscribe(res => {
@@ -69,20 +69,20 @@ export class Api {
           loading.dismiss();
         });
     });
-  } 
-  
+  }
+
   patchData(credentials, type) {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-    
+
     return new Promise((resolve, reject) => {
       //let headers = new Headers();
       //headers.append("Content-Type","application/json");
       const headerDict = {
         'Content-Type': 'application/json',
       }
-      const requestOptions = {                                                                    headers: new Headers(headerDict), 
+      const requestOptions = {                                                                    headers: new Headers(headerDict),
       };
 
       this.http.patch(apiUrl + type, JSON.stringify(credentials),requestOptions).subscribe(res => {

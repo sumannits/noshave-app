@@ -223,4 +223,8 @@ export class AccountPage {
    toast.present();
   }
 
+  goToChangePass(){
+    this.navCtrl.push('SettingsPage');
+  }
+
 }

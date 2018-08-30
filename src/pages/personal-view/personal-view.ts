@@ -38,7 +38,7 @@ export class PersonalViewPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.user_details = this.responseDataDetail.personal_pagedetail
-        //console.log(this.user_details);
+        //console.log(this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
@@ -94,7 +94,7 @@ export class PersonalViewPage {
   }
 
   gotoTeam(id){
-    this.navCtrl.setRoot('TeamPage');
+    this.navCtrl.push('ViewTeamPage',{'team_id':id});
   }
 
   share(msg,subject,url){

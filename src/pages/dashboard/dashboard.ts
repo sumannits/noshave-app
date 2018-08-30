@@ -16,6 +16,7 @@ import { Api } from '../../providers';
 export class DashboardPage {
   public responseDataDetail:any;
   public dashboardcontent:any;
+  public user_data:any;
   constructor(public toastCtrl:ToastController,public authService:Api ,public navCtrl: NavController, public navParams: NavParams) {
     let dashboard = new FormData();
     dashboard.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -28,6 +29,8 @@ export class DashboardPage {
         this.tost_message(this.responseDataDetail.reason);
       }
     });
+    this.user_data = JSON.parse(localStorage.getItem('userData'));
+    //console.log('user_data',this.user_data);
   }
 
   ionViewDidLoad() {
@@ -38,7 +41,7 @@ export class DashboardPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   gotoviewDonation(){
