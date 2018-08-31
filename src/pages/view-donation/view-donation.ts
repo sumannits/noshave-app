@@ -17,7 +17,10 @@ export class ViewDonationPage {
   public data :any;
   public responseDataDetail:any;
   public personal_donation_list : any;
+  public userDetailsJson:any;
   constructor(public loadingCtrl:LoadingController,public toastCtrl : ToastController,public authService:Api,public view:ViewController ,public navCtrl: NavController, public navParams: NavParams) {
+    this.userDetailsJson = JSON.parse(localStorage.getItem('userData'));
+    //console.log(this.userDetailsJson);
     this.data = this.navParams.get('data');
     let loading = this.loadingCtrl.create({
       content: 'Please Wait...'

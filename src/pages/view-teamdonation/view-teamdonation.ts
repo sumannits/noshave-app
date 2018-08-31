@@ -28,7 +28,7 @@ export class ViewTeamdonationPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.donation_table_result = this.responseDataDetail.donation_table_result;
-        //console.log('team_details',this.donation_table_result);
+        //console.log('team_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

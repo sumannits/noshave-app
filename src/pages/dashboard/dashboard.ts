@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
 import { Api } from '../../providers';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { environment as ENV } from '../../environments/environment';
 /**
  * Generated class for the DashboardPage page.
  *
@@ -16,7 +18,9 @@ import { Api } from '../../providers';
 export class DashboardPage {
   public responseDataDetail:any;
   public dashboardcontent:any;
-  constructor(public toastCtrl:ToastController,public authService:Api ,public navCtrl: NavController, public navParams: NavParams) {
+  public user_data:any;
+  public url : string = ENV.baseUrl;
+  constructor(private socialSharing: SocialSharing,public toastCtrl:ToastController,public authService:Api ,public navCtrl: NavController, public navParams: NavParams) {
     let dashboard = new FormData();
     dashboard.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
     dashboard.append('service_type','dashboard_page');
@@ -28,6 +32,8 @@ export class DashboardPage {
         this.tost_message(this.responseDataDetail.reason);
       }
     });
+    this.user_data = JSON.parse(localStorage.getItem('userData'));
+    //console.log('user_data',this.user_data);
   }
 
   ionViewDidLoad() {
@@ -38,7 +44,7 @@ export class DashboardPage {
      message: msg,
      duration: 3000
    });
-   toast.present(); 
+   toast.present();
   }
 
   gotoviewDonation(){
@@ -47,6 +53,15 @@ export class DashboardPage {
 
   gotoviewMyPage(){
     this.navCtrl.setRoot('PersonalPage');
+  }
+
+  share(msg,subject,url){
+    //console.log(msg +  subject + url);
+    this.socialSharing.share(msg, subject, null , url).then(() => {
+      // Success!
+    }).catch(() => {
+      this.tost_message('Unable To Share.');
+    });
   }
 
 }

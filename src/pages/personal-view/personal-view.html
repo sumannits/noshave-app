@@ -39,6 +39,9 @@
             <span [style.width]="user_details?.total_raised_width+'%'"></span>
           </div>
         </ion-item>
+        <ion-item *ngIf="user_details?.m_team_id !=''">
+          <b>Team : <span (click)="gotoTeam(this.responseDataDetail.team_arr[0]?.t_username)">{{ teamname }}</span></b>
+        </ion-item>
         <ion-item>
           <b>
             {{user_details?.m_page_title}}
@@ -54,7 +57,7 @@
     <div class="donation-tab">
       <button (click)="openDonation()">Donation List</button>
 
-      <button *ngIf="user_details?.m_team_id !=''" (click)="gotoTeam(user_details?.m_team_id)">Teams</button>
+      <!-- <button *ngIf="user_details?.m_team_id !=''" (click)="gotoTeam(this.responseDataDetail.team_arr[0]?.t_username)">Teams</button> -->
       <!-- <button>Organization</button> -->
     </div>
     <ion-grid class="table-view">
