@@ -21,10 +21,10 @@
 
       </div>
       <ion-card-content class="nowrap">
-        <!-- <ion-item class="name">
-          <h3>{{ team_details?.t_name }}</h3>
-          <p>{{ team_details?.t_pic_0 }}</p>
-        </ion-item> -->
+        <ion-item style="padding-left:0px" class="name">
+          <h3 style="font-size: 18px;font-weight: bold;color: #074f5f;">{{ team_details?.t_name }}</h3>
+          <!-- <p>{{ team_details?.t_pic_0 }}</p> -->
+        </ion-item>
         <ion-item >
           <donate-button donateType="team" id='{{team_id}}' viewdonate='1'></donate-button>
           <!-- <button ion-button icon-start><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Make a Donation</button> -->
@@ -38,6 +38,9 @@
           <div class="progressbar">
             <span [style.width]="team_details?.total_raised_width+'%'"></span>
           </div>
+        </ion-item>
+        <ion-item *ngIf="this.responseDataDetail?.orga_result.length > 0">
+          <b>Organization : <span (click)="goToorga(this.responseDataDetail?.orga_result[0].o_username)">{{ this.responseDataDetail?.orga_result[0].o_name }}</span></b>
         </ion-item>
         <ion-item>
           <b>
@@ -54,7 +57,7 @@
     <div class="donation-tab">
       <button (click)="openDonation()">Team Member</button>
       <button (click)="openTeamDonation()">Team Donations</button>
-      <button (click)="goToorga(this.responseDataDetail.orga_result[0]?.o_username)">Organization</button>
+      <!-- <button (click)="goToorga(this.responseDataDetail.orga_result[0]?.o_username)">Organization</button> -->
     </div>
     <!-- <ion-grid class="table-view">
       <ion-row class="table-header">

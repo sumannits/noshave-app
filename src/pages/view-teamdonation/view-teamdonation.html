@@ -75,7 +75,7 @@
         </ion-row>
       </ng-container>
       <ion-row *ngIf="donation_table_result?.length == 0" style="padding: 7px 0px 5px;">
-          Sorry ! No donation Found.
+        <span style="margin-top: 3%;color: #074f5f;font-weight: 500;">Be the first to donate to {{ responseDataDetail?.bind_arr_team.t_name }}!</span> <donate-button donateType="team" id="{{getdata?.id}}"></donate-button>
       </ion-row>
     </ion-grid>
     <!-- <div *ngIf="donation_table_result?.length == 0">

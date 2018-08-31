@@ -38,7 +38,7 @@
       <ion-card-header class="pb-0" text-center>
          ${{ dashboardcontent?.raised }}
       </ion-card-header>
-      <ion-card-content class="pl-0 pr-0">
+      <ion-card-content class="pl-0 pr-0" (click)="share('Personal Donate Page','Noshave November',url +'member/'+ user_data?.m_username)">
         <p text-center>Raised</p>
         <h2 text-center text-uppercase>Share Your Page</h2>
       </ion-card-content>
