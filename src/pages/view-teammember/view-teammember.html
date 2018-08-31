@@ -47,7 +47,7 @@
       <ion-col col-4>Raised</ion-col>
     </ion-row>
     <ng-container *ngIf="bind_arr_member?.length >0">
-      <ion-row *ngFor="let mem of bind_arr_member">
+      <ion-row *ngFor="let mem of bind_arr_member" (click)="gotomember(mem?.m_username)">
         <ion-col col-8 class="user">
             <img src="{{ mem.m_profile_pic }}" class="photoProfile"/>
             <span>{{ mem.m_full_name }}</span>

@@ -77,11 +77,13 @@
     </ion-row>
     <ng-container *ngIf="personal_donation_list?.length > 0">
       <ion-row *ngFor="let m of personal_donation_list">
-        <ion-col col-4 class="user">
-            <span>{{ m.d_name }}</span>
-        </ion-col>
-        <ion-col col-3><b>${{ m.d_amount }}</b></ion-col>
-        <ion-col col-5 style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><span>{{m.d_message}}</span></ion-col>
+        <ng-container *ngIf="m.d_visible_on_page == 1">
+          <ion-col col-4 class="user">
+              <span>{{ m.d_name }}</span>
+          </ion-col>
+          <ion-col col-3><b>${{ m.d_amount }}</b></ion-col>
+          <ion-col col-5><span>{{m.d_message}}</span></ion-col>
+        </ng-container>
       </ion-row>
     </ng-container>
     <ion-row *ngIf="personal_donation_list?.length == 0" style="padding: 7px 0px 5px;">

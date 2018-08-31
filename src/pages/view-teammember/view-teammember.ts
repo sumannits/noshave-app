@@ -27,7 +27,7 @@ export class ViewTeammemberPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.bind_arr_member = this.responseDataDetail.bind_arr_member;
-        //console.log('team_details',this.responseDataDetail.bind_arr_member);
+        //console.log('team_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
@@ -48,6 +48,10 @@ export class ViewTeammemberPage {
      duration: 3000
    });
    toast.present();
+  }
+
+  gotomember(id){
+    this.navCtrl.push('PersonalViewPage',{'id':id});
   }
 
 }
