@@ -91,4 +91,5 @@
     <plugin name="cordova-plugin-themeablebrowser" spec="^0.2.17" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.1" />
     <engine name="android" spec="^7.0.0" />
+    <engine name="ios" spec="4.5.5" />
 </widget>
