@@ -21,6 +21,7 @@ export class PersonalViewPage {
   public user_details:any;
   public user_id : any;
   public url : string = ENV.baseUrl;
+  public teamname: string;
   constructor(private socialSharing: SocialSharing,public loadingCtrl:LoadingController,public authService:Api,public modal:ModalController, public navCtrl: NavController,
     public navParams: NavParams,public toastCtrl:ToastController) {
     this.user_id = this.navParams.get('id');
@@ -37,8 +38,8 @@ export class PersonalViewPage {
       loading.dismiss();
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
-        this.user_details = this.responseDataDetail.personal_pagedetail
-        //console.log(this.responseDataDetail);
+        this.user_details = this.responseDataDetail.personal_pagedetail;
+        this.teamname = this.responseDataDetail.team_arr[0].t_name
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

@@ -37,7 +37,7 @@ export class ViewTeamPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.team_details = this.responseDataDetail.bind_arr_team;
-        console.log('team_details',this.responseDataDetail);
+        //console.log('team_details',this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }
