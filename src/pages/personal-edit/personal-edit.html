@@ -34,13 +34,13 @@
         <ion-label>Location Visibility</ion-label>
       </div>
       <ion-row radio-group formControlName="location_visibility">
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label style="font-size:15px">Show Location</ion-label>
             <ion-radio value="1"></ion-radio>
           </ion-item>
         </ion-col>
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label>Hide Location</ion-label>
             <ion-radio value="0"></ion-radio>
@@ -51,25 +51,25 @@
         <ion-label>Location Format</ion-label>
       </div>
       <ion-row radio-group formControlName="location_format">
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label>City, State</ion-label>
             <ion-radio value="0"></ion-radio>
           </ion-item>
         </ion-col>
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label>City, Country</ion-label>
             <ion-radio value="1"></ion-radio>
           </ion-item>
         </ion-col>
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label>City</ion-label>
             <ion-radio value="2"></ion-radio>
           </ion-item>
         </ion-col>
-        <ion-col col-6>
+        <ion-col>
           <ion-item>
             <ion-label>Country</ion-label>
             <ion-radio value="3"></ion-radio>
@@ -104,7 +104,7 @@
       <div class="text-field-area">
         <ion-label>Page Description</ion-label>
         <ion-item>
-          <ion-textarea formControlName="description" placeholder="Page Description"></ion-textarea>
+          <ion-textarea style="height: 150px;" formControlName="description" placeholder="Page Description"></ion-textarea>
         </ion-item>
         <div class="error-item" no-lines *ngIf="( editfrom.get('description').hasError('pattern') || editfrom.get('description').hasError('required') ) && editfrom.get('description').touched">
           <div class="error" *ngIf="editfrom.get('description').hasError('required') && editfrom.get('description').touched">
