@@ -56,6 +56,7 @@ export class LoginPage {
       formData.append('service_type', 'login');
       this.userService.postData(formData,'login.php').then((result) => {
         this.responseData = result;
+        loading.dismiss();
         if(this.responseData.status == 'success')
         {
           let getuserDetail = new FormData();
@@ -63,7 +64,6 @@ export class LoginPage {
           getuserDetail.append('service_type','user_details');
           this.userService.postData(getuserDetail,'login.php').then((resultdetail) => {
             this.responseDataDetail = resultdetail;
-            loading.dismiss();
             if(this.responseDataDetail.status == 'success'){
               //creating user:created Event Handeler
               if(this.navdata && this.navdata =='returning'){
