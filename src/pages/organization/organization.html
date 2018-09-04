@@ -17,6 +17,7 @@
 </ion-header>
 
   <ion-content padding *ngIf="is_team_member == true && is_team_owner == false">
+    <h6 class="text-uppercase text-center font-medium text-primary mb-20" style="color: #074f5f;font-size: 14px;font-weight: bold !important;">{{ team_details?.o_name }}</h6>
     <ion-card class="personal">
         <div class="relative">
           <img class="personal-image-style" src="{{ team_details?.o_pic_0 }}"/>
@@ -77,6 +78,7 @@
   </ion-content>
 
   <ion-content padding *ngIf="is_team_member == false && is_team_owner == true">
+      <h6 class="text-uppercase text-center font-medium text-primary mb-20" style="color: #074f5f;font-size: 14px;font-weight: bold !important;">{{ team_details?.o_name }}</h6>
       <ion-card class="personal">
           <div class="relative">
             <img class="personal-image-style" src="{{ team_details?.o_pic_0 }}"/>

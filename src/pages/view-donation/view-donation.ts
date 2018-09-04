@@ -34,7 +34,7 @@ export class ViewDonationPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.personal_donation_list = this.responseDataDetail.personal_donation_list;
-        //console.log(this.responseDataDetail);
+        console.log(this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

@@ -20,7 +20,7 @@
   <form [formGroup]="editfrom" #editForm="ngForm">
     <ion-list>
       <div class="text-field-area">
-        <ion-label>User Name</ion-label>
+        <ion-label class="edit-from-text-lebel">User Name</ion-label>
         <ion-item>
           <ion-input formControlName="username" placeholder="User Name"></ion-input>
         </ion-item>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="text-field-area">
-        <ion-label>Location Visibility</ion-label>
+        <ion-label class="edit-from-text-lebel">Location Visibility</ion-label>
       </div>
       <ion-row radio-group formControlName="location_visibility">
         <ion-col>
@@ -48,7 +48,7 @@
         </ion-col>
       </ion-row>
       <div class="text-field-area">
-        <ion-label>Location Format</ion-label>
+        <ion-label class="edit-from-text-lebel">Location Format</ion-label>
       </div>
       <ion-row radio-group formControlName="location_format">
         <ion-col>
@@ -71,14 +71,14 @@
         </ion-col>
         <ion-col>
           <ion-item>
-            <ion-label>Country</ion-label>
+            <ion-label class="edit-from-text-lebel">Country</ion-label>
             <ion-radio value="3"></ion-radio>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <div class="text-field-area">
-        <ion-label>Page Title</ion-label>
+        <ion-label class="edit-from-text-lebel">Page Title</ion-label>
         <ion-item>
           <ion-input formControlName="page_title" placeholder="Page Title"></ion-input>
         </ion-item>
@@ -90,7 +90,7 @@
       </div>
 
       <div class="text-field-area">
-        <ion-label>Fundraising Goal</ion-label>
+        <ion-label class="edit-from-text-lebel">Fundraising Goal</ion-label>
         <ion-item>
           <ion-input formControlName="fundraising_goal" placeholder="Fundraising Goal"></ion-input>
         </ion-item>
@@ -102,9 +102,9 @@
       </div>
 
       <div class="text-field-area">
-        <ion-label>Page Description</ion-label>
+        <ion-label class="edit-from-text-lebel">Page Description</ion-label>
         <ion-item>
-          <ion-textarea style="height: 150px;" formControlName="description" placeholder="Page Description"></ion-textarea>
+          <ion-textarea formControlName="description" placeholder="Page Description"></ion-textarea>
         </ion-item>
         <div class="error-item" no-lines *ngIf="( editfrom.get('description').hasError('pattern') || editfrom.get('description').hasError('required') ) && editfrom.get('description').touched">
           <div class="error" *ngIf="editfrom.get('description').hasError('required') && editfrom.get('description').touched">

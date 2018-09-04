@@ -3,7 +3,7 @@ page-personal-edit {
     .header::after{ background-image: none;}
     .account-ban{ background: #6a3447; padding-left:0; margin-bottom: 3rem;}
     .account-ban.item-block .item-inner{ border-bottom: 0; padding-right: 0;}
-    .item ion-avatar{ width: 83px; height: 83px; margin: 0 auto; position: relative;} 
+    .item ion-avatar{ width: 83px; height: 83px; margin: 0 auto; position: relative;}
     .item ion-avatar img{ width: 100%; height: 100%; object-fit: cover;}
     .account-ban .item-inner .input-wrapper .label { margin-right: 0; margin-top: 15px; margin-bottom: 30px;}
     .camera{ background: #b1bd1b; position: absolute; bottom: 0; right: 0; border-radius: 50%; width: 25px; height: 25px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; color: #ffffff; }
@@ -16,4 +16,5 @@ page-personal-edit {
     .text-field-area .item .item-inner .input-wrapper .input .text-input{ color: #222222;}
     .text-field-area .item-input:last-child{ border-bottom: 0;}
     .error-item .error{ margin-left: 15px; }
+    textarea { height: 35vh; }
 }
