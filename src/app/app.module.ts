@@ -24,6 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ThemeableBrowser,
-    SocialSharing
+    SocialSharing,
+    Keyboard
   ],
   exports:[
   ]

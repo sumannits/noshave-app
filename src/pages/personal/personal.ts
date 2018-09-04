@@ -28,7 +28,7 @@ export class PersonalPage {
       this.responseDataDetail = resultdetail;
       if(this.responseDataDetail.status == 'success'){
         this.user_details = this.responseDataDetail.user_details
-        //console.log(this.user_details);
+        console.log(this.responseDataDetail);
       } else {
         this.tost_message(this.responseDataDetail.reason);
       }

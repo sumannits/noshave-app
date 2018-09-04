@@ -18,6 +18,7 @@
 
 
 <ion-content>
+  <h6 class="text-uppercase text-center font-medium text-primary mb-20" style="color: #074f5f;font-size: 14px;font-weight: bold !important;">{{ user_details?.m_username }}</h6>
   <ion-card class="personal">
       <div class="relative">
         <img class="personal-image-style" src="{{ user_details?.m_profile_pic }}"/>
@@ -33,13 +34,22 @@
             <a>{{ url +'member/'+ user_details?.m_username }}</a>
           </p>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="user_details?.m_display_location == 1">
           <b>
             <!-- <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon> -->
              Location :
           </b>
-          <p>
-              {{ user_details?.m_city }},{{ user_details?.m_country }}
+          <p *ngIf="user_details?.m_location_format == 0">
+              {{ user_details?.m_city }},{{ user_details?.m_state }}
+          </p>
+          <p *ngIf="user_details?.m_location_format == 1">
+            {{ user_details?.m_city }},{{ user_details?.m_country }}
+          </p>
+          <p *ngIf="user_details?.m_location_format == 2">
+            {{ user_details?.m_city }}
+          </p>
+          <p *ngIf="user_details?.m_location_format == 3">
+            {{ user_details?.m_country }}
           </p>
         </ion-item>
         <ion-item>
