@@ -1,19 +1,19 @@
 page-dashboard {
     .bar-button[icon-only] ion-icon{ color: #3b2c19 !important;}
     .donation { border: 2px solid #1d170c; background: #392d19; -webkit-box-shadow: none; box-shadow: none; margin: 4px; width: calc(100% - 8px); border-radius: 12px; overflow: hidden;}
-    .donation .card-header{ text-align: center; line-height: 1; font-size: 5rem; font-weight: 600; color: #ffffff;}
+    .donation .card-header{ text-align: center; line-height: 1; font-size: 3rem; font-weight: 600; color: #ffffff;}
     .donation .card-content{ padding-bottom: 16px;}
     .donation .card-content p{color: #ffffff; font-size: 1.8rem; font-weight: 300; margin-bottom: 0; margin-top: 1rem;}
     .donation .card-content h2{color: #ffffff; font-size: 1.4rem; font-weight: 600;}
-    
+
     .raised { border: 2px solid #043b47; background: #074f5f; -webkit-box-shadow: none; box-shadow: none; margin: 4px; width: calc(100% - 8px); border-radius: 12px; overflow: hidden;}
-    .raised .card-header{ text-align: center; line-height: 1; font-size: 5rem; font-weight: 600; color: #ffffff;}
+    .raised .card-header{ text-align: center; line-height: 1; font-size: 3rem; font-weight: 600; color: #ffffff;}
     .raised .card-content{ padding-bottom: 16px;}
     .raised .card-content p{color: #ffffff; font-size: 1.8rem; font-weight: 300; margin-bottom: 0; margin-top: 1rem;}
     .raised .card-content h2{color: #ffffff; font-size: 1.4rem; font-weight: 600;}
-    
+
     .of-price { border: 2px solid #542938; background: #6a3447; -webkit-box-shadow: none; box-shadow: none; margin: 4px; width: calc(100% - 8px); border-radius: 12px; overflow: hidden;}
-    .of-price .card-header{ text-align: center; line-height: 1; font-size: 5rem; font-weight: 600; color: #ffffff;}
+    .of-price .card-header{ text-align: center; line-height: 1; font-size: 3rem; font-weight: 600; color: #ffffff;}
     .of-price .card-content{ padding-bottom: 16px;}
     .of-price .card-content p{color: #ffffff; font-size: 1.8rem; font-weight: 300; margin-bottom: 0; margin-top: 1rem;}
     .of-price .card-content h2{color: #ffffff; font-size: 1.4rem; font-weight: 600;}
@@ -23,5 +23,5 @@ page-dashboard {
     .pt-0{padding-top: 0;}
     .pr-0{padding-right: 0;}
     .pb-0{padding-bottom: 0;}
-    .pl-0{padding-left: 0;}    
+    .pl-0{padding-left: 0;}
 }
