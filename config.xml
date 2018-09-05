@@ -95,4 +95,5 @@
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.4" />
     <engine name="android" spec="^7.0.0" />
     <engine name="ios" spec="^4.5.5" />
+    <engine name="android" spec="7.0.0" />
 </widget>

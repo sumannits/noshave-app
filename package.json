@@ -88,8 +88,8 @@
       "cordova-plugin-safariviewcontroller": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
