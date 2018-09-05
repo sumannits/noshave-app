@@ -47,6 +47,7 @@ export class MyApp {
     platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.show();
       this.splashScreen.hide();
       const loguser = JSON.parse(localStorage.getItem('userData'));
       //console.log(loguser);

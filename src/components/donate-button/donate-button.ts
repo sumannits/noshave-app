@@ -53,22 +53,22 @@ export class DonateButtonComponent {
       backButtonCanClose: true
     };
     if(this.donateType == 'normal'){
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.hideKeyboardAccessoryBar(false);
       //this.iab.create(this.url + 'donate?type=webview');
       this.themeableBrowser.create(this.url + 'donate?type=webview', '_blank', options);
     }
     if(this.donateType == 'member'){
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.hideKeyboardAccessoryBar(false);
       //this.iab.create(this.url + 'donate?id='+this.id+'&c=1&type=webview');
       this.themeableBrowser.create(this.url + 'donate?id='+this.id+'&c=1&type=webview', '_blank', options);
     }
     if(this.donateType == 'team'){
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.hideKeyboardAccessoryBar(false);
       //this.iab.create(this.url + 'donate?id='+this.id+'&c=2&type=webview');
       this.themeableBrowser.create(this.url + 'donate?id='+this.id+'&c=2&type=webview', '_blank', options);
     }
     if(this.donateType == 'orga'){
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.hideKeyboardAccessoryBar(false);
       //this.iab.create(this.url + 'donate?id='+this.id+'&c=3&type=webview');
       this.themeableBrowser.create(this.url + 'donate?id='+this.id+'&c=3&type=webview', '_blank', options);
     }
