@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Keyboard } from '@ionic-native/keyboard';
-import { StatusBar } from '@ionic-native/status-bar';
+//import { Keyboard } from '@ionic-native/keyboard';
+//import { StatusBar } from '@ionic-native/status-bar';
 import { Nav, Platform ,MenuController,Events} from 'ionic-angular';
 import { Api } from '../providers';
 export interface PageInterface {
@@ -30,7 +30,10 @@ export class MyApp {
   public loggeduser_details:any;
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title: string, component: any, icon:string}>;
-  constructor(private keyboard: Keyboard,public events: Events,public menu: MenuController, platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen,public serviceApi: Api,) {
+  constructor(//private keyboard: Keyboard,
+      public events: Events,public menu: MenuController, platform: Platform,
+     //private statusBar: StatusBar,
+     private splashScreen: SplashScreen,public serviceApi: Api,) {
     this.pages = [
       { title: 'Home', component: 'DashboardPage', icon:'home' },
       { title: 'Personal', component: 'PersonalPage', icon:'document' },
@@ -45,8 +48,9 @@ export class MyApp {
       { title: 'Logout', component: '',icon:'power' }
     ];
     platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.statusBar.styleDefault();
+      //this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.disableScroll(false);
       //this.keyboard.show();
       this.splashScreen.hide();
       const loguser = JSON.parse(localStorage.getItem('userData'));

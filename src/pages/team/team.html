@@ -131,7 +131,7 @@
             </ion-item>
             <ion-item>
               <button ion-button icon-start (click)="editTeam(team_details.t_id)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit </button>
-              <button ion-button outline icon-start (click)="emailTeam(team_details.t_id)"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email Team </button>
+              <!-- <button ion-button outline icon-start (click)="emailTeam(team_details.t_id)"><ion-icon ios="ios-mail" md="md-mail"></ion-icon> Email Team </button> -->
               <button ion-button outline icon-start (click)="share('Team Invite','Noshave',url+'register?t='+team_details.t_username)"><ion-icon ios="ios-send" md="md-send"></ion-icon> Invite </button>
               <button ion-button outline icon-start (click)="goToTeamView(team_details.t_id)"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
               <button ion-button outline icon-start (click)="share('Team Donate Page','Noshave November',team_details?.t_page_link)"><ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
