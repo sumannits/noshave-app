@@ -71,7 +71,7 @@
   <ion-grid class="table-view">
     <ion-row class="table-header">
       <ion-col col-4>Name</ion-col>
-      <!--<ion-col col-3>Donation</ion-col>-->
+      <!-- <ion-col col-3>Donation</ion-col> -->
       <ion-col col-8>Comment</ion-col>
     </ion-row>
     <ng-container *ngIf="personal_donation_list?.length > 0">
@@ -81,8 +81,8 @@
               <span>{{ m.d_name }}</span>
               <p><b>${{ m.d_amount }}</b></p>
           </ion-col>
-          <ion-col col-3><b>${{ m.d_amount }}</b></ion-col>
-          <ion-col col-5><span>{{m.d_message}}</span></ion-col>
+          <!-- <ion-col col-3><b>${{ m.d_amount }}</b></ion-col> -->
+          <ion-col col-8><span>{{m.d_message}}</span></ion-col>
         </ng-container>
       </ion-row>
     </ng-container>
