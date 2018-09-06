@@ -3,7 +3,7 @@ import { MenuController } from 'ionic-angular';
 import { environment as ENV } from '../../environments/environment' ;
 //import { ThemeableBrowser, ThemeableBrowserOptions } from '@ionic-native/themeable-browser';
 //import { Keyboard } from '@ionic-native/keyboard';
-import { StatusBar } from '@ionic-native/status-bar';
+//import { StatusBar } from '@ionic-native/status-bar';
 import { SafariViewController } from '@ionic-native/safari-view-controller';
 /**
  * Generated class for the DonateButtonComponent component.
@@ -24,7 +24,8 @@ export class DonateButtonComponent {
   @Input() viewdonate : any ;
   text: string;
 
-  constructor( private safariViewController: SafariViewController,private statusBar: StatusBar,
+  constructor( private safariViewController: SafariViewController,
+    //private statusBar: StatusBar,
     //private platform: Platform,
     //private keyboard: Keyboard,
     public menu: MenuController,
@@ -78,7 +79,9 @@ export class DonateButtonComponent {
               animated: false,
               transition: 'curl',
               enterReaderModeIfAvailable: true,
-              tintColor: '#ff0000'
+              tintColor: '#ff0000',
+              barColor: "#ede7db", // on iOS 10+ you can change the background color as well
+              controlTintColor: "#074f5f" // on iOS 10+ you can override the default tintColor
             })
             .subscribe((result: any) => {
                 if(result.event === 'opened') console.log('Opened');
