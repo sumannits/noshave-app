@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import { ThemeableBrowser, ThemeableBrowserOptions } from '@ionic-native/themeable-browser';
+import { ThemeableBrowser, ThemeableBrowserOptions } from '@ionic-native/themeable-browser';
 import { environment as ENV } from '../../environments/environment' ;
-import { SafariViewController } from '@ionic-native/safari-view-controller';
+//import { SafariViewController } from '@ionic-native/safari-view-controller';
 /**
  * Generated class for the AfterSplashPage page.
  *
@@ -17,8 +17,8 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
 })
 export class AfterSplashPage {
   public url : string = ENV.baseUrl;
-  constructor(private safariViewController: SafariViewController,
-    //private themeableBrowser: ThemeableBrowser,
+  constructor(//private safariViewController: SafariViewController,
+    private themeableBrowser: ThemeableBrowser,
     public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -36,7 +36,7 @@ export class AfterSplashPage {
   }
 
   donate(){
-    /*const options: ThemeableBrowserOptions = {
+    const options: ThemeableBrowserOptions = {
       toolbar: {
           height: 57,
           color: '#ede7db'
@@ -54,8 +54,8 @@ export class AfterSplashPage {
       },
       backButtonCanClose: true
     };
-    this.themeableBrowser.create(this.url + 'donate?type=webview', '_blank', options);*/
-    this.safariViewController.isAvailable().then((available: boolean) => {
+    this.themeableBrowser.create(this.url + 'donate?type=webview', '_blank', options);
+    /*this.safariViewController.isAvailable().then((available: boolean) => {
       if (available) {
         this.safariViewController.show({
           url: this.url + 'donate?type=webview',
@@ -76,7 +76,7 @@ export class AfterSplashPage {
       } else {
         // use fallback browser, example InAppBrowser
       }
-    });
+    });*/
   }
 
 }

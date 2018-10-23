@@ -57,8 +57,7 @@ export class LoginPage {
       this.userService.postData(formData,'login.php').then((result) => {
         this.responseData = result;
         loading.dismiss();
-        if(this.responseData.status == 'success')
-        {
+        if(this.responseData.status == 'success'){
           let getuserDetail = new FormData();
           getuserDetail.append('user_id',this.responseData.user_id);
           getuserDetail.append('service_type','user_details');
