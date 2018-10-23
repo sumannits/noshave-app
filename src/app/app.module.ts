@@ -25,7 +25,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Keyboard } from '@ionic-native/keyboard';
-import { SafariViewController } from '@ionic-native/safari-view-controller';
+//import { SafariViewController } from '@ionic-native/safari-view-controller';
 @NgModule({
   declarations: [
     MyApp,
@@ -64,7 +64,7 @@ import { SafariViewController } from '@ionic-native/safari-view-controller';
     ThemeableBrowser,
     SocialSharing,
     Keyboard,
-    SafariViewController
+    //SafariViewController
   ],
   exports:[
   ]
