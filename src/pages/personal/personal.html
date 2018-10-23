@@ -82,7 +82,8 @@
         <ion-item>
           <button ion-button icon-start (click)="personaledit()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon> Edit</button>
           <button ion-button outline icon-start (click)="gotToview()"><ion-icon ios="ios-eye" md="md-eye"></ion-icon> View</button>
-          <button ion-button outline icon-start (click)="share('Personal Donate Page','Noshave November',url +'member/'+ user_details?.m_username)">  <ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
+          <button ion-button outline icon-start (click)="share('You can donate to' + user_details?.m_username + 'of “No Shave November“ - A Unique Way to grow Cancer Awareness .','Donate to “No-Shave November” PersonalPage.',url +'member/'+ user_details?.m_username +'<br/><p>The goal of No-Shave November is to grow awareness by embracing our hair, which many cancer patients lose, and letting it grow wild and free. Donate the money you typically spend on shaving and grooming to educate about cancer prevention, save lives, and aid those fighting the battle.Donate to “ No Shave November “ to help the Cancer patients.<p><br/><p>Thanks,<br/>
+            The No-Shave November Team. </p>')">  <ion-icon ios="ios-redo" md="md-redo"></ion-icon> Share</button>
         </ion-item>
       </ion-card-content>
   </ion-card>

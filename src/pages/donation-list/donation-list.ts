@@ -27,7 +27,7 @@ export class DonationListPage {
     this.authService.postData(doantion,'user.php').then((result) => {
       this.doantionlist = result;
       if(this.doantionlist.status == 'success'){
-          //console.log(this.doantionlist);
+          console.log(this.doantionlist);
           this.doantionlistarray = this.doantionlist.personal_donation;
           this.teamlistarray = this.doantionlist.team_donation;
           this.org_donation = this.doantionlist.org_donation;

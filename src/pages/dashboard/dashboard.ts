@@ -20,6 +20,7 @@ export class DashboardPage {
   public dashboardcontent:any;
   public user_data:any;
   public url : string = ENV.baseUrl;
+  public Date : any;
   constructor(private socialSharing: SocialSharing,public toastCtrl:ToastController,public authService:Api ,public navCtrl: NavController, public navParams: NavParams) {
     let dashboard = new FormData();
     dashboard.append('user_id',JSON.parse(localStorage.getItem('userData')).m_id);
@@ -37,6 +38,8 @@ export class DashboardPage {
   }
 
   ionViewDidLoad() {
+    this.Date = new Date();
+    //console.log(this.Date);
   }
 
   tost_message(msg){
